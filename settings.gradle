@@ -1,0 +1,3 @@
+include ':numorphic'
+include ':app'
+rootProject.name = "Numorphic"
