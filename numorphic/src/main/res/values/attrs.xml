@@ -32,4 +32,21 @@
             <enum name="oval" value="1" />
         </attr>
     </declare-styleable>
+
+    <attr name="NumorphButtonStyle" format="reference" />
+    <declare-styleable name="NumorphButton">
+        <attr name="numorph_backgroundColor" />
+        <attr name="numorph_strokeColor" />
+        <attr name="numorph_strokeWidth" />
+        <attr name="numorph_shapeType" />
+        <attr name="numorph_inset" />
+        <attr name="numorph_insetStart" />
+        <attr name="numorph_insetEnd" />
+        <attr name="numorph_insetTop" />
+        <attr name="numorph_insetBottom" />
+        <attr name="numorph_shadowElevation" />
+        <attr name="numorph_shadowColorLight" />
+        <attr name="numorph_shadowColorDark" />
+        <attr name="numorph_shapeAppearance" />
+    </declare-styleable>
 </resources>

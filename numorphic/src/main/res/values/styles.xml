@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget" />
+
+    <style name="Widget.Numorph" />
+
+    <style name="Widget.Numorph.Button" parent="android:Widget">
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceButton</item>
+        <item name="android:minHeight">72dip</item>
+        <item name="android:minWidth">112dip</item>
+        <item name="android:stateListAnimator">@animator/button_state_list_anim_numorph</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="numorph_inset">@dimen/default_inset</item>
+        <item name="numorph_shadowElevation">6dp</item>
+        <item name="numorph_shadowColorLight">?colorShadowLight</item>
+        <item name="numorph_shadowColorDark">?colorShadowDark</item>
+        <item name="numorph_shapeType">flat</item>
+        <item name="numorph_shapeAppearance">@style/ShapeAppearance.Numorph.Button</item>
+    </style>
+
+    <style name="ShapeAppearance" />
+
+    <style name="ShapeAppearance.Neumorph" />
+
+    <style name="ShapeAppearance.Numorph.Button" parent="">
+        <item name="numorph_cornerFamily">rounded</item>
+        <item name="numorph_cornerSize">@dimen/default_corner_radius</item>
+    </style>
+</resources>
