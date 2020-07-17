@@ -511,17 +511,26 @@ class NumorphShapeDrawable : Drawable {
         path.reset()
 
         // Decide based on corner family.
-        when (drawableState.shapeAppearanceModel.getCornerFamily()) {
+        when (drawableState.shapeAppearanceModel.cornerFamily) {
             CornerFamily.OVAL -> {
                 // Add Oval path.
                 path.addOval(left, top, right, bottom, Path.Direction.CW)
             }
             CornerFamily.ROUNDED -> {
                 // Add round rectangle path.
-                val cornerSize = drawableState.shapeAppearanceModel.getCornerSize()
+                val shapeAppearanceModel = drawableState.shapeAppearanceModel
                 path.addRoundRect(
                     left, top, right, bottom,
-                    cornerSize, cornerSize,
+                    floatArrayOf(
+                        shapeAppearanceModel.cornerRadiusTopLeft + drawableState.shadowElevation,
+                        shapeAppearanceModel.cornerRadiusTopLeft + drawableState.shadowElevation,
+                        shapeAppearanceModel.cornerRadiusTopRight + drawableState.shadowElevation,
+                        shapeAppearanceModel.cornerRadiusTopRight + drawableState.shadowElevation,
+                        shapeAppearanceModel.cornerRadiusBottomRight + drawableState.shadowElevation,
+                        shapeAppearanceModel.cornerRadiusBottomRight + drawableState.shadowElevation,
+                        shapeAppearanceModel.cornerRadiusBottomLeft + drawableState.shadowElevation,
+                        shapeAppearanceModel.cornerRadiusBottomLeft + drawableState.shadowElevation
+                    ),
                     Path.Direction.CW
                 )
             }
@@ -537,12 +546,13 @@ class NumorphShapeDrawable : Drawable {
      * Set [outline]
      */
     override fun getOutline(outline: Outline) {
-        when (drawableState.shapeAppearanceModel.getCornerFamily()) {
+        super.getOutline(outline)
+        when (drawableState.shapeAppearanceModel.cornerFamily) {
             CornerFamily.OVAL -> {
                 outline.setOval(getBoundsInternal())
             }
             CornerFamily.ROUNDED -> {
-                val cornerSize = drawableState.shapeAppearanceModel.getCornerSize()
+                val cornerSize = drawableState.shapeAppearanceModel.cornerRadius
                 outline.setRoundRect(getBoundsInternal(), cornerSize)
             }
         }

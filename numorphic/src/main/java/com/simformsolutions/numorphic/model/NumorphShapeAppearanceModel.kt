@@ -19,54 +19,23 @@ import com.simformsolutions.numorphic.annotation.CornerFamily
  *      * Corner size
  */
 class NumorphShapeAppearanceModel {
-
-    /**
-     * Builder to create [NumorphShapeAppearanceModel].
-     */
-    class Builder {
-
-        @CornerFamily
-        var cornerFamily: Int = CornerFamily.ROUNDED
-        @Dimension
-        var cornerSize: Float = 0f
-
-        /**  Set corner family and corner size  */
-        fun setAllCorners(
-            @CornerFamily cornerFamily: Int,
-            @Dimension cornerSize: Float
-        ): Builder {
-            return setAllCorners(cornerFamily)
-                .setAllCornerSizes(cornerSize)
-        }
-
-        /**  Set corner family  */
-        fun setAllCorners(@CornerFamily cornerFamily: Int): Builder {
-            return apply {
-                this.cornerFamily = cornerFamily
-            }
-        }
-
-        /**  Set corner size  */
-        fun setAllCornerSizes(cornerSize: Float): Builder {
-            return apply {
-                this.cornerSize = cornerSize
-            }
-        }
-
-        /**
-         * Build and return the [NumorphShapeAppearanceModel].
-         */
-        fun build(): NumorphShapeAppearanceModel {
-            return NumorphShapeAppearanceModel(
-                this
-            )
-        }
-    }
-
     @CornerFamily
-    private val cornerFamily: Int
+    val cornerFamily: Int
+
     @Dimension
-    private val cornerSize: Float
+    val cornerRadius: Float
+
+    @Dimension
+    val cornerRadiusTopLeft: Float
+
+    @Dimension
+    val cornerRadiusTopRight: Float
+
+    @Dimension
+    val cornerRadiusBottomRight: Float
+
+    @Dimension
+    val cornerRadiusBottomLeft: Float
 
     /**
      * Constructor which accepts the [NumorphShapeAppearanceModel.Builder].
@@ -74,33 +43,28 @@ class NumorphShapeAppearanceModel {
      */
     private constructor(builder: Builder) {
         cornerFamily = builder.cornerFamily
-        cornerSize = builder.cornerSize
+        cornerRadius = builder.cornerRadius
+        cornerRadiusTopLeft = builder.cornerRadiusTopLeft
+        cornerRadiusTopRight = builder.cornerRadiusTopRight
+        cornerRadiusBottomRight = builder.cornerRadiusBottomRight
+        cornerRadiusBottomLeft = builder.cornerRadiusBottomLeft
     }
 
     /**
      * The default constructor. Sets default values.
      */
     constructor() {
-        cornerFamily = CornerFamily.ROUNDED
-        cornerSize = 0f
-    }
-
-    /**
-     * Getter for [cornerFamily].
-     */
-    @CornerFamily
-    fun getCornerFamily(): Int {
-        return cornerFamily
-    }
-
-    /**
-     * Getter for [cornerSize].
-     */
-    fun getCornerSize(): Float {
-        return cornerSize
+        cornerFamily = DEFAULT_CORNER_FAMILY
+        cornerRadius = DEFAULT_CORNER_RADIUS
+        cornerRadiusTopLeft = cornerRadius
+        cornerRadiusTopRight = cornerRadius
+        cornerRadiusBottomRight = cornerRadius
+        cornerRadiusBottomLeft = cornerRadius
     }
 
     companion object {
+        const val DEFAULT_CORNER_FAMILY = CornerFamily.ROUNDED
+        const val DEFAULT_CORNER_RADIUS = 0f
 
         /**
          * @return [NumorphShapeAppearanceModel.Builder].
@@ -123,7 +87,7 @@ class NumorphShapeAppearanceModel {
             attrs: AttributeSet?,
             @AttrRes defStyleAttr: Int,
             @StyleRes defStyleRes: Int,
-            defaultCornerSize: Float = 0f
+            defaultCornerRadius: Float = DEFAULT_CORNER_RADIUS
         ): Builder {
             val a = context.obtainStyledAttributes(
                 attrs,
@@ -136,7 +100,7 @@ class NumorphShapeAppearanceModel {
             return builder(
                 context,
                 shapeAppearanceResId,
-                defaultCornerSize
+                defaultCornerRadius
             )
         }
 
@@ -144,14 +108,14 @@ class NumorphShapeAppearanceModel {
          * Create builder from
          * @param context Context
          * @param shapeAppearanceResId Shape appearance resource ID
-         * @param defaultCornerSize Default corner size
+         * @param defaultCornerRadius Default corner radius
          *
          * @return [NumorphShapeAppearanceModel.Builder]
          */
         private fun builder(
             context: Context,
             @StyleRes shapeAppearanceResId: Int,
-            defaultCornerSize: Float
+            defaultCornerRadius: Float
         ): Builder {
             val a = context.obtainStyledAttributes(
                 shapeAppearanceResId,
@@ -162,14 +126,46 @@ class NumorphShapeAppearanceModel {
                     R.styleable.NumorphShapeAppearance_numorph_cornerFamily,
                     CornerFamily.ROUNDED
                 )
-                val cornerSize =
+                val cornerRadius =
                     getCornerSize(
                         a,
-                        R.styleable.NumorphShapeAppearance_numorph_cornerSize,
-                        defaultCornerSize
+                        R.styleable.NumorphShapeAppearance_numorph_cornerRadius,
+                        defaultCornerRadius
                     )
+                val cornerRadiusTopLeft =
+                    getCornerSize(
+                        a,
+                        R.styleable.NumorphShapeAppearance_numorph_cornerRadiusTopLeft,
+                        cornerRadius
+                    )
+                val cornerRadiusTopRight =
+                    getCornerSize(
+                        a,
+                        R.styleable.NumorphShapeAppearance_numorph_cornerRadiusTopRight,
+                        cornerRadius
+                    )
+                val cornerRadiusBottomRight =
+                    getCornerSize(
+                        a,
+                        R.styleable.NumorphShapeAppearance_numorph_cornerRadiusBottomRight,
+                        cornerRadius
+                    )
+                val cornerRadiusBottomLeft =
+                    getCornerSize(
+                        a,
+                        R.styleable.NumorphShapeAppearance_numorph_cornerRadiusBottomLeft,
+                        cornerRadius
+                    )
+
                 return Builder()
-                    .setAllCorners(cornerFamily, cornerSize)
+                    .set(
+                        cornerFamily = cornerFamily,
+                        cornerRadius = cornerRadius,
+                        cornerRadiusTopLeft = cornerRadiusTopLeft,
+                        cornerRadiusTopRight = cornerRadiusTopRight,
+                        cornerRadiusBottomRight = cornerRadiusBottomRight,
+                        cornerRadiusBottomLeft = cornerRadiusBottomLeft
+                    )
             } finally {
                 a.recycle()
             }
@@ -193,5 +189,90 @@ class NumorphShapeAppearanceModel {
                 defaultValue
             }
         }
+    }
+
+    /**
+     * Builder to create [NumorphShapeAppearanceModel].
+     */
+    class Builder {
+
+        @CornerFamily
+        var cornerFamily: Int = DEFAULT_CORNER_FAMILY
+
+        @Dimension
+        var cornerRadius: Float = DEFAULT_CORNER_RADIUS
+
+        @Dimension
+        var cornerRadiusTopLeft: Float = cornerRadius
+
+        @Dimension
+        var cornerRadiusTopRight: Float = cornerRadius
+
+        @Dimension
+        var cornerRadiusBottomRight: Float = cornerRadius
+
+        @Dimension
+        var cornerRadiusBottomLeft: Float = cornerRadius
+
+        /**
+         * Set
+         *      * corner family
+         *      * corner radius
+         *      * corner radius top-left
+         *      * corner radius top-right
+         *      * corner radius bottom-right
+         *      * corner radius bottom-left
+         *
+         * @return This Builder
+         */
+        fun set(
+            @CornerFamily cornerFamily: Int,
+            @Dimension cornerRadius: Float = DEFAULT_CORNER_RADIUS,
+            @Dimension cornerRadiusTopLeft: Float = cornerRadius,
+            @Dimension cornerRadiusTopRight: Float = cornerRadius,
+            @Dimension cornerRadiusBottomRight: Float = cornerRadius,
+            @Dimension cornerRadiusBottomLeft: Float = cornerRadius
+        ): Builder {
+            return setCornerFamily(cornerFamily)
+                .setCorner(
+                    cornerRadius,
+                    cornerRadiusTopLeft,
+                    cornerRadiusTopRight,
+                    cornerRadiusBottomRight,
+                    cornerRadiusBottomLeft
+                )
+        }
+
+        /**
+         * Set corner family.
+         */
+        fun setCornerFamily(@CornerFamily cornerFamily: Int): Builder {
+            this.cornerFamily = cornerFamily
+            return this
+        }
+
+        /**
+         * Set all corner radius or specific corner radius.
+         * @return This Builder.
+         */
+        fun setCorner(
+            @Dimension cornerRadius: Float = DEFAULT_CORNER_RADIUS,
+            @Dimension cornerRadiusTopLeft: Float = cornerRadius,
+            @Dimension cornerRadiusTopRight: Float = cornerRadius,
+            @Dimension cornerRadiusBottomRight: Float = cornerRadius,
+            @Dimension cornerRadiusBottomLeft: Float = cornerRadius
+        ): Builder {
+            this.cornerRadius = cornerRadius
+            this.cornerRadiusTopLeft = cornerRadiusTopLeft
+            this.cornerRadiusTopRight = cornerRadiusTopRight
+            this.cornerRadiusBottomRight = cornerRadiusBottomRight
+            this.cornerRadiusBottomLeft = cornerRadiusBottomLeft
+            return this
+        }
+
+        /**
+         * Build and return the [NumorphShapeAppearanceModel].
+         */
+        fun build(): NumorphShapeAppearanceModel = NumorphShapeAppearanceModel(this)
     }
 }

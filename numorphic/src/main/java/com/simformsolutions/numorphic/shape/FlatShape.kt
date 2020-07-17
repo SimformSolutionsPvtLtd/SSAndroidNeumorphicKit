@@ -69,15 +69,23 @@ internal class FlatShape(
          * @param shapeAppearanceModel
          */
         fun GradientDrawable.setCornerShape(shapeAppearanceModel: NumorphShapeAppearanceModel) {
-            when (shapeAppearanceModel.getCornerFamily()) {
+            when (shapeAppearanceModel.cornerFamily) {
                 CornerFamily.OVAL -> {
                     shape = GradientDrawable.OVAL
                 }
                 CornerFamily.ROUNDED -> {
                     shape = GradientDrawable.RECTANGLE
-                    cornerRadii = shapeAppearanceModel.getCornerSize().let {
-                        floatArrayOf(it, it, it, it, it, it, it, it)
-                    }
+                    cornerRadii =
+                        floatArrayOf(
+                            shapeAppearanceModel.cornerRadiusTopLeft,
+                            shapeAppearanceModel.cornerRadiusTopLeft,
+                            shapeAppearanceModel.cornerRadiusTopRight,
+                            shapeAppearanceModel.cornerRadiusTopRight,
+                            shapeAppearanceModel.cornerRadiusBottomRight,
+                            shapeAppearanceModel.cornerRadiusBottomRight,
+                            shapeAppearanceModel.cornerRadiusBottomLeft,
+                            shapeAppearanceModel.cornerRadiusBottomLeft
+                        )
                 }
             }
         }

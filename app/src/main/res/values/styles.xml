@@ -7,4 +7,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ShapeAppearance.TopLeft">
+        <item name="numorph_cornerFamily">rounded</item>
+        <item name="numorph_cornerRadius">5dp</item>
+    </style>
+
 </resources>

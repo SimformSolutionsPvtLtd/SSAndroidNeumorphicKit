@@ -26,7 +26,11 @@
     </declare-styleable>
 
     <declare-styleable name="NumorphShapeAppearance">
-        <attr name="numorph_cornerSize" format="dimension" />
+        <attr name="numorph_cornerRadius" format="dimension" />
+        <attr name="numorph_cornerRadiusTopLeft" format="dimension" />
+        <attr name="numorph_cornerRadiusTopRight" format="dimension" />
+        <attr name="numorph_cornerRadiusBottomRight" format="dimension" />
+        <attr name="numorph_cornerRadiusBottomLeft" format="dimension" />
         <attr name="numorph_cornerFamily" format="enum">
             <enum name="rounded" value="0" />
             <enum name="oval" value="1" />

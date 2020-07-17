@@ -28,6 +28,6 @@
 
     <style name="ShapeAppearance.Numorph.Button" parent="">
         <item name="numorph_cornerFamily">rounded</item>
-        <item name="numorph_cornerSize">@dimen/default_corner_radius</item>
+        <item name="numorph_cornerRadius">@dimen/default_corner_radius</item>
     </style>
 </resources>
