@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorShadowLight" format="color"/>
+    <attr name="colorShadowDark" format="color"/>
+
+    <attr name="numorph_backgroundColor" format="color" />
+    <attr name="numorph_strokeColor" format="color" />
+    <attr name="numorph_strokeWidth" format="dimension" />
+    <attr name="numorph_shapeType" format="enum">
+        <enum name="flat" value="0" />
+        <enum name="pressed" value="1" />
+        <enum name="basin" value="2" />
+    </attr>
+    <attr name="numorph_inset" format="dimension" />
+    <attr name="numorph_insetStart" format="dimension" />
+    <attr name="numorph_insetEnd" format="dimension" />
+    <attr name="numorph_insetTop" format="dimension" />
+    <attr name="numorph_insetBottom" format="dimension" />
+    <attr name="numorph_shadowElevation" format="dimension" />
+    <attr name="numorph_shadowColorLight" format="color" />
+    <attr name="numorph_shadowColorDark" format="color" />
+    <attr name="numorph_shapeAppearance" format="reference" />
+
+    <declare-styleable name="NumorphShape">
+        <attr name="numorph_shapeAppearance" />
+    </declare-styleable>
+
+    <declare-styleable name="NumorphShapeAppearance">
+        <attr name="numorph_cornerSize" format="dimension" />
+        <attr name="numorph_cornerFamily" format="enum">
+            <enum name="rounded" value="0" />
+            <enum name="oval" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>
