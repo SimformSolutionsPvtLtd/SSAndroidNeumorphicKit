@@ -59,6 +59,10 @@ internal class PressedShape(
         val height: Int = h + shadowElevation
         val shapeAppearanceModel = drawableState.shapeAppearanceModel
 
+        fun Float.cornerRadius(): Float = min(
+            min(w / 2f, h / 2f), this
+        )
+
         lightShadowDrawable.apply {
             setSize(width, height)
             setStroke(shadowElevation, drawableState.shadowColorLight)
@@ -68,21 +72,17 @@ internal class PressedShape(
                     shape = GradientDrawable.OVAL
                 }
                 CornerFamily.ROUNDED -> {
-                    val cornerSize = min(
-                        min(w / 2f, h / 2f),
-                        drawableState.shapeAppearanceModel.cornerRadius
-                    )
                     shape = GradientDrawable.RECTANGLE
                     //cornerRadii = floatArrayOf(0f, 0f, 0f, 0f, cornerSize, cornerSize, 0f, 0f)
                     cornerRadii = floatArrayOf(
-                        shapeAppearanceModel.cornerRadiusTopLeft,
-                        shapeAppearanceModel.cornerRadiusTopLeft,
-                        shapeAppearanceModel.cornerRadiusTopRight,
-                        shapeAppearanceModel.cornerRadiusTopRight,
-                        shapeAppearanceModel.cornerRadiusBottomRight,
-                        shapeAppearanceModel.cornerRadiusBottomRight,
-                        shapeAppearanceModel.cornerRadiusBottomLeft,
-                        shapeAppearanceModel.cornerRadiusBottomLeft
+                        shapeAppearanceModel.cornerRadiusTopLeft.cornerRadius(),
+                        shapeAppearanceModel.cornerRadiusTopLeft.cornerRadius(),
+                        shapeAppearanceModel.cornerRadiusTopRight.cornerRadius(),
+                        shapeAppearanceModel.cornerRadiusTopRight.cornerRadius(),
+                        shapeAppearanceModel.cornerRadiusBottomRight.cornerRadius(),
+                        shapeAppearanceModel.cornerRadiusBottomRight.cornerRadius(),
+                        shapeAppearanceModel.cornerRadiusBottomLeft.cornerRadius(),
+                        shapeAppearanceModel.cornerRadiusBottomLeft.cornerRadius()
                     )
                 }
             }
@@ -96,21 +96,17 @@ internal class PressedShape(
                     shape = GradientDrawable.OVAL
                 }
                 CornerFamily.ROUNDED -> {
-                    val cornerSize = min(
-                        min(w / 2f, h / 2f),
-                        drawableState.shapeAppearanceModel.cornerRadius
-                    )
                     shape = GradientDrawable.RECTANGLE
                     //cornerRadii = floatArrayOf(cornerSize, cornerSize, 0f, 0f, 0f, 0f, 0f, 0f)
                     cornerRadii = floatArrayOf(
-                        shapeAppearanceModel.cornerRadiusTopLeft,
-                        shapeAppearanceModel.cornerRadiusTopLeft,
-                        shapeAppearanceModel.cornerRadiusTopRight,
-                        shapeAppearanceModel.cornerRadiusTopRight,
-                        shapeAppearanceModel.cornerRadiusBottomRight,
-                        shapeAppearanceModel.cornerRadiusBottomRight,
-                        shapeAppearanceModel.cornerRadiusBottomLeft,
-                        shapeAppearanceModel.cornerRadiusBottomLeft
+                        shapeAppearanceModel.cornerRadiusTopLeft.cornerRadius(),
+                        shapeAppearanceModel.cornerRadiusTopLeft.cornerRadius(),
+                        shapeAppearanceModel.cornerRadiusTopRight.cornerRadius(),
+                        shapeAppearanceModel.cornerRadiusTopRight.cornerRadius(),
+                        shapeAppearanceModel.cornerRadiusBottomRight.cornerRadius(),
+                        shapeAppearanceModel.cornerRadiusBottomRight.cornerRadius(),
+                        shapeAppearanceModel.cornerRadiusBottomLeft.cornerRadius(),
+                        shapeAppearanceModel.cornerRadiusBottomLeft.cornerRadius()
                     )
                 }
             }

@@ -507,8 +507,20 @@ class NumorphShapeDrawable : Drawable {
         // Top + Height
         val bottom = top + bounds.height()
 
+        val shapeAppearanceModel = drawableState.shapeAppearanceModel
+
         // Reset before using the path.
         path.reset()
+
+        /**
+         * Calculate radius to match elevation radius.
+         * Add shadow elevation if radius is greater than 0.
+         */
+        fun Float.calculateRadius(): Float = if (this == 0f) {
+            this
+        } else {
+            this + drawableState.shadowElevation
+        }
 
         // Decide based on corner family.
         when (drawableState.shapeAppearanceModel.cornerFamily) {
@@ -518,18 +530,17 @@ class NumorphShapeDrawable : Drawable {
             }
             CornerFamily.ROUNDED -> {
                 // Add round rectangle path.
-                val shapeAppearanceModel = drawableState.shapeAppearanceModel
                 path.addRoundRect(
                     left, top, right, bottom,
                     floatArrayOf(
-                        shapeAppearanceModel.cornerRadiusTopLeft + drawableState.shadowElevation,
-                        shapeAppearanceModel.cornerRadiusTopLeft + drawableState.shadowElevation,
-                        shapeAppearanceModel.cornerRadiusTopRight + drawableState.shadowElevation,
-                        shapeAppearanceModel.cornerRadiusTopRight + drawableState.shadowElevation,
-                        shapeAppearanceModel.cornerRadiusBottomRight + drawableState.shadowElevation,
-                        shapeAppearanceModel.cornerRadiusBottomRight + drawableState.shadowElevation,
-                        shapeAppearanceModel.cornerRadiusBottomLeft + drawableState.shadowElevation,
-                        shapeAppearanceModel.cornerRadiusBottomLeft + drawableState.shadowElevation
+                        shapeAppearanceModel.cornerRadiusTopLeft.calculateRadius(),
+                        shapeAppearanceModel.cornerRadiusTopLeft.calculateRadius(),
+                        shapeAppearanceModel.cornerRadiusTopRight.calculateRadius(),
+                        shapeAppearanceModel.cornerRadiusTopRight.calculateRadius(),
+                        shapeAppearanceModel.cornerRadiusBottomRight.calculateRadius(),
+                        shapeAppearanceModel.cornerRadiusBottomRight.calculateRadius(),
+                        shapeAppearanceModel.cornerRadiusBottomLeft.calculateRadius(),
+                        shapeAppearanceModel.cornerRadiusBottomLeft.calculateRadius()
                     ),
                     Path.Direction.CW
                 )

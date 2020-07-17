@@ -8,17 +8,52 @@
     tools:context=".MainActivity">
 
     <com.simformsolutions.numorphic.component.NumorphButton
+        android:id="@+id/numorphButton"
         style="@style/Widget.Numorph.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello"
-        app:numorph_shapeType="pressed"
-        app:numorph_shapeAppearance="@style/ShapeAppearance.TopLeft"
-        app:numorph_shadowColorLight="@color/colorShadowLightDefault"
+        android:text="Video Conf."
+        android:minWidth="130dp"
+        app:layout_constraintEnd_toStartOf="@+id/numorphButton2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:numorph_shadowColorDark="@color/colorShadowDarkDefault"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:numorph_shadowColorLight="@color/colorShadowLightDefault"
+        app:numorph_shapeAppearance="@style/ShapeAppearance.TabFirstButton"
+        app:numorph_shapeType="pressed" />
+
+    <com.simformsolutions.numorphic.component.NumorphButton
+        android:id="@+id/numorphButton2"
+        style="@style/Widget.Numorph.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mobile Doc"
+        android:minWidth="130dp"
+        app:layout_constraintEnd_toStartOf="@+id/numorphButton3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numorphButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:numorph_shadowColorDark="@color/colorShadowDarkDefault"
+        app:numorph_shadowColorLight="@color/colorShadowLightDefault"
+        app:numorph_shapeAppearance="@style/ShapeAppearance.TabMiddleButton"
+        app:numorph_shapeType="flat" />
+
+    <com.simformsolutions.numorphic.component.NumorphButton
+        android:id="@+id/numorphButton3"
+        style="@style/Widget.Numorph.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hub visit"
+        android:minWidth="130dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numorphButton2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:numorph_shadowColorDark="@color/colorShadowDarkDefault"
+        app:numorph_shadowColorLight="@color/colorShadowLightDefault"
+        app:numorph_shapeAppearance="@style/ShapeAppearance.TabEndButton"
+        app:numorph_shapeType="flat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

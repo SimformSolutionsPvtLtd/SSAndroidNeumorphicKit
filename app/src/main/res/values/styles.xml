@@ -7,9 +7,23 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="ShapeAppearance.TopLeft">
+    <style name="ShapeAppearance.TabFirstButton">
         <item name="numorph_cornerFamily">rounded</item>
-        <item name="numorph_cornerRadius">5dp</item>
+        <item name="numorph_cornerRadius">0dp</item>
+        <item name="numorph_cornerRadiusTopLeft">6dp</item>
+        <item name="numorph_cornerRadiusBottomLeft">6dp</item>
+    </style>
+
+    <style name="ShapeAppearance.TabMiddleButton">
+        <item name="numorph_cornerFamily">rounded</item>
+        <item name="numorph_cornerRadius">0dp</item>
+    </style>
+
+    <style name="ShapeAppearance.TabEndButton">
+        <item name="numorph_cornerFamily">rounded</item>
+        <item name="numorph_cornerRadius">0dp</item>
+        <item name="numorph_cornerRadiusTopRight">6dp</item>
+        <item name="numorph_cornerRadiusBottomRight">6dp</item>
     </style>
 
 </resources>
