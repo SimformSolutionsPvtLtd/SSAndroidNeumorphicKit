@@ -2,23 +2,25 @@ package com.simformsolutions.numorphic.component
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.util.Log
+import android.view.View
+import android.widget.FrameLayout
 import androidx.annotation.ColorInt
-import androidx.appcompat.widget.AppCompatButton
 import com.simformsolutions.numorphic.R
 import com.simformsolutions.numorphic.annotation.ShapeType
 import com.simformsolutions.numorphic.drawable.NumorphShapeDrawable
 import com.simformsolutions.numorphic.model.NumorphShapeAppearanceModel
 import com.simformsolutions.numorphic.util.NumorphResources
 
-class NumorphButton @JvmOverloads constructor(
+class NumorphCardView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.NumorphButtonStyle,
-    defStyleRes: Int = R.style.Widget_Numorph_Button
-) : AppCompatButton(context, attrs, defStyleAttr) {
+    defStyleAttr: Int = R.attr.numorphCardViewStyle,
+    defStyleRes: Int = R.style.Widget_Numorph_CardView
+) : FrameLayout(context, attrs, defStyleAttr, defStyleRes) {
 
     private var isInitialized: Boolean = false
     private val shapeDrawable: NumorphShapeDrawable
@@ -30,38 +32,38 @@ class NumorphButton @JvmOverloads constructor(
 
     init {
         val a = context.obtainStyledAttributes(
-            attrs, R.styleable.NumorphButton, defStyleAttr, defStyleRes
+            attrs, R.styleable.NumorphCardView, defStyleAttr, defStyleRes
         )
-        val fillColor = a.getColorStateList(R.styleable.NumorphButton_numorph_backgroundColor)
-        val strokeColor = a.getColorStateList(R.styleable.NumorphButton_numorph_strokeColor)
-        val strokeWidth = a.getDimension(R.styleable.NumorphButton_numorph_strokeWidth, 0f)
-        val shapeType = a.getInt(R.styleable.NumorphButton_numorph_shapeType, ShapeType.DEFAULT)
+        val fillColor = a.getColorStateList(R.styleable.NumorphCardView_numorph_backgroundColor)
+        val strokeColor = a.getColorStateList(R.styleable.NumorphCardView_numorph_strokeColor)
+        val strokeWidth = a.getDimension(R.styleable.NumorphCardView_numorph_strokeWidth, 0f)
+        val shapeType = a.getInt(R.styleable.NumorphCardView_numorph_shapeType, ShapeType.DEFAULT)
         val inset = a.getDimensionPixelSize(
-            R.styleable.NumorphButton_numorph_inset, 0
+            R.styleable.NumorphCardView_numorph_inset, 0
         )
         val insetStart = a.getDimensionPixelSize(
-            R.styleable.NumorphButton_numorph_insetStart, -1
+            R.styleable.NumorphCardView_numorph_insetStart, -1
         )
         val insetEnd = a.getDimensionPixelSize(
-            R.styleable.NumorphButton_numorph_insetEnd, -1
+            R.styleable.NumorphCardView_numorph_insetEnd, -1
         )
         val insetTop = a.getDimensionPixelSize(
-            R.styleable.NumorphButton_numorph_insetTop, -1
+            R.styleable.NumorphCardView_numorph_insetTop, -1
         )
         val insetBottom = a.getDimensionPixelSize(
-            R.styleable.NumorphButton_numorph_insetBottom, -1
+            R.styleable.NumorphCardView_numorph_insetBottom, -1
         )
         val shadowElevation = a.getDimension(
-            R.styleable.NumorphButton_numorph_shadowElevation, 0f
+            R.styleable.NumorphCardView_numorph_shadowElevation, 0f
         )
         val shadowColorLight = NumorphResources.getColor(
             context, a,
-            R.styleable.NumorphButton_numorph_shadowColorLight,
+            R.styleable.NumorphCardView_numorph_shadowColorLight,
             R.color.default_color_shadow_light
         )
         val shadowColorDark = NumorphResources.getColor(
             context, a,
-            R.styleable.NumorphButton_numorph_shadowColorDark,
+            R.styleable.NumorphCardView_numorph_shadowColorDark,
             R.color.default_color_shadow_dark
         )
         a.recycle()
@@ -86,15 +88,15 @@ class NumorphButton @JvmOverloads constructor(
         isInitialized = true
     }
 
-    override fun onTextChanged(
-        text: CharSequence?,
-        start: Int,
-        lengthBefore: Int,
-        lengthAfter: Int
-    ) {
-        super.onTextChanged(text, start, lengthBefore, lengthAfter)
-        requestLayout()
-        invalidate()
+    override fun drawChild(canvas: Canvas, child: View, drawingTime: Long): Boolean {
+        //TODO: clip using Outline smoothly
+        val checkpoint = canvas.save()
+        canvas.clipPath(shapeDrawable.getOutlinePath())
+        try {
+            return super.drawChild(canvas, child, drawingTime)
+        } finally {
+            canvas.restoreToCount(checkpoint)
+        }
     }
 
     override fun setBackground(drawable: Drawable?) {
@@ -208,6 +210,6 @@ class NumorphButton @JvmOverloads constructor(
     }
 
     companion object {
-        private const val LOG_TAG = "NumorphButton"
+        private const val LOG_TAG = "NumorphCardView"
     }
 }

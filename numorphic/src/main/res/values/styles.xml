@@ -22,11 +22,26 @@
         <item name="numorph_shapeAppearance">@style/ShapeAppearance.Numorph.Button</item>
     </style>
 
+    <style name="Widget.Numorph.CardView" parent="android:Widget">
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="numorph_inset">@dimen/default_inset</item>
+        <item name="numorph_shadowElevation">6dp</item>
+        <item name="numorph_shadowColorLight">?colorShadowLight</item>
+        <item name="numorph_shadowColorDark">?colorShadowDark</item>
+        <item name="numorph_shapeType">flat</item>
+        <item name="numorph_shapeAppearance">@style/ShapeAppearance.Neumorph.CardView</item>
+    </style>
+
     <style name="ShapeAppearance" />
 
     <style name="ShapeAppearance.Neumorph" />
 
     <style name="ShapeAppearance.Numorph.Button" parent="">
+        <item name="numorph_cornerFamily">rounded</item>
+        <item name="numorph_cornerRadius">@dimen/default_corner_radius</item>
+    </style>
+
+    <style name="ShapeAppearance.Neumorph.CardView" parent="">
         <item name="numorph_cornerFamily">rounded</item>
         <item name="numorph_cornerRadius">@dimen/default_corner_radius</item>
     </style>
