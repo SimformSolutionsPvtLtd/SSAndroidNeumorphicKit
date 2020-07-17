@@ -32,6 +32,19 @@
         <item name="numorph_shapeAppearance">@style/ShapeAppearance.Neumorph.CardView</item>
     </style>
 
+    <style name="Widget.Numorph.FloatingActionButton" parent="android:Widget">
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:stateListAnimator">@animator/button_state_list_anim_numorph</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="numorph_inset">@dimen/default_inset</item>
+        <item name="numorph_shadowElevation">6dp</item>
+        <item name="numorph_shadowColorLight">?colorShadowLight</item>
+        <item name="numorph_shadowColorDark">?colorShadowDark</item>
+        <item name="numorph_shapeType">flat</item>
+        <item name="numorph_shapeAppearance">@style/ShapeAppearance.Numorph.FloatingActionButton</item>
+    </style>
+
     <style name="ShapeAppearance" />
 
     <style name="ShapeAppearance.Neumorph" />
@@ -44,5 +57,10 @@
     <style name="ShapeAppearance.Neumorph.CardView" parent="">
         <item name="numorph_cornerFamily">rounded</item>
         <item name="numorph_cornerRadius">@dimen/default_corner_radius</item>
+    </style>
+
+    <style name="ShapeAppearance.Numorph.FloatingActionButton" parent="">
+        <item name="numorph_cornerFamily">oval</item>
+        <item name="numorph_cornerRadius">0dp</item>
     </style>
 </resources>

@@ -78,4 +78,16 @@
             android:text="Hello Card View" />
     </com.simformsolutions.numorphic.component.NumorphCardView>
 
+    <com.simformsolutions.numorphic.component.NumorphFloatingActionButton
+        style="@style/Widget.Numorph.FloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="88dp"
+        android:minHeight="88dp"
+        android:src="@drawable/ic_filter"
+        android:layout_margin="16dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
