@@ -2,6 +2,8 @@
 <resources>
     <attr name="colorShadowLight" format="color"/>
     <attr name="colorShadowDark" format="color"/>
+    <!--  If true shadow will not be applied  -->
+    <attr name="noShadow" format="boolean" />
 
     <attr name="numorph_backgroundColor" format="color" />
     <attr name="numorph_strokeColor" format="color" />
@@ -51,6 +53,7 @@
         <attr name="numorph_shadowElevation" />
         <attr name="numorph_shadowColorLight" />
         <attr name="numorph_shadowColorDark" />
+        <attr name="noShadow" />
         <attr name="numorph_shapeAppearance" />
     </declare-styleable>
 
@@ -68,6 +71,7 @@
         <attr name="numorph_shadowElevation" />
         <attr name="numorph_shadowColorLight" />
         <attr name="numorph_shadowColorDark" />
+        <attr name="noShadow" />
         <attr name="numorph_shapeAppearance" />
     </declare-styleable>
 
@@ -85,6 +89,7 @@
         <attr name="numorph_shadowElevation" />
         <attr name="numorph_shadowColorLight" />
         <attr name="numorph_shadowColorDark" />
+        <attr name="noShadow" />
         <attr name="numorph_shapeAppearance" />
     </declare-styleable>
 
@@ -102,6 +107,7 @@
         <attr name="numorph_shadowElevation" />
         <attr name="numorph_shadowColorLight" />
         <attr name="numorph_shadowColorDark" />
+        <attr name="noShadow" />
         <attr name="numorph_shapeAppearance" />
     </declare-styleable>
 
@@ -119,6 +125,7 @@
         <attr name="numorph_shadowElevation" />
         <attr name="numorph_shadowColorLight" />
         <attr name="numorph_shadowColorDark" />
+        <attr name="noShadow" />
         <attr name="numorph_shapeAppearance" />
     </declare-styleable>
 </resources>

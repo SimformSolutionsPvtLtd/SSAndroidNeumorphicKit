@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.annotation.ColorInt
 import androidx.annotation.Dimension
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContextCompat
 import com.simformsolutions.numorphic.R
 import com.simformsolutions.numorphic.annotation.CornerFamily
 import com.simformsolutions.numorphic.annotation.ShapeType
@@ -24,6 +25,9 @@ class NumorphButton @JvmOverloads constructor(
 
     private var isInitialized: Boolean = false
     private val shapeDrawable: NumorphShapeDrawable
+
+    private var shadowColorLight: Int
+    private var shadowColorDark: Int
 
     private var insetStart = 0
     private var insetEnd = 0
@@ -56,15 +60,18 @@ class NumorphButton @JvmOverloads constructor(
         val shadowElevation = a.getDimension(
             R.styleable.NumorphButton_numorph_shadowElevation, 0f
         )
-        val shadowColorLight = NumorphResources.getColor(
+        shadowColorLight = NumorphResources.getColor(
             context, a,
             R.styleable.NumorphButton_numorph_shadowColorLight,
             R.color.default_color_shadow_light
         )
-        val shadowColorDark = NumorphResources.getColor(
+        shadowColorDark = NumorphResources.getColor(
             context, a,
             R.styleable.NumorphButton_numorph_shadowColorDark,
             R.color.default_color_shadow_dark
+        )
+        val noShadow = a.getBoolean(
+            R.styleable.NumorphButton_noShadow, false
         )
         a.recycle()
 
@@ -85,6 +92,7 @@ class NumorphButton @JvmOverloads constructor(
             if (insetBottom >= 0) insetBottom else inset
         )
         setBackgroundInternal(shapeDrawable)
+        setNoShadow(noShadow)
         isInitialized = true
     }
 
@@ -97,6 +105,34 @@ class NumorphButton @JvmOverloads constructor(
         super.onTextChanged(text, start, lengthBefore, lengthAfter)
         requestLayout()
         invalidate()
+    }
+
+    /**
+     * Toggle to show or hide shadow.
+     * @param flag true to show
+     */
+    fun setNoShadow(flag: Boolean) {
+        if (flag) {
+            hideShadow()
+        } else {
+            showShadow()
+        }
+    }
+
+    /**
+     * Show shadow.
+     */
+    fun showShadow() {
+        setShadowColorLight(shadowColorLight)
+        setShadowColorDark(shadowColorDark)
+    }
+
+    /**
+     * Hide shadow.
+     */
+    fun hideShadow() {
+        setShadowColorLight(ContextCompat.getColor(context, R.color.transparent))
+        setShadowColorDark(ContextCompat.getColor(context, R.color.transparent))
     }
 
     override fun setBackground(drawable: Drawable?) {
