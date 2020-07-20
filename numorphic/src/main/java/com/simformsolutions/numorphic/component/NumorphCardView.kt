@@ -9,7 +9,9 @@ import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.annotation.ColorInt
+import androidx.annotation.Dimension
 import com.simformsolutions.numorphic.R
+import com.simformsolutions.numorphic.annotation.CornerFamily
 import com.simformsolutions.numorphic.annotation.ShapeType
 import com.simformsolutions.numorphic.drawable.NumorphShapeDrawable
 import com.simformsolutions.numorphic.model.NumorphShapeAppearanceModel
@@ -207,6 +209,46 @@ class NumorphCardView @JvmOverloads constructor(
         if (isInitialized) {
             shapeDrawable.setTranslationZ(translationZ)
         }
+    }
+
+    /**
+     * Set all corner radius or specific corner radius.
+     * @param cornerRadius Set all corner radius
+     * @param cornerRadiusTopLeft Set top left corner radius
+     * @param cornerRadiusTopRight Set top right corner radius
+     * @param cornerRadiusBottomRight Set top right corner radius
+     * @param cornerRadiusBottomLeft Set bottom left corner radius
+     */
+    fun setCorner(
+        @Dimension cornerRadius: Float,
+        @Dimension cornerRadiusTopLeft: Float = cornerRadius,
+        @Dimension cornerRadiusTopRight: Float = cornerRadius,
+        @Dimension cornerRadiusBottomRight: Float = cornerRadius,
+        @Dimension cornerRadiusBottomLeft: Float = cornerRadius
+    ) {
+        val newShapeAppearanceModel = NumorphShapeAppearanceModel.builder(getShapeAppearanceModel())
+            .setCorner(
+                cornerRadius = cornerRadius,
+                cornerRadiusTopLeft = cornerRadiusTopLeft,
+                cornerRadiusTopRight = cornerRadiusTopRight,
+                cornerRadiusBottomRight = cornerRadiusBottomRight,
+                cornerRadiusBottomLeft = cornerRadiusBottomLeft
+            )
+            .build()
+
+        setShapeAppearanceModel(newShapeAppearanceModel)
+    }
+
+    /**
+     * Set corner family
+     * @param cornerFamily Set corner family
+     */
+    fun setCornerFamily(@CornerFamily cornerFamily: Int) {
+        val newShapeAppearanceModel = NumorphShapeAppearanceModel.builder(getShapeAppearanceModel())
+            .setCornerFamily(cornerFamily)
+            .build()
+
+        setShapeAppearanceModel(newShapeAppearanceModel)
     }
 
     companion object {

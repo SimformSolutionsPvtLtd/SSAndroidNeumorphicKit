@@ -74,6 +74,23 @@ class NumorphShapeAppearanceModel {
         }
 
         /**
+         * Create [NumorphShapeAppearanceModel.Builder] from existing
+         * @param model [NumorphShapeAppearanceModel] and
+         * @return [Builder]
+         */
+        fun builder(model: NumorphShapeAppearanceModel): Builder {
+            return Builder()
+                .set(
+                    cornerFamily = model.cornerFamily,
+                    cornerRadius = model.cornerRadius,
+                    cornerRadiusTopLeft = model.cornerRadiusTopLeft,
+                    cornerRadiusTopRight = model.cornerRadiusTopRight,
+                    cornerRadiusBottomRight = model.cornerRadiusBottomRight,
+                    cornerRadiusBottomLeft = model.cornerRadiusBottomLeft
+                )
+        }
+
+        /**
          * Create builder from
          * @param context Context
          * @param attrs AttributeSet?
@@ -227,7 +244,7 @@ class NumorphShapeAppearanceModel {
          */
         fun set(
             @CornerFamily cornerFamily: Int,
-            @Dimension cornerRadius: Float = DEFAULT_CORNER_RADIUS,
+            @Dimension cornerRadius: Float,
             @Dimension cornerRadiusTopLeft: Float = cornerRadius,
             @Dimension cornerRadiusTopRight: Float = cornerRadius,
             @Dimension cornerRadiusBottomRight: Float = cornerRadius,
