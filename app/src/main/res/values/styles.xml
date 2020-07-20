@@ -26,4 +26,8 @@
         <item name="numorph_cornerRadiusBottomRight">6dp</item>
     </style>
 
+    <style name="ShapeAppearance.Circular">
+        <item name="numorph_cornerFamily">oval</item>
+        <item name="numorph_cornerRadius">0dp</item>
+    </style>
 </resources>
