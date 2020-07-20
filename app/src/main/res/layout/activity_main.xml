@@ -79,14 +79,13 @@
             android:text="Hello Card View" />
     </com.simformsolutions.numorphic.component.NumorphCardView>
 
-    <com.simformsolutions.numorphic.component.NumorphImageButton
+    <com.simformsolutions.numorphic.component.NumorphImageView
         android:id="@+id/imageButton"
-        style="@style/Widget.Numorph.ImageButton"
+        style="@style/Widget.Numorph.ImageView"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numorphCardView" />
 

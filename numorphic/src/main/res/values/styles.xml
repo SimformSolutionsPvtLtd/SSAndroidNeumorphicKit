@@ -58,6 +58,16 @@
         <item name="numorph_shapeType">flat</item>
         <item name="numorph_shapeAppearance">@style/ShapeAppearance.Numorph.ImageButton</item>
     </style>
+
+    <style name="Widget.Numorph.ImageView" parent="android:Widget">
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="numorph_inset">@dimen/default_inset</item>
+        <item name="numorph_shadowElevation">6dp</item>
+        <item name="numorph_shadowColorLight">?colorShadowLight</item>
+        <item name="numorph_shadowColorDark">?colorShadowDark</item>
+        <item name="numorph_shapeType">flat</item>
+        <item name="numorph_shapeAppearance">@style/ShapeAppearance.Numorph.ImageView</item>
+    </style>
     
     <style name="ShapeAppearance" />
 
@@ -79,6 +89,11 @@
     </style>
 
     <style name="ShapeAppearance.Numorph.ImageButton" parent="">
+        <item name="numorph_cornerFamily">rounded</item>
+        <item name="numorph_cornerRadius">@dimen/default_corner_radius</item>
+    </style>
+
+    <style name="ShapeAppearance.Numorph.ImageView" parent="">
         <item name="numorph_cornerFamily">rounded</item>
         <item name="numorph_cornerRadius">@dimen/default_corner_radius</item>
     </style>
