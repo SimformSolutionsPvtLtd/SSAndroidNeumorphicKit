@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Platform.Numorph" parent="Theme.AppCompat" />
+
+    <style name="Platform.Numorph.Light" parent="Theme.AppCompat.Light" />
+
+    <style name="Base.V21.Theme.Numorph.Bridge" parent="Platform.Numorph">
+        <item name="android:windowBackground">@color/dark_default_background</item>
+        <item name="colorShadowLight">@color/dark_default_color_shadow_light</item>
+        <item name="colorShadowDark">@color/dark_default_color_shadow_dark</item>
+
+        <item name="numorphButtonStyle">@style/Widget.Numorph.Button</item>
+        <item name="numorphCardViewStyle">@style/Widget.Numorph.CardView</item>
+        <item name="numorphFloatingActionButtonStyle">@style/Widget.Numorph.FloatingActionButton</item>
+        <item name="numorphImageViewStyle">@style/Widget.Numorph.ImageView</item>
+        <item name="numorphImageButtonStyle">@style/Widget.Numorph.ImageButton</item>
+    </style>
+
+    <style name="Base.V21.Theme.Numorph.Light.Bridge" parent="Platform.Numorph.Light">
+        <item name="android:windowBackground">@color/default_background</item>
+        <item name="colorShadowLight">@color/default_color_shadow_light</item>
+        <item name="colorShadowDark">@color/default_color_shadow_dark</item>
+
+        <item name="numorphButtonStyle">@style/Widget.Numorph.Button</item>
+        <item name="numorphCardViewStyle">@style/Widget.Numorph.CardView</item>
+        <item name="numorphFloatingActionButtonStyle">@style/Widget.Numorph.FloatingActionButton</item>
+        <item name="numorphImageViewStyle">@style/Widget.Numorph.ImageView</item>
+        <item name="numorphImageButtonStyle">@style/Widget.Numorph.ImageButton</item>
+    </style>
+
+    <style name="Base.V21.Theme.Numorph.Light.DarkActionBar.Bridge" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorShadowLight">@color/default_color_shadow_light</item>
+        <item name="colorShadowDark">@color/default_color_shadow_dark</item>
+
+        <item name="numorphButtonStyle">@style/Widget.Numorph.Button</item>
+        <item name="numorphCardViewStyle">@style/Widget.Numorph.CardView</item>
+        <item name="numorphFloatingActionButtonStyle">@style/Widget.Numorph.FloatingActionButton</item>
+        <item name="numorphImageViewStyle">@style/Widget.Numorph.ImageView</item>
+        <item name="numorphImageButtonStyle">@style/Widget.Numorph.ImageButton</item>
+    </style>
+
+    <style name="Base.Theme.Numorph.Bridge" parent="Base.V21.Theme.Numorph.Bridge" />
+
+    <style name="Base.Theme.Numorph.Light.Bridge" parent="Base.V21.Theme.Numorph.Light.Bridge" />
+
+    <style name="Base.Theme.Numorph.Light.DarkActionBar.Bridge" parent="Base.V21.Theme.Numorph.Light.DarkActionBar.Bridge" />
+
+</resources>

@@ -19,7 +19,7 @@ import com.simformsolutions.numorphic.util.NumorphResources
 class NumorphButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.NumorphButtonStyle,
+    defStyleAttr: Int = R.attr.numorphButtonStyle,
     defStyleRes: Int = R.style.Widget_Numorph_Button
 ) : AppCompatButton(context, attrs, defStyleAttr) {
 

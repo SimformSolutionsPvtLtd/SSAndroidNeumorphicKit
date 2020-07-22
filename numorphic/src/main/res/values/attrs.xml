@@ -39,7 +39,7 @@
         </attr>
     </declare-styleable>
 
-    <attr name="NumorphButtonStyle" format="reference" />
+    <attr name="numorphButtonStyle" format="reference" />
     <declare-styleable name="NumorphButton">
         <attr name="numorph_backgroundColor" />
         <attr name="numorph_strokeColor" />

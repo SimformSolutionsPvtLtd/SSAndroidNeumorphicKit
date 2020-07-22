@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorSurfaceDefault"
     tools:context=".MainActivity">
 
     <com.simformsolutions.numorphic.component.NumorphButton
@@ -19,8 +18,6 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:numorph_shadowColorDark="@color/colorShadowDarkDefault"
-        app:numorph_shadowColorLight="@color/colorShadowLightDefault"
         app:numorph_shapeAppearance="@style/ShapeAppearance.TabFirstButton"
         app:numorph_shapeType="pressed" />
 
@@ -36,8 +33,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numorphButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:numorph_shadowColorDark="@color/colorShadowDarkDefault"
-        app:numorph_shadowColorLight="@color/colorShadowLightDefault"
         app:numorph_shapeAppearance="@style/ShapeAppearance.TabMiddleButton"
         app:numorph_shapeType="flat" />
 
@@ -53,8 +48,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numorphButton2"
         app:layout_constraintTop_toTopOf="parent"
-        app:numorph_shadowColorDark="@color/colorShadowDarkDefault"
-        app:numorph_shadowColorLight="@color/colorShadowLightDefault"
         app:numorph_shapeAppearance="@style/ShapeAppearance.TabEndButton"
         app:numorph_shapeType="flat" />
 

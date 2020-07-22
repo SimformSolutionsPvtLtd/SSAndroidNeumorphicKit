@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ThemeOverlay.Numorph" parent="ThemeOverlay.AppCompat" />
+
+    <style name="ThemeOverlay.Numorph.Light" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorShadowLight">@color/default_color_shadow_light</item>
+        <item name="colorShadowDark">@color/default_color_shadow_dark</item>
+
+        <item name="numorphButtonStyle">@style/Widget.Numorph.Button</item>
+        <item name="numorphCardViewStyle">@style/Widget.Numorph.CardView</item>
+        <item name="numorphFloatingActionButtonStyle">@style/Widget.Numorph.FloatingActionButton</item>
+        <item name="numorphImageViewStyle">@style/Widget.Numorph.ImageView</item>
+        <item name="numorphImageButtonStyle">@style/Widget.Numorph.ImageButton</item>
+    </style>
+
+    <style name="ThemeOverlay.Numorph.Dark" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="colorShadowLight">@color/dark_default_color_shadow_light</item>
+        <item name="colorShadowDark">@color/dark_default_color_shadow_dark</item>
+
+        <item name="numorphButtonStyle">@style/Widget.Numorph.Button</item>
+        <item name="numorphCardViewStyle">@style/Widget.Numorph.CardView</item>
+        <item name="numorphFloatingActionButtonStyle">@style/Widget.Numorph.FloatingActionButton</item>
+        <item name="numorphImageViewStyle">@style/Widget.Numorph.ImageView</item>
+        <item name="numorphImageButtonStyle">@style/Widget.Numorph.ImageButton</item>
+    </style>
+
+    <style name="ThemeOverlay.Numorph.ActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorShadowLight">@color/default_color_shadow_light</item>
+        <item name="colorShadowDark">@color/default_color_shadow_dark</item>
+
+        <item name="numorphButtonStyle">@style/Widget.Numorph.Button</item>
+        <item name="numorphCardViewStyle">@style/Widget.Numorph.CardView</item>
+        <item name="numorphFloatingActionButtonStyle">@style/Widget.Numorph.FloatingActionButton</item>
+        <item name="numorphImageViewStyle">@style/Widget.Numorph.ImageView</item>
+        <item name="numorphImageButtonStyle">@style/Widget.Numorph.ImageButton</item>
+    </style>
+
+    <style name="ThemeOverlay.Numorph.Dark.ActionBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorShadowLight">@color/dark_default_color_shadow_light</item>
+        <item name="colorShadowDark">@color/dark_default_color_shadow_dark</item>
+
+        <item name="numorphButtonStyle">@style/Widget.Numorph.Button</item>
+        <item name="numorphCardViewStyle">@style/Widget.Numorph.CardView</item>
+        <item name="numorphFloatingActionButtonStyle">@style/Widget.Numorph.FloatingActionButton</item>
+        <item name="numorphImageViewStyle">@style/Widget.Numorph.ImageView</item>
+        <item name="numorphImageButtonStyle">@style/Widget.Numorph.ImageButton</item>
+    </style>
+
+</resources>
