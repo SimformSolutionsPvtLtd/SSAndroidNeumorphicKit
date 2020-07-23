@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
 import com.simformsolutions.numorphic.component.NumorphImageButton
 import com.simformsolutions.numorphic.component.NumorphImageView
 
@@ -26,10 +24,6 @@ class MainActivity : AppCompatActivity() {
         Glide.with(applicationContext)
             .asBitmap()
             .load("https://picsum.photos/id/237/400")
-            .apply(RequestOptions()
-                .skipMemoryCache(true)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-            )
             .into(this)
     }
 }
