@@ -127,10 +127,19 @@ class NumorphImageView @JvmOverloads constructor(
         setShadowColorDark(ContextCompat.getColor(context, R.color.transparent))
     }
 
+    /**
+     * Intercept this method. Native implementation will draw over shadow.
+     * @param drawable Drawable to draw
+     */
     override fun setImageDrawable(drawable: Drawable?) {
+        /**  Call as bitmap  */
         shapeDrawable.setImageBitmap(drawable?.toBitmap())
     }
 
+    /**
+     * Intercept this method. Native implementation will draw over shadow.
+     * @param bm Bitmap to draw
+     */
     override fun setImageBitmap(bm: Bitmap?) {
         shapeDrawable.setImageBitmap(bm)
     }

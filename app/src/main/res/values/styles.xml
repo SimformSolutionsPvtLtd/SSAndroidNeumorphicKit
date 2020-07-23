@@ -35,4 +35,13 @@
         <item name="numorph_cornerFamily">rounded</item>
         <item name="numorph_cornerRadius">0dp</item>
     </style>
+
+
+    <style name="ShapeAppearance.ImageRounded">
+        <item name="numorph_cornerFamily">rounded</item>
+        <item name="numorph_cornerRadius">0dp</item>
+        <item name="numorph_cornerRadiusTopLeft">16dp</item>
+        <item name="numorph_cornerRadiusBottomLeft">16dp</item>
+    </style>
+
 </resources>

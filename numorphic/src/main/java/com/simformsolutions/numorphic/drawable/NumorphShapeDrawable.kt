@@ -219,6 +219,7 @@ class NumorphShapeDrawable : Drawable {
         invalidateSelf()
     }
 
+    /**  Show image bitmap  */
     fun setImageBitmap(bm: Bitmap?) {
         imageBitmap = bm
         invalidateSelf()
@@ -506,6 +507,7 @@ class NumorphShapeDrawable : Drawable {
 
     private fun drawImageBitmap(canvas: Canvas) {
         imageBitmap?.let {
+            canvas.clipPath(outlinePath)
             canvas.drawBitmap(it, null, getBoundsInternal(), null)
         }
     }
