@@ -17,6 +17,7 @@ import com.simformsolutions.numorphic.shape.FlatShape
 import com.simformsolutions.numorphic.shape.PressedShape
 import com.simformsolutions.numorphic.shape.Shape
 
+
 /**
  * The core part of the library.
  *
@@ -59,6 +60,8 @@ class NumorphShapeDrawable : Drawable {
 
     /**  Shape  */
     private var shadow: Shape? = null
+
+    private var imageBitmap: Bitmap? = null
 
     /**
      * Constructor to create from
@@ -214,6 +217,15 @@ class NumorphShapeDrawable : Drawable {
     fun setStrokeWidth(strokeWidth: Float) {
         drawableState.strokeWidth = strokeWidth
         invalidateSelf()
+    }
+
+    fun setImageBitmap(bm: Bitmap?) {
+        imageBitmap = bm
+        invalidateSelf()
+    }
+
+    fun getImageBitmap(bm: Bitmap?): Bitmap? {
+        return imageBitmap
     }
 
     /**  Getter for Opacity  */
@@ -419,6 +431,10 @@ class NumorphShapeDrawable : Drawable {
                 && strokePaint.strokeWidth > 0)
     }
 
+    private fun hasImageBitmap(): Boolean {
+        return imageBitmap != null
+    }
+
     /**
      * Whenever bounds change set dirty flag to true.
      */
@@ -463,6 +479,10 @@ class NumorphShapeDrawable : Drawable {
             drawStrokeShape(canvas)
         }
 
+        if (hasImageBitmap()) {
+            drawImageBitmap(canvas)
+        }
+
         // Set alpha
         fillPaint.alpha = prevAlpha
         strokePaint.alpha = prevStrokeAlpha
@@ -482,6 +502,12 @@ class NumorphShapeDrawable : Drawable {
      */
     private fun drawStrokeShape(canvas: Canvas) {
         canvas.drawPath(outlinePath, strokePaint)
+    }
+
+    private fun drawImageBitmap(canvas: Canvas) {
+        imageBitmap?.let {
+            canvas.drawBitmap(it, null, getBoundsInternal(), null)
+        }
     }
 
     /**

@@ -75,12 +75,16 @@
     <com.simformsolutions.numorphic.component.NumorphImageView
         android:id="@+id/imageButton"
         style="@style/Widget.Numorph.ImageView"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
         android:layout_marginTop="16dp"
+        android:padding="16dp"
+        app:numorph_shadowColorLight="@android:color/holo_orange_light"
+        app:numorph_shadowColorDark="@android:color/holo_orange_dark"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numorphCardView" />
+        app:layout_constraintTop_toBottomOf="@+id/numorphCardView"
+        app:numorph_shapeAppearance="@style/ShapeAppearance.Rect" />
 
     <com.simformsolutions.numorphic.component.NumorphFloatingActionButton
         style="@style/Widget.Numorph.FloatingActionButton"

@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.Numorph.DayNight">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/background</item>
-        <item name="colorPrimaryDark">@color/background</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
@@ -28,6 +28,11 @@
 
     <style name="ShapeAppearance.Circular">
         <item name="numorph_cornerFamily">oval</item>
+        <item name="numorph_cornerRadius">0dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Rect">
+        <item name="numorph_cornerFamily">rounded</item>
         <item name="numorph_cornerRadius">0dp</item>
     </style>
 </resources>
