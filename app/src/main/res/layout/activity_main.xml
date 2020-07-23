@@ -26,8 +26,8 @@
         style="@style/Widget.Numorph.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tab 2"
         android:minWidth="130dp"
+        android:text="Tab 2"
         android:textAllCaps="false"
         app:layout_constraintEnd_toStartOf="@+id/numorphButton3"
         app:layout_constraintHorizontal_bias="0.5"
@@ -41,8 +41,8 @@
         style="@style/Widget.Numorph.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tab 3"
         android:minWidth="130dp"
+        android:text="Tab 3"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -73,26 +73,39 @@
     </com.simformsolutions.numorphic.component.NumorphCardView>
 
     <com.simformsolutions.numorphic.component.NumorphImageView
-        android:id="@+id/imageButton"
+        android:id="@+id/imageView"
         style="@style/Widget.Numorph.ImageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="16dp"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/imageButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numorphCardView"
+        app:layout_constraintTop_toBottomOf="@id/numorphCardView"
+        app:numorph_shapeAppearance="@style/ShapeAppearance.Circular" />
+
+    <com.simformsolutions.numorphic.component.NumorphImageButton
+        android:id="@+id/imageButton"
+        style="@style/Widget.Numorph.ImageButton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/imageView"
+        app:layout_constraintTop_toBottomOf="@id/numorphCardView"
         app:numorph_shapeAppearance="@style/ShapeAppearance.ImageRounded" />
 
     <com.simformsolutions.numorphic.component.NumorphFloatingActionButton
         style="@style/Widget.Numorph.FloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:minWidth="88dp"
         android:minHeight="88dp"
-        android:src="@drawable/ic_filter"
-        android:layout_margin="16dp"
         android:scaleType="centerInside"
+        android:src="@drawable/ic_filter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

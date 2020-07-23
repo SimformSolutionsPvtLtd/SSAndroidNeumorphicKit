@@ -2,6 +2,7 @@ package com.simformsolutions.numorphic.component
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.util.Log
@@ -10,6 +11,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.Dimension
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import com.simformsolutions.numorphic.R
 import com.simformsolutions.numorphic.annotation.CornerFamily
 import com.simformsolutions.numorphic.annotation.ShapeType
@@ -124,6 +126,23 @@ class NumorphImageButton @JvmOverloads constructor(
     fun hideShadow() {
         setShadowColorLight(ContextCompat.getColor(context, R.color.transparent))
         setShadowColorDark(ContextCompat.getColor(context, R.color.transparent))
+    }
+
+    /**
+     * Intercept this method. Native implementation will draw over shadow.
+     * @param drawable Drawable to draw
+     */
+    override fun setImageDrawable(drawable: Drawable?) {
+        /**  Call as bitmap  */
+        shapeDrawable.setImageBitmap(drawable?.toBitmap())
+    }
+
+    /**
+     * Intercept this method. Native implementation will draw over shadow.
+     * @param bm Bitmap to draw
+     */
+    override fun setImageBitmap(bm: Bitmap?) {
+        shapeDrawable.setImageBitmap(bm)
     }
 
     override fun setBackground(drawable: Drawable?) {
