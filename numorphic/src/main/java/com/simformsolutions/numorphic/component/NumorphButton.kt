@@ -143,7 +143,7 @@ class NumorphButton @JvmOverloads constructor(
     override fun setBackgroundDrawable(drawable: Drawable?) {
         /**  Run only when layout measuring is completed. */
         post {
-            shapeDrawable.setImageBitmap(drawable?.toBitmap(width, height))
+            shapeDrawable.setBackgroundDrawable(drawable, width, height)
         }
     }
 

@@ -7,7 +7,9 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
+import androidx.annotation.Px
 import androidx.annotation.StyleRes
+import androidx.core.graphics.drawable.toBitmap
 import com.simformsolutions.numorphic.annotation.CornerFamily
 import com.simformsolutions.numorphic.annotation.ShapeType
 import com.simformsolutions.numorphic.blur.BlurProvider
@@ -227,6 +229,11 @@ class NumorphShapeDrawable : Drawable {
 
     fun getImageBitmap(bm: Bitmap?): Bitmap? {
         return imageBitmap
+    }
+
+    /**  Set background drawable  */
+    fun setBackgroundDrawable(drawable: Drawable?, @Px width: Int, @Px height: Int) {
+        setImageBitmap(drawable?.toBitmap(width, height))
     }
 
     /**  Getter for Opacity  */
