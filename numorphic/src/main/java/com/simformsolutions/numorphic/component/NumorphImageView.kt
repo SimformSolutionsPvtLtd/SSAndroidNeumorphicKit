@@ -149,7 +149,10 @@ class NumorphImageView @JvmOverloads constructor(
     }
 
     override fun setBackgroundDrawable(drawable: Drawable?) {
-        Log.i(LOG_TAG, "Setting a custom background is not supported.")
+        /**  Run only when layout measuring is completed. */
+        post {
+            shapeDrawable.setImageBitmap(drawable?.toBitmap(width, height))
+        }
     }
 
     private fun setBackgroundInternal(drawable: Drawable?) {

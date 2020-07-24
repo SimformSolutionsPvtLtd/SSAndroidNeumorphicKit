@@ -9,6 +9,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.Dimension
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import com.simformsolutions.numorphic.R
 import com.simformsolutions.numorphic.annotation.CornerFamily
 import com.simformsolutions.numorphic.annotation.ShapeType
@@ -140,7 +141,10 @@ class NumorphButton @JvmOverloads constructor(
     }
 
     override fun setBackgroundDrawable(drawable: Drawable?) {
-        Log.i(LOG_TAG, "Setting a custom background is not supported.")
+        /**  Run only when layout measuring is completed. */
+        post {
+            shapeDrawable.setImageBitmap(drawable?.toBitmap(width, height))
+        }
     }
 
     private fun setBackgroundInternal(drawable: Drawable?) {
