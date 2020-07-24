@@ -8,6 +8,11 @@
     <!-- Default corner radius -->
     <dimen name="default_corner_radius">24dp</dimen>
 
+    <!--  EditText  -->
+    <dimen name="default_edit_text_padding_vertical">22dp</dimen>
+    <dimen name="default_edit_text_padding_horizontal">32dp</dimen>
+    <dimen name="default_edit_text_corner_radius">6dp</dimen>
+
     <integer name="button_pressed_animation_duration">100</integer>
     <integer name="button_pressed_animation_delay">100</integer>
 </resources>

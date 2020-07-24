@@ -68,6 +68,20 @@
         <item name="numorph_shapeType">flat</item>
         <item name="numorph_shapeAppearance">@style/ShapeAppearance.Numorph.ImageView</item>
     </style>
+
+    <style name="Widget.Numorph.EditText" parent="android:Widget.EditText">
+        <item name="android:background">@null</item>
+        <item name="android:paddingTop">@dimen/default_edit_text_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/default_edit_text_padding_vertical</item>
+        <item name="android:paddingStart">@dimen/default_edit_text_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/default_edit_text_padding_horizontal</item>
+        <item name="numorph_inset">@dimen/default_inset</item>
+        <item name="numorph_shadowElevation">6dp</item>
+        <item name="numorph_shadowColorLight">?colorShadowLight</item>
+        <item name="numorph_shadowColorDark">?colorShadowDark</item>
+        <item name="numorph_shapeType">flat</item>
+        <item name="numorph_shapeAppearance">@style/ShapeAppearance.Numorph.EditText</item>
+    </style>
     
     <style name="ShapeAppearance" />
 
@@ -96,5 +110,10 @@
     <style name="ShapeAppearance.Numorph.ImageView" parent="">
         <item name="numorph_cornerFamily">rounded</item>
         <item name="numorph_cornerRadius">@dimen/default_corner_radius</item>
+    </style>
+
+    <style name="ShapeAppearance.Numorph.EditText" parent="">
+        <item name="numorph_cornerFamily">rounded</item>
+        <item name="numorph_cornerRadius">@dimen/default_edit_text_corner_radius</item>
     </style>
 </resources>
