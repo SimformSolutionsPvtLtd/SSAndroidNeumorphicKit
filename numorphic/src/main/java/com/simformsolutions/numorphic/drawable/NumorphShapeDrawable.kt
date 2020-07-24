@@ -30,39 +30,44 @@ class NumorphShapeDrawable : Drawable {
     /**  Hold the drawable state  */
     private var drawableState: NumorphShapeDrawableState
 
-    /**
-     * Flag to update the drawable.
-     */
+    /**  Flag to update the drawable.  */
     private var dirty = false
 
     /**
-     * Fill paint to fill the canvas.
+     * Fill paint to fill the canvas for background color.
      */
-    private val fillPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+    private val fillPaint = Paint().apply {
+        isAntiAlias = true
         style = Paint.Style.FILL
         color = Color.TRANSPARENT
     }
 
     /**
-     * Stroke paint to create strokes.
+     * Stroke paint to create strokes for stroke around view.
      */
-    private val strokePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+    private val strokePaint = Paint().apply {
+        isAntiAlias = true
         style = Paint.Style.STROKE
         color = Color.TRANSPARENT
     }
 
     /**
-     * Holds rectangle.
+     * Internal bounds.
      * Assigned globally to reduce object creation in [draw].
      */
-    private val rectF = RectF()
+    private val boundsRectF = RectF()
 
-    /**  Outline path  */
+    /**
+     * Outline path.
+     */
     private val outlinePath = Path()
 
-    /**  Shape  */
-    private var shadow: Shape? = null
+    /**
+     * Shadow of the [ShapeType] for the drawable.
+     */
+    private var shapeShadow: Shape? = null
 
+    /**  Bitmap for Image  */
     private var imageBitmap: Bitmap? = null
 
     /**
@@ -109,7 +114,102 @@ class NumorphShapeDrawable : Drawable {
      */
     private constructor(drawableState: NumorphShapeDrawableState) : super() {
         this.drawableState = drawableState
-        this.shadow = shadowOf(drawableState.shapeType, drawableState)
+        this.shapeShadow = shadowOf(drawableState.shapeType, drawableState)
+    }
+
+    override fun draw(canvas: Canvas) {
+        val prevAlpha = fillPaint.alpha
+        fillPaint.alpha =
+            modulateAlpha(
+                prevAlpha,
+                drawableState.alpha
+            )
+
+        strokePaint.strokeWidth = drawableState.strokeWidth
+        val prevStrokeAlpha = strokePaint.alpha
+        strokePaint.alpha =
+            modulateAlpha(
+                prevStrokeAlpha,
+                drawableState.alpha
+            )
+
+        /**  If dirty update the drawable  */
+        if (dirty) {
+            calculateOutlinePath(getBoundsAsRectF(), outlinePath)
+            shapeShadow?.updateShadowBitmap(getBoundsInternal())
+            dirty = false
+        }
+
+        /**  Draw fill shape if has a fill  */
+        if (hasFill()) {
+            drawFillShape(canvas)
+        }
+
+        /**  Draw shadow  */
+        shapeShadow?.draw(canvas, outlinePath)
+
+        /**  Draw stroke if has stroke  */
+        if (hasStroke()) {
+            drawStrokeShape(canvas)
+        }
+
+        /**  Draw image if has image bitmap  */
+        if (hasImageBitmap()) {
+            drawImageBitmap(canvas)
+        }
+
+        // Set alpha
+        fillPaint.alpha = prevAlpha
+        strokePaint.alpha = prevStrokeAlpha
+    }
+
+    /**  @return [drawableState]  */
+    override fun getConstantState(): ConstantState? {
+        return drawableState
+    }
+
+    /**
+     * Create and assign new [NumorphShapeDrawableState] to [drawableState].
+     * Also update the new state to the [shapeShadow].
+     * @return This Drawable
+     */
+    override fun mutate(): Drawable {
+        val newDrawableState =
+            NumorphShapeDrawableState(
+                drawableState
+            )
+        drawableState = newDrawableState
+        shapeShadow?.setDrawableState(newDrawableState)
+        return this
+    }
+
+    /**
+     * Called to get the drawable to populate the Outline that defines its drawing area.
+     *
+     * Set [outline]
+     */
+    override fun getOutline(outline: Outline) {
+        super.getOutline(outline)
+        when (drawableState.shapeAppearanceModel.cornerFamily) {
+            CornerFamily.OVAL -> {
+                outline.setOval(getBoundsInternal())
+            }
+            CornerFamily.ROUNDED -> {
+                val cornerSize = drawableState.shapeAppearanceModel.cornerRadius
+                outline.setRoundRect(getBoundsInternal(), cornerSize)
+            }
+        }
+    }
+
+    /**
+     * Indicates whether this drawable will change its appearance based on
+     * state.
+     *
+     * [NumorphShapeDrawableState.fillColor] is stateful.
+     */
+    override fun isStateful(): Boolean {
+        return (super.isStateful()
+                || drawableState.fillColor?.isStateful == true)
     }
 
     /**
@@ -121,33 +221,11 @@ class NumorphShapeDrawable : Drawable {
     private fun shadowOf(
         @ShapeType shapeType: Int,
         drawableState: NumorphShapeDrawableState
-    ): Shape {
-        return when (shapeType) {
-            ShapeType.FLAT -> FlatShape(drawableState)
-            ShapeType.PRESSED -> PressedShape(drawableState)
-            ShapeType.BASIN -> BasinShape(drawableState)
-            else -> throw IllegalArgumentException("ShapeType($shapeType) is invalid.")
-        }
-    }
-
-    /**  @return [drawableState]  */
-    override fun getConstantState(): ConstantState? {
-        return drawableState
-    }
-
-    /**
-     * Create and assign new [NumorphShapeDrawableState] to [drawableState].
-     * Also update the new state to the [shadow].
-     * @return This Drawable
-     */
-    override fun mutate(): Drawable {
-        val newDrawableState =
-            NumorphShapeDrawableState(
-                drawableState
-            )
-        drawableState = newDrawableState
-        shadow?.setDrawableState(newDrawableState)
-        return this
+    ): Shape = when (shapeType) {
+        ShapeType.FLAT -> FlatShape(drawableState)
+        ShapeType.PRESSED -> PressedShape(drawableState)
+        ShapeType.BASIN -> BasinShape(drawableState)
+        else -> throw IllegalArgumentException("ShapeType($shapeType) is invalid.")
     }
 
     /**  Setter for [NumorphShapeAppearanceModel].  */
@@ -221,18 +299,33 @@ class NumorphShapeDrawable : Drawable {
         invalidateSelf()
     }
 
-    /**  Show image bitmap  */
+    /**
+     * Set Image from
+     * @param bm Bitmap
+     */
     fun setImageBitmap(bm: Bitmap?) {
         imageBitmap = bm
         invalidateSelf()
     }
 
+    /**
+     * Get Image bitmap.
+     */
     fun getImageBitmap(bm: Bitmap?): Bitmap? {
         return imageBitmap
     }
 
-    /**  Set background drawable  */
+    /**
+     * Set background from drawable.
+     * @param drawable Drawable to be drawn
+     * @param width Width of the view
+     * @param height Height of the view
+     */
     fun setBackgroundDrawable(drawable: Drawable?, @Px width: Int, @Px height: Int) {
+        // Width and Height should not be zero.
+        if (width == 0 && height == 0)
+            return
+
         setImageBitmap(drawable?.toBitmap(width, height))
     }
 
@@ -259,6 +352,7 @@ class NumorphShapeDrawable : Drawable {
     }
 
     /**
+     * Calculate bounds using insets.
      * @return Internal bounds as [Rect]
      */
     private fun getBoundsInternal(): Rect {
@@ -277,8 +371,8 @@ class NumorphShapeDrawable : Drawable {
      * @return Get bounds as [RectF]
      */
     private fun getBoundsAsRectF(): RectF {
-        rectF.set(getBoundsInternal())
-        return rectF
+        boundsRectF.set(getBoundsInternal())
+        return boundsRectF
     }
 
     /**
@@ -297,7 +391,7 @@ class NumorphShapeDrawable : Drawable {
     fun setShapeType(@ShapeType shapeType: Int) {
         if (drawableState.shapeType != shapeType) {
             drawableState.shapeType = shapeType
-            shadow = shadowOf(shapeType, drawableState)
+            shapeShadow = shadowOf(shapeType, drawableState)
             invalidateSelf()
         }
     }
@@ -342,6 +436,18 @@ class NumorphShapeDrawable : Drawable {
     }
 
     /**
+     * Getter for [NumorphShapeDrawableState.shadowColorLight]
+     *
+     * Get the light shadow color.
+     *
+     * @return shadow color light
+     */
+    @ColorInt
+    fun getShadowColorLight(): Int {
+        return drawableState.shadowColorLight
+    }
+
+    /**
      * Setter for [NumorphShapeDrawableState.shadowColorDark].
      *
      * Set the dark shadow color.
@@ -353,6 +459,18 @@ class NumorphShapeDrawable : Drawable {
             drawableState.shadowColorDark = shadowColor
             invalidateSelf()
         }
+    }
+
+    /**
+     * Getter for [NumorphShapeDrawableState.shadowColorDark]
+     *
+     * Get the dark shadow color.
+     *
+     * @return shadow color dark
+     */
+    @ColorInt
+    fun getShadowColorDark(): Int {
+        return drawableState.shadowColorLight
     }
 
     /**
@@ -451,51 +569,6 @@ class NumorphShapeDrawable : Drawable {
         super.onBoundsChange(bounds)
     }
 
-    override fun draw(canvas: Canvas) {
-        val prevAlpha = fillPaint.alpha
-        fillPaint.alpha =
-            modulateAlpha(
-                prevAlpha,
-                drawableState.alpha
-            )
-
-        strokePaint.strokeWidth = drawableState.strokeWidth
-        val prevStrokeAlpha = strokePaint.alpha
-        strokePaint.alpha =
-            modulateAlpha(
-                prevStrokeAlpha,
-                drawableState.alpha
-            )
-
-        /**  If dirty update the drawable  */
-        if (dirty) {
-            calculateOutlinePath(getBoundsAsRectF(), outlinePath)
-            shadow?.updateShadowBitmap(getBoundsInternal())
-            dirty = false
-        }
-
-        /**  Draw fill shape if has a fill  */
-        if (hasFill()) {
-            drawFillShape(canvas)
-        }
-
-        /**  Draw shadow  */
-        shadow?.draw(canvas, outlinePath)
-
-        /**  Draw stroke if has stroke  */
-        if (hasStroke()) {
-            drawStrokeShape(canvas)
-        }
-
-        if (hasImageBitmap()) {
-            drawImageBitmap(canvas)
-        }
-
-        // Set alpha
-        fillPaint.alpha = prevAlpha
-        strokePaint.alpha = prevStrokeAlpha
-    }
-
     /**
      * Draw fill on specified canvas.
      * @param canvas
@@ -584,35 +657,6 @@ class NumorphShapeDrawable : Drawable {
 
         // Close the path.
         path.close()
-    }
-
-    /**
-     * Called to get the drawable to populate the Outline that defines its drawing area.
-     *
-     * Set [outline]
-     */
-    override fun getOutline(outline: Outline) {
-        super.getOutline(outline)
-        when (drawableState.shapeAppearanceModel.cornerFamily) {
-            CornerFamily.OVAL -> {
-                outline.setOval(getBoundsInternal())
-            }
-            CornerFamily.ROUNDED -> {
-                val cornerSize = drawableState.shapeAppearanceModel.cornerRadius
-                outline.setRoundRect(getBoundsInternal(), cornerSize)
-            }
-        }
-    }
-
-    /**
-     * Indicates whether this drawable will change its appearance based on
-     * state.
-     *
-     * [NumorphShapeDrawableState.fillColor] is stateful.
-     */
-    override fun isStateful(): Boolean {
-        return (super.isStateful()
-                || drawableState.fillColor?.isStateful == true)
     }
 
     /**

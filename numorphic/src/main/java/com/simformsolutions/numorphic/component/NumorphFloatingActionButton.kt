@@ -4,15 +4,14 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
-import android.util.Log
 import androidx.annotation.ColorInt
 import androidx.annotation.Dimension
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
 import com.simformsolutions.numorphic.R
 import com.simformsolutions.numorphic.annotation.CornerFamily
 import com.simformsolutions.numorphic.annotation.ShapeType
+import com.simformsolutions.numorphic.blueprint.NumorphView
 import com.simformsolutions.numorphic.drawable.NumorphShapeDrawable
 import com.simformsolutions.numorphic.model.NumorphShapeAppearanceModel
 import com.simformsolutions.numorphic.util.NumorphResources
@@ -22,13 +21,13 @@ class NumorphFloatingActionButton @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = R.attr.numorphFloatingActionButtonStyle,
     defStyleRes: Int = R.style.Widget_Numorph_FloatingActionButton
-) : AppCompatImageButton(context, attrs, defStyleAttr) {
+) : AppCompatImageButton(context, attrs, defStyleAttr), NumorphView {
 
     private var isInitialized: Boolean = false
     private val shapeDrawable: NumorphShapeDrawable
 
-    private var shadowColorLight: Int
-    private var shadowColorDark: Int
+    private var lightShadowColor: Int
+    private var darkShadowColor: Int
 
     private var insetStart = 0
     private var insetEnd = 0
@@ -62,12 +61,12 @@ class NumorphFloatingActionButton @JvmOverloads constructor(
         val shadowElevation = a.getDimension(
             R.styleable.NumorphFloatingActionButton_numorph_shadowElevation, 0f
         )
-        shadowColorLight = NumorphResources.getColor(
+        lightShadowColor = NumorphResources.getColor(
             context, a,
             R.styleable.NumorphFloatingActionButton_numorph_shadowColorLight,
             R.color.default_color_shadow_light
         )
-        shadowColorDark = NumorphResources.getColor(
+        darkShadowColor = NumorphResources.getColor(
             context, a,
             R.styleable.NumorphFloatingActionButton_numorph_shadowColorDark,
             R.color.default_color_shadow_dark
@@ -81,8 +80,8 @@ class NumorphFloatingActionButton @JvmOverloads constructor(
             setInEditMode(isInEditMode)
             setShapeType(shapeType)
             setShadowElevation(shadowElevation)
-            setShadowColorLight(shadowColorLight)
-            setShadowColorDark(shadowColorDark)
+            setShadowColorLight(lightShadowColor)
+            setShadowColorDark(darkShadowColor)
             setFillColor(fillColor)
             setStroke(strokeWidth, strokeColor)
             setTranslationZ(translationZ)
@@ -94,34 +93,22 @@ class NumorphFloatingActionButton @JvmOverloads constructor(
             if (insetBottom >= 0) insetBottom else inset
         )
         setBackgroundInternal(shapeDrawable)
-        setNoShadow(noShadow)
+        if(noShadow) hideShadow() else showShadow()
         isInitialized = true
-    }
-
-    /**
-     * Toggle to show or hide shadow.
-     * @param flag true to show
-     */
-    fun setNoShadow(flag: Boolean) {
-        if (flag) {
-            hideShadow()
-        } else {
-            showShadow()
-        }
     }
 
     /**
      * Show shadow.
      */
-    fun showShadow() {
-        setShadowColorLight(shadowColorLight)
-        setShadowColorDark(shadowColorDark)
+    override fun showShadow() {
+        setShadowColorLight(lightShadowColor)
+        setShadowColorDark(darkShadowColor)
     }
 
     /**
      * Hide shadow.
      */
-    fun hideShadow() {
+    override fun hideShadow() {
         setShadowColorLight(ContextCompat.getColor(context, R.color.transparent))
         setShadowColorDark(ContextCompat.getColor(context, R.color.transparent))
     }
@@ -141,11 +128,11 @@ class NumorphFloatingActionButton @JvmOverloads constructor(
         super.setBackgroundDrawable(drawable)
     }
 
-    fun setShapeAppearanceModel(shapeAppearanceModel: NumorphShapeAppearanceModel) {
+    override fun setShapeAppearanceModel(shapeAppearanceModel: NumorphShapeAppearanceModel) {
         shapeDrawable.setShapeAppearanceModel(shapeAppearanceModel)
     }
 
-    fun getShapeAppearanceModel(): NumorphShapeAppearanceModel {
+    override fun getShapeAppearanceModel(): NumorphShapeAppearanceModel {
         return shapeDrawable.getShapeAppearanceModel()
     }
 
@@ -153,41 +140,72 @@ class NumorphFloatingActionButton @JvmOverloads constructor(
         shapeDrawable.setFillColor(ColorStateList.valueOf(color))
     }
 
-    fun setBackgroundColor(backgroundColor: ColorStateList?) {
+    override fun setBackgroundColor(backgroundColor: ColorStateList?) {
         shapeDrawable.setFillColor(backgroundColor)
     }
 
-    fun getBackgroundColor(): ColorStateList? {
+    override fun getBackgroundColor(): ColorStateList? {
         return shapeDrawable.getFillColor()
     }
 
-    fun setStrokeColor(strokeColor: ColorStateList?) {
+    override fun setStrokeColor(strokeColor: ColorStateList?) {
         shapeDrawable.setStrokeColor(strokeColor)
     }
 
-    fun getStrokeColor(): ColorStateList? {
+    override fun getStrokeColor(): ColorStateList? {
         return shapeDrawable.getStrokeColor()
     }
 
-    fun setStrokeWidth(strokeWidth: Float) {
+    override fun setStrokeWidth(strokeWidth: Float) {
         shapeDrawable.setStrokeWidth(strokeWidth)
     }
 
-    fun getStrokeWidth(): Float {
+    override fun getStrokeWidth(): Float {
         return shapeDrawable.getStrokeWidth()
     }
 
-    fun setShapeType(@ShapeType shapeType: Int) {
+    override fun setShapeType(@ShapeType shapeType: Int) {
         shapeDrawable.setShapeType(shapeType)
     }
 
     @ShapeType
-    fun getShapeType(): Int {
+    override fun getShapeType(): Int {
         return shapeDrawable.getShapeType()
     }
 
-    fun setInset(left: Int, top: Int, right: Int, bottom: Int) {
+    override fun setInset(left: Int, top: Int, right: Int, bottom: Int) {
         internalSetInset(left, top, right, bottom)
+    }
+
+    override fun setShadowElevation(shadowElevation: Float) {
+        shapeDrawable.setShadowElevation(shadowElevation)
+    }
+
+    override fun getShadowElevation(): Float {
+        return shapeDrawable.getShadowElevation()
+    }
+
+    override fun setShadowColorLight(@ColorInt shadowColor: Int) {
+        shapeDrawable.setShadowColorLight(shadowColor)
+    }
+
+    override fun getShadowColorLight(): Int {
+        return shapeDrawable.getShadowColorLight()
+    }
+
+    override fun setShadowColorDark(@ColorInt shadowColor: Int) {
+        shapeDrawable.setShadowColorDark(shadowColor)
+    }
+
+    override fun getShadowColorDark(): Int {
+        return shapeDrawable.getShadowColorDark()
+    }
+
+    override fun setTranslationZ(translationZ: Float) {
+        super.setTranslationZ(translationZ)
+        if (isInitialized) {
+            shapeDrawable.setTranslationZ(translationZ)
+        }
     }
 
     private fun internalSetInset(left: Int, top: Int, right: Int, bottom: Int) {
@@ -214,69 +232,6 @@ class NumorphFloatingActionButton @JvmOverloads constructor(
             requestLayout()
             invalidateOutline()
         }
-    }
-
-    fun setShadowElevation(shadowElevation: Float) {
-        shapeDrawable.setShadowElevation(shadowElevation)
-    }
-
-    fun getShadowElevation(): Float {
-        return shapeDrawable.getShadowElevation()
-    }
-
-    fun setShadowColorLight(@ColorInt shadowColor: Int) {
-        shapeDrawable.setShadowColorLight(shadowColor)
-    }
-
-    fun setShadowColorDark(@ColorInt shadowColor: Int) {
-        shapeDrawable.setShadowColorDark(shadowColor)
-    }
-
-    override fun setTranslationZ(translationZ: Float) {
-        super.setTranslationZ(translationZ)
-        if (isInitialized) {
-            shapeDrawable.setTranslationZ(translationZ)
-        }
-    }
-
-    /**
-     * Set all corner radius or specific corner radius.
-     * @param cornerRadius Set all corner radius
-     * @param cornerRadiusTopLeft Set top left corner radius
-     * @param cornerRadiusTopRight Set top right corner radius
-     * @param cornerRadiusBottomRight Set top right corner radius
-     * @param cornerRadiusBottomLeft Set bottom left corner radius
-     */
-    fun setCorner(
-        @Dimension cornerRadius: Float,
-        @Dimension cornerRadiusTopLeft: Float = cornerRadius,
-        @Dimension cornerRadiusTopRight: Float = cornerRadius,
-        @Dimension cornerRadiusBottomRight: Float = cornerRadius,
-        @Dimension cornerRadiusBottomLeft: Float = cornerRadius
-    ) {
-        val newShapeAppearanceModel = NumorphShapeAppearanceModel.builder(getShapeAppearanceModel())
-            .setCorner(
-                cornerRadius = cornerRadius,
-                cornerRadiusTopLeft = cornerRadiusTopLeft,
-                cornerRadiusTopRight = cornerRadiusTopRight,
-                cornerRadiusBottomRight = cornerRadiusBottomRight,
-                cornerRadiusBottomLeft = cornerRadiusBottomLeft
-            )
-            .build()
-
-        setShapeAppearanceModel(newShapeAppearanceModel)
-    }
-
-    /**
-     * Set corner family
-     * @param cornerFamily Set corner family
-     */
-    fun setCornerFamily(@CornerFamily cornerFamily: Int) {
-        val newShapeAppearanceModel = NumorphShapeAppearanceModel.builder(getShapeAppearanceModel())
-            .setCornerFamily(cornerFamily)
-            .build()
-
-        setShapeAppearanceModel(newShapeAppearanceModel)
     }
 
     companion object {
