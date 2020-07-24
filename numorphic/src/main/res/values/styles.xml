@@ -5,17 +5,17 @@
 
     <style name="Widget.Numorph" />
 
-    <style name="Widget.Numorph.Button" parent="android:Widget">
-        <item name="android:padding">@dimen/default_padding</item>
+    <style name="Widget.Numorph.Button" parent="android:Widget.Button">
+        <item name="android:background">@null</item>
+        <item name="android:paddingStart">@dimen/default_button_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/default_button_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/default_button_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/default_button_padding_vertical</item>
         <item name="android:textAppearance">?android:attr/textAppearanceButton</item>
-        <item name="android:minHeight">72dip</item>
-        <item name="android:minWidth">112dip</item>
         <item name="android:stateListAnimator">@animator/button_state_list_anim_numorph</item>
-        <item name="android:focusable">true</item>
-        <item name="android:clickable">true</item>
-        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="numorph_backgroundColor">@color/background</item>
         <item name="numorph_inset">@dimen/default_inset</item>
-        <item name="numorph_shadowElevation">6dp</item>
+        <item name="numorph_shadowElevation">@dimen/default_shadow_elevation</item>
         <item name="numorph_shadowColorLight">?colorShadowLight</item>
         <item name="numorph_shadowColorDark">?colorShadowDark</item>
         <item name="numorph_shapeType">flat</item>
@@ -25,11 +25,12 @@
     <style name="Widget.Numorph.CardView" parent="android:Widget">
         <item name="android:padding">@dimen/default_padding</item>
         <item name="numorph_inset">@dimen/default_inset</item>
-        <item name="numorph_shadowElevation">6dp</item>
+        <item name="numorph_backgroundColor">@color/background</item>
+        <item name="numorph_shadowElevation">@dimen/default_shadow_elevation</item>
         <item name="numorph_shadowColorLight">?colorShadowLight</item>
         <item name="numorph_shadowColorDark">?colorShadowDark</item>
         <item name="numorph_shapeType">flat</item>
-        <item name="numorph_shapeAppearance">@style/ShapeAppearance.Neumorph.CardView</item>
+        <item name="numorph_shapeAppearance">@style/ShapeAppearance.Numorph.CardView</item>
     </style>
 
     <style name="Widget.Numorph.FloatingActionButton" parent="android:Widget">
@@ -38,19 +39,18 @@
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
         <item name="numorph_inset">@dimen/default_inset</item>
-        <item name="numorph_shadowElevation">6dp</item>
+        <item name="numorph_backgroundColor">@color/background</item>
+        <item name="numorph_shadowElevation">@dimen/default_shadow_elevation</item>
         <item name="numorph_shadowColorLight">?colorShadowLight</item>
         <item name="numorph_shadowColorDark">?colorShadowDark</item>
         <item name="numorph_shapeType">flat</item>
         <item name="numorph_shapeAppearance">@style/ShapeAppearance.Numorph.FloatingActionButton</item>
     </style>
     
-    <style name="Widget.Numorph.ImageButton" parent="android:Widget">
+    <style name="Widget.Numorph.ImageButton" parent="android:Widget.ImageButton">
+        <item name="android:background">@null</item>
         <item name="android:padding">@dimen/default_padding</item>
         <item name="android:stateListAnimator">@animator/button_state_list_anim_numorph</item>
-        <item name="android:focusable">true</item>
-        <item name="android:clickable">true</item>
-        <item name="android:scaleType">center</item>
         <item name="numorph_inset">@dimen/default_inset</item>
         <item name="numorph_shadowElevation">6dp</item>
         <item name="numorph_shadowColorLight">?colorShadowLight</item>
@@ -62,7 +62,7 @@
     <style name="Widget.Numorph.ImageView" parent="android:Widget">
         <item name="android:padding">@dimen/default_padding</item>
         <item name="numorph_inset">@dimen/default_inset</item>
-        <item name="numorph_shadowElevation">6dp</item>
+        <item name="numorph_shadowElevation">@dimen/default_shadow_elevation</item>
         <item name="numorph_shadowColorLight">?colorShadowLight</item>
         <item name="numorph_shadowColorDark">?colorShadowDark</item>
         <item name="numorph_shapeType">flat</item>
@@ -76,7 +76,8 @@
         <item name="android:paddingStart">@dimen/default_edit_text_padding_horizontal</item>
         <item name="android:paddingEnd">@dimen/default_edit_text_padding_horizontal</item>
         <item name="numorph_inset">@dimen/default_inset</item>
-        <item name="numorph_shadowElevation">6dp</item>
+        <item name="numorph_backgroundColor">@color/background</item>
+        <item name="numorph_shadowElevation">@dimen/default_shadow_elevation</item>
         <item name="numorph_shadowColorLight">?colorShadowLight</item>
         <item name="numorph_shadowColorDark">?colorShadowDark</item>
         <item name="numorph_shapeType">flat</item>
@@ -85,21 +86,21 @@
     
     <style name="ShapeAppearance" />
 
-    <style name="ShapeAppearance.Neumorph" />
+    <style name="ShapeAppearance.Numorph" />
 
     <style name="ShapeAppearance.Numorph.Button" parent="">
         <item name="numorph_cornerFamily">rounded</item>
         <item name="numorph_cornerRadius">@dimen/default_corner_radius</item>
     </style>
 
-    <style name="ShapeAppearance.Neumorph.CardView" parent="">
+    <style name="ShapeAppearance.Numorph.CardView" parent="">
         <item name="numorph_cornerFamily">rounded</item>
         <item name="numorph_cornerRadius">@dimen/default_corner_radius</item>
     </style>
 
     <style name="ShapeAppearance.Numorph.FloatingActionButton" parent="">
         <item name="numorph_cornerFamily">oval</item>
-        <item name="numorph_cornerRadius">0dp</item>
+        <item name="numorph_cornerRadius">@dimen/default_floating_action_corner_radius</item>
     </style>
 
     <style name="ShapeAppearance.Numorph.ImageButton" parent="">
@@ -114,6 +115,6 @@
 
     <style name="ShapeAppearance.Numorph.EditText" parent="">
         <item name="numorph_cornerFamily">rounded</item>
-        <item name="numorph_cornerRadius">@dimen/default_edit_text_corner_radius</item>
+        <item name="numorph_cornerRadius">@dimen/default_corner_radius</item>
     </style>
 </resources>

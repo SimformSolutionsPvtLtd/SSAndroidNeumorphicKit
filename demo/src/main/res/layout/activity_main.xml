@@ -19,14 +19,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:numorph_shapeAppearance="@style/ShapeAppearance.TabFirstButton"
-        app:numorph_shapeType="pressed" />
+        app:numorph_shapeType="flat" />
 
     <com.simformsolutions.numorphic.component.NumorphButton
         android:id="@+id/numorphButton2"
         style="@style/Widget.Numorph.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minWidth="130dp"
         android:text="Tab 2"
         android:textAllCaps="false"
         app:layout_constraintEnd_toStartOf="@+id/numorphButton3"
@@ -34,14 +33,13 @@
         app:layout_constraintStart_toEndOf="@+id/numorphButton"
         app:layout_constraintTop_toTopOf="parent"
         app:numorph_shapeAppearance="@style/ShapeAppearance.TabMiddleButton"
-        app:numorph_shapeType="flat" />
+        app:numorph_shapeType="pressed" />
 
     <com.simformsolutions.numorphic.component.NumorphButton
         android:id="@+id/numorphButton3"
         style="@style/Widget.Numorph.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minWidth="130dp"
         android:text="Tab 3"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"

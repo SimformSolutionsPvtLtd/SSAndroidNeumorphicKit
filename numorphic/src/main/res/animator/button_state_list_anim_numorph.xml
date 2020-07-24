@@ -5,7 +5,7 @@
         android:state_pressed="true">
         <set>
             <objectAnimator
-                android:duration="@integer/button_pressed_animation_duration"
+                android:duration="@android:integer/config_shortAnimTime"
                 android:interpolator="@android:interpolator/linear"
                 android:propertyName="translationZ"
                 android:valueTo="-5dp"
@@ -15,10 +15,9 @@
     <item android:state_enabled="true">
         <set>
             <objectAnimator
-                android:duration="@integer/button_pressed_animation_duration"
+                android:duration="@android:integer/config_shortAnimTime"
                 android:interpolator="@android:interpolator/linear"
                 android:propertyName="translationZ"
-                android:startDelay="@integer/button_pressed_animation_delay"
                 android:valueTo="0"
                 android:valueType="floatType" />
         </set>
