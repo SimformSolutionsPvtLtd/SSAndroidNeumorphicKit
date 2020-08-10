@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="background">#19191E</color>
+    <color name="ss_neumorphic_background">#19191E</color>
 
     <!--  Fully transparent  -->
-    <color name="transparent">#00000000</color>
+    <color name="ss_neumorphic_transparent">#00000000</color>
 </resources>

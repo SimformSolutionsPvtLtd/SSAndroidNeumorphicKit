@@ -5,26 +5,24 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import androidx.annotation.ColorInt
-import androidx.annotation.Dimension
-import androidx.appcompat.widget.AppCompatImageButton
+import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import com.simformsolutions.numorphic.R
-import com.simformsolutions.numorphic.annotation.CornerFamily
-import com.simformsolutions.numorphic.annotation.ShapeType
-import com.simformsolutions.numorphic.blueprint.NumorphView
-import com.simformsolutions.numorphic.drawable.NumorphShapeDrawable
-import com.simformsolutions.numorphic.model.NumorphShapeAppearanceModel
-import com.simformsolutions.numorphic.util.NumorphResources
+import com.simformsolutions.numorphic.annotation.SSNeumorphicShapeType
+import com.simformsolutions.numorphic.blueprint.SSNeumorphicView
+import com.simformsolutions.numorphic.drawable.SSNeumorphicShapeDrawable
+import com.simformsolutions.numorphic.model.SSNeumorphicShapeAppearanceModel
+import com.simformsolutions.numorphic.util.SSNeumorphicResources
 
-class NumorphFloatingActionButton @JvmOverloads constructor(
+class SSNeumorphicButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.numorphFloatingActionButtonStyle,
-    defStyleRes: Int = R.style.Widget_Numorph_FloatingActionButton
-) : AppCompatImageButton(context, attrs, defStyleAttr), NumorphView {
+    defStyleAttr: Int = R.attr.ss_neumorphicButtonStyle,
+    defStyleRes: Int = R.style.Widget_SSNeumorphic_Button
+) : AppCompatButton(context, attrs, defStyleAttr), SSNeumorphicView {
 
     private var isInitialized: Boolean = false
-    private val shapeDrawable: NumorphShapeDrawable
+    private val shapeDrawable: SSNeumorphicShapeDrawable
 
     private var lightShadowColor: Int
     private var darkShadowColor: Int
@@ -36,47 +34,46 @@ class NumorphFloatingActionButton @JvmOverloads constructor(
 
     init {
         val a = context.obtainStyledAttributes(
-            attrs, R.styleable.NumorphFloatingActionButton, defStyleAttr, defStyleRes
+            attrs, R.styleable.SSNeumorphicButton, defStyleAttr, defStyleRes
         )
-        val fillColor = a.getColorStateList(R.styleable.NumorphFloatingActionButton_numorph_backgroundColor)
-        val strokeColor = a.getColorStateList(R.styleable.NumorphFloatingActionButton_numorph_strokeColor)
-        val strokeWidth = a.getDimension(R.styleable.NumorphFloatingActionButton_numorph_strokeWidth, 0f)
-        val shapeType =
-            a.getInt(R.styleable.NumorphFloatingActionButton_numorph_shapeType, ShapeType.DEFAULT)
+        val fillColor = a.getColorStateList(R.styleable.SSNeumorphicButton_ss_neumorphic_backgroundColor)
+        val strokeColor = a.getColorStateList(R.styleable.SSNeumorphicButton_ss_neumorphic_strokeColor)
+        val strokeWidth = a.getDimension(R.styleable.SSNeumorphicButton_ss_neumorphic_strokeWidth, 0f)
+        val shapeType = a.getInt(R.styleable.SSNeumorphicButton_ss_neumorphic_shapeType, SSNeumorphicShapeType.DEFAULT)
         val inset = a.getDimensionPixelSize(
-            R.styleable.NumorphFloatingActionButton_numorph_inset, 0
+            R.styleable.SSNeumorphicButton_ss_neumorphic_inset, 0
         )
         val insetStart = a.getDimensionPixelSize(
-            R.styleable.NumorphFloatingActionButton_numorph_insetStart, -1
+            R.styleable.SSNeumorphicButton_ss_neumorphic_insetStart, -1
         )
         val insetEnd = a.getDimensionPixelSize(
-            R.styleable.NumorphFloatingActionButton_numorph_insetEnd, -1
+            R.styleable.SSNeumorphicButton_ss_neumorphic_insetEnd, -1
         )
         val insetTop = a.getDimensionPixelSize(
-            R.styleable.NumorphFloatingActionButton_numorph_insetTop, -1
+            R.styleable.SSNeumorphicButton_ss_neumorphic_insetTop, -1
         )
         val insetBottom = a.getDimensionPixelSize(
-            R.styleable.NumorphFloatingActionButton_numorph_insetBottom, -1
+            R.styleable.SSNeumorphicButton_ss_neumorphic_insetBottom, -1
         )
         val shadowElevation = a.getDimension(
-            R.styleable.NumorphFloatingActionButton_numorph_shadowElevation, 0f
+            R.styleable.SSNeumorphicButton_ss_neumorphic_shadowElevation, 0f
         )
-        lightShadowColor = NumorphResources.getColor(
+        lightShadowColor = SSNeumorphicResources.getColor(
             context, a,
-            R.styleable.NumorphFloatingActionButton_numorph_shadowColorLight,
-            R.color.default_color_shadow_light
+            R.styleable.SSNeumorphicButton_ss_neumorphic_shadowColorLight,
+            R.color.ss_neumorphic_default_color_shadow_light
         )
-        darkShadowColor = NumorphResources.getColor(
+        darkShadowColor = SSNeumorphicResources.getColor(
             context, a,
-            R.styleable.NumorphFloatingActionButton_numorph_shadowColorDark,
-            R.color.default_color_shadow_dark
+            R.styleable.SSNeumorphicButton_ss_neumorphic_shadowColorDark,
+            R.color.ss_neumorphic_default_color_shadow_dark
         )
         val noShadow = a.getBoolean(
-            R.styleable.NumorphFloatingActionButton_noShadow, false
+            R.styleable.SSNeumorphicButton_ss_neumorphic_noShadow, false
         )
         a.recycle()
 
-        shapeDrawable = NumorphShapeDrawable(context, attrs, defStyleAttr, defStyleRes).apply {
+        shapeDrawable = SSNeumorphicShapeDrawable(context, attrs, defStyleAttr, defStyleRes).apply {
             setInEditMode(isInEditMode)
             setShapeType(shapeType)
             setShadowElevation(shadowElevation)
@@ -97,20 +94,25 @@ class NumorphFloatingActionButton @JvmOverloads constructor(
         isInitialized = true
     }
 
-    /**
-     * Show shadow.
-     */
+    override fun onTextChanged(
+        text: CharSequence?,
+        start: Int,
+        lengthBefore: Int,
+        lengthAfter: Int
+    ) {
+        super.onTextChanged(text, start, lengthBefore, lengthAfter)
+        requestLayout()
+        invalidate()
+    }
+
     override fun showShadow() {
         setShadowColorLight(lightShadowColor)
         setShadowColorDark(darkShadowColor)
     }
 
-    /**
-     * Hide shadow.
-     */
     override fun hideShadow() {
-        setShadowColorLight(ContextCompat.getColor(context, R.color.transparent))
-        setShadowColorDark(ContextCompat.getColor(context, R.color.transparent))
+        setShadowColorLight(ContextCompat.getColor(context, R.color.ss_neumorphic_transparent))
+        setShadowColorDark(ContextCompat.getColor(context, R.color.ss_neumorphic_transparent))
     }
 
     override fun setBackground(drawable: Drawable?) {
@@ -128,11 +130,11 @@ class NumorphFloatingActionButton @JvmOverloads constructor(
         super.setBackgroundDrawable(drawable)
     }
 
-    override fun setShapeAppearanceModel(shapeAppearanceModel: NumorphShapeAppearanceModel) {
+    override fun setShapeAppearanceModel(shapeAppearanceModel: SSNeumorphicShapeAppearanceModel) {
         shapeDrawable.setShapeAppearanceModel(shapeAppearanceModel)
     }
 
-    override fun getShapeAppearanceModel(): NumorphShapeAppearanceModel {
+    override fun getShapeAppearanceModel(): SSNeumorphicShapeAppearanceModel {
         return shapeDrawable.getShapeAppearanceModel()
     }
 
@@ -164,11 +166,11 @@ class NumorphFloatingActionButton @JvmOverloads constructor(
         return shapeDrawable.getStrokeWidth()
     }
 
-    override fun setShapeType(@ShapeType shapeType: Int) {
+    override fun setShapeType(@SSNeumorphicShapeType shapeType: Int) {
         shapeDrawable.setShapeType(shapeType)
     }
 
-    @ShapeType
+    @SSNeumorphicShapeType
     override fun getShapeType(): Int {
         return shapeDrawable.getShapeType()
     }
@@ -177,8 +179,8 @@ class NumorphFloatingActionButton @JvmOverloads constructor(
         internalSetInset(left, top, right, bottom)
     }
 
-    override fun setShadowElevation(shadowElevation: Float) {
-        shapeDrawable.setShadowElevation(shadowElevation)
+    override fun setShadowElevation(elevation: Float) {
+        shapeDrawable.setShadowElevation(elevation)
     }
 
     override fun getShadowElevation(): Float {
@@ -232,9 +234,5 @@ class NumorphFloatingActionButton @JvmOverloads constructor(
             requestLayout()
             invalidateOutline()
         }
-    }
-
-    companion object {
-        private const val LOG_TAG = "NumorphFAB"
     }
 }

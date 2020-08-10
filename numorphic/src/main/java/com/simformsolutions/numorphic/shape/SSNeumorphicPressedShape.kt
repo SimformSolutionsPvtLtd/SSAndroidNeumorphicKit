@@ -9,19 +9,19 @@ import androidx.core.graphics.applyCanvas
 import androidx.core.graphics.withClip
 import androidx.core.graphics.withSave
 import androidx.core.graphics.withTranslation
-import com.simformsolutions.numorphic.annotation.CornerFamily
-import com.simformsolutions.numorphic.drawable.NumorphShapeDrawable.NumorphShapeDrawableState
+import com.simformsolutions.numorphic.annotation.SSNeumorphicCornerFamily
+import com.simformsolutions.numorphic.drawable.SSNeumorphicShapeDrawable.SSNeumorphicShapeDrawableState
 import com.simformsolutions.numorphic.util.blurred
 import kotlin.math.min
 
 /**
- * Pressed Shape
+ * Pressed SSNeumorphicShape
  *
  * Shadows are applied inside of the view.
  */
-internal class PressedShape(
-    private var drawableState: NumorphShapeDrawableState
-) : Shape {
+internal class SSNeumorphicPressedShape(
+    private var drawableState: SSNeumorphicShapeDrawableState
+) : SSNeumorphicShape {
 
     /**  Single shadow [Bitmap]. Containing light shadow and dark shadow.  */
     private var shadowBitmap: Bitmap? = null
@@ -32,7 +32,7 @@ internal class PressedShape(
     /**  Dark shadow Gradient drawable  */
     private val darkShadowDrawable = GradientDrawable()
 
-    override fun setDrawableState(newDrawableState: NumorphShapeDrawableState) {
+    override fun setDrawableState(newDrawableState: SSNeumorphicShapeDrawableState) {
         this.drawableState = newDrawableState
     }
 
@@ -68,10 +68,10 @@ internal class PressedShape(
             setStroke(shadowElevation, drawableState.shadowColorLight)
 
             when (drawableState.shapeAppearanceModel.cornerFamily) {
-                CornerFamily.OVAL -> {
+                SSNeumorphicCornerFamily.OVAL -> {
                     shape = GradientDrawable.OVAL
                 }
-                CornerFamily.ROUNDED -> {
+                SSNeumorphicCornerFamily.ROUNDED -> {
                     shape = GradientDrawable.RECTANGLE
                     //cornerRadii = floatArrayOf(0f, 0f, 0f, 0f, cornerSize, cornerSize, 0f, 0f)
                     cornerRadii = floatArrayOf(
@@ -92,10 +92,10 @@ internal class PressedShape(
             setStroke(shadowElevation, drawableState.shadowColorDark)
 
             when (drawableState.shapeAppearanceModel.cornerFamily) {
-                CornerFamily.OVAL -> {
+                SSNeumorphicCornerFamily.OVAL -> {
                     shape = GradientDrawable.OVAL
                 }
-                CornerFamily.ROUNDED -> {
+                SSNeumorphicCornerFamily.ROUNDED -> {
                     shape = GradientDrawable.RECTANGLE
                     //cornerRadii = floatArrayOf(cornerSize, cornerSize, 0f, 0f, 0f, 0f, 0f, 0f)
                     cornerRadii = floatArrayOf(

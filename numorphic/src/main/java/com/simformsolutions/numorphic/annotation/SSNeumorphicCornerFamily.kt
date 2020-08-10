@@ -4,17 +4,17 @@ import androidx.annotation.IntDef
 import androidx.annotation.RestrictTo
 
 /**
- * Represents corner family of the Shape.
+ * Represents corner family of the SSNeumorphicShape.
  *      - Rounded
  *      - Oval
  */
 @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
 @IntDef(
-    CornerFamily.ROUNDED,
-    CornerFamily.OVAL
+    SSNeumorphicCornerFamily.ROUNDED,
+    SSNeumorphicCornerFamily.OVAL
 )
 @Retention(AnnotationRetention.SOURCE)
-annotation class CornerFamily {
+annotation class SSNeumorphicCornerFamily {
     companion object {
         const val ROUNDED = 0
         const val OVAL = 1

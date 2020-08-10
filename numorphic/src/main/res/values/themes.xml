@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Numorph" parent="Base.Theme.Numorph" />
+    <style name="Theme.SSNeumorphic" parent="Base.Theme.SSNeumorphic" />
 
-    <style name="Theme.Numorph.Light" parent="Base.Theme.Numorph.Light" />
+    <style name="Theme.SSNeumorphic.Light" parent="Base.Theme.SSNeumorphic.Light" />
 
-    <style name="Theme.Numorph.Light.DarkActionBar" parent="Base.Theme.Numorph.Light.DarkActionBar" />
+    <style name="Theme.SSNeumorphic.Light.DarkActionBar" parent="Base.Theme.SSNeumorphic.Light.DarkActionBar" />
 
-    <style name="Theme.Numorph.NoActionBar">
+    <style name="Theme.SSNeumorphic.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Numorph.Light.NoActionBar">
+    <style name="Theme.SSNeumorphic.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Numorph.DialogWhenLarge" parent="Base.Theme.Numorph.DialogWhenLarge" />
+    <style name="Theme.SSNeumorphic.DialogWhenLarge" parent="Base.Theme.SSNeumorphic.DialogWhenLarge" />
 
-    <style name="Theme.Numorph.Light.DialogWhenLarge" parent="Base.Theme.Numorph.Light.DialogWhenLarge" />
+    <style name="Theme.SSNeumorphic.Light.DialogWhenLarge" parent="Base.Theme.SSNeumorphic.Light.DialogWhenLarge" />
 
-    <style name="Theme.Numorph.CompactMenu" parent="Base.Theme.Numorph.CompactMenu" />
+    <style name="Theme.SSNeumorphic.CompactMenu" parent="Base.Theme.SSNeumorphic.CompactMenu" />
 
 </resources>

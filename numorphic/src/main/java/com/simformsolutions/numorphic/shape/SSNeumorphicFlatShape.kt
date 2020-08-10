@@ -9,21 +9,21 @@ import android.graphics.drawable.GradientDrawable
 import androidx.core.graphics.applyCanvas
 import androidx.core.graphics.withSave
 import androidx.core.graphics.withTranslation
-import com.simformsolutions.numorphic.util.withClipOut
-import com.simformsolutions.numorphic.annotation.CornerFamily
-import com.simformsolutions.numorphic.model.NumorphShapeAppearanceModel
-import com.simformsolutions.numorphic.drawable.NumorphShapeDrawable.NumorphShapeDrawableState
+import com.simformsolutions.numorphic.annotation.SSNeumorphicCornerFamily
+import com.simformsolutions.numorphic.drawable.SSNeumorphicShapeDrawable.SSNeumorphicShapeDrawableState
+import com.simformsolutions.numorphic.model.SSNeumorphicShapeAppearanceModel
 import com.simformsolutions.numorphic.util.blurred
+import com.simformsolutions.numorphic.util.withClipOut
 import kotlin.math.roundToInt
 
 /**
- * Flat Shape.
+ * Flat SSNeumorphicShape.
  *
  * Shadows are applied outside of the view.
  */
-internal class FlatShape(
-    private var drawableState: NumorphShapeDrawableState
-) : Shape {
+internal class SSNeumorphicFlatShape(
+    private var drawableState: SSNeumorphicShapeDrawableState
+) : SSNeumorphicShape {
 
     /**  Light shadow Bitmap to apply light shadow  */
     private var lightShadowBitmap: Bitmap? = null
@@ -37,7 +37,7 @@ internal class FlatShape(
     /**  Dark shadow Gradient drawable  */
     private val darkShadowDrawable = GradientDrawable()
 
-    override fun setDrawableState(newDrawableState: NumorphShapeDrawableState) {
+    override fun setDrawableState(newDrawableState: SSNeumorphicShapeDrawableState) {
         this.drawableState = newDrawableState
     }
 
@@ -68,12 +68,12 @@ internal class FlatShape(
          * Set corner shape on the [GradientDrawable].
          * @param shapeAppearanceModel
          */
-        fun GradientDrawable.setCornerShape(shapeAppearanceModel: NumorphShapeAppearanceModel) {
+        fun GradientDrawable.setCornerShape(shapeAppearanceModel: SSNeumorphicShapeAppearanceModel) {
             when (shapeAppearanceModel.cornerFamily) {
-                CornerFamily.OVAL -> {
+                SSNeumorphicCornerFamily.OVAL -> {
                     shape = GradientDrawable.OVAL
                 }
-                CornerFamily.ROUNDED -> {
+                SSNeumorphicCornerFamily.ROUNDED -> {
                     shape = GradientDrawable.RECTANGLE
                     cornerRadii =
                         floatArrayOf(

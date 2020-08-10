@@ -2,23 +2,23 @@
 <resources>
 
     <!-- Default padding and inset to avoid shadow clipping -->
-    <dimen name="default_padding">12dp</dimen>
-    <dimen name="default_inset">10dp</dimen>
+    <dimen name="ss_neumorphic_default_padding">12dp</dimen>
+    <dimen name="ss_neumorphic_default_inset">10dp</dimen>
 
     <!-- Default corner radius -->
-    <dimen name="default_corner_radius">8dp</dimen>
+    <dimen name="ss_neumorphic_default_corner_radius">8dp</dimen>
 
     <!--  Shadow Elevation  -->
-    <dimen name="default_shadow_elevation">6dp</dimen>
+    <dimen name="ss_neumorphic_default_shadow_elevation">6dp</dimen>
 
     <!--  Button  -->
-    <dimen name="default_button_padding_vertical">22dp</dimen>
-    <dimen name="default_button_padding_horizontal">32dp</dimen>
+    <dimen name="ss_neumorphic_default_button_padding_vertical">22dp</dimen>
+    <dimen name="ss_neumorphic_default_button_padding_horizontal">32dp</dimen>
 
     <!--  Floating Action Button  -->
-    <dimen name="default_floating_action_corner_radius">0dp</dimen>
+    <dimen name="ss_neumorphic_default_floating_action_corner_radius">0dp</dimen>
 
     <!--  EditText  -->
-    <dimen name="default_edit_text_padding_vertical">22dp</dimen>
-    <dimen name="default_edit_text_padding_horizontal">32dp</dimen>
+    <dimen name="ss_neumorphic_default_edit_text_padding_vertical">22dp</dimen>
+    <dimen name="ss_neumorphic_default_edit_text_padding_horizontal">32dp</dimen>
 </resources>

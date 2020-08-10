@@ -5,24 +5,24 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import androidx.annotation.ColorInt
-import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import com.simformsolutions.numorphic.R
-import com.simformsolutions.numorphic.annotation.ShapeType
-import com.simformsolutions.numorphic.blueprint.NumorphView
-import com.simformsolutions.numorphic.drawable.NumorphShapeDrawable
-import com.simformsolutions.numorphic.model.NumorphShapeAppearanceModel
-import com.simformsolutions.numorphic.util.NumorphResources
+import com.simformsolutions.numorphic.annotation.SSNeumorphicShapeType
+import com.simformsolutions.numorphic.blueprint.SSNeumorphicView
+import com.simformsolutions.numorphic.drawable.SSNeumorphicShapeDrawable
+import com.simformsolutions.numorphic.model.SSNeumorphicShapeAppearanceModel
+import com.simformsolutions.numorphic.util.SSNeumorphicResources
 
-class NumorphButton @JvmOverloads constructor(
+class SSNeumorphicEditText @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.numorphButtonStyle,
-    defStyleRes: Int = R.style.Widget_Numorph_Button
-) : AppCompatButton(context, attrs, defStyleAttr), NumorphView {
+    defStyleAttr: Int = R.attr.ss_neumorphicEditTextStyle,
+    defStyleRes: Int = R.style.Widget_SSNeumorphic_EditText
+) : AppCompatEditText(context, attrs, defStyleAttr), SSNeumorphicView {
 
     private var isInitialized: Boolean = false
-    private val shapeDrawable: NumorphShapeDrawable
+    private val shapeDrawable: SSNeumorphicShapeDrawable
 
     private var lightShadowColor: Int
     private var darkShadowColor: Int
@@ -34,46 +34,46 @@ class NumorphButton @JvmOverloads constructor(
 
     init {
         val a = context.obtainStyledAttributes(
-            attrs, R.styleable.NumorphButton, defStyleAttr, defStyleRes
+            attrs, R.styleable.SSNeumorphicEditText, defStyleAttr, defStyleRes
         )
-        val fillColor = a.getColorStateList(R.styleable.NumorphButton_numorph_backgroundColor)
-        val strokeColor = a.getColorStateList(R.styleable.NumorphButton_numorph_strokeColor)
-        val strokeWidth = a.getDimension(R.styleable.NumorphButton_numorph_strokeWidth, 0f)
-        val shapeType = a.getInt(R.styleable.NumorphButton_numorph_shapeType, ShapeType.DEFAULT)
+        val fillColor = a.getColorStateList(R.styleable.SSNeumorphicEditText_ss_neumorphic_backgroundColor)
+        val strokeColor = a.getColorStateList(R.styleable.SSNeumorphicEditText_ss_neumorphic_strokeColor)
+        val strokeWidth = a.getDimension(R.styleable.SSNeumorphicEditText_ss_neumorphic_strokeWidth, 0f)
+        val shapeType = a.getInt(R.styleable.SSNeumorphicEditText_ss_neumorphic_shapeType, SSNeumorphicShapeType.DEFAULT)
         val inset = a.getDimensionPixelSize(
-            R.styleable.NumorphButton_numorph_inset, 0
+            R.styleable.SSNeumorphicEditText_ss_neumorphic_inset, 0
         )
         val insetStart = a.getDimensionPixelSize(
-            R.styleable.NumorphButton_numorph_insetStart, -1
+            R.styleable.SSNeumorphicEditText_ss_neumorphic_insetStart, -1
         )
         val insetEnd = a.getDimensionPixelSize(
-            R.styleable.NumorphButton_numorph_insetEnd, -1
+            R.styleable.SSNeumorphicEditText_ss_neumorphic_insetEnd, -1
         )
         val insetTop = a.getDimensionPixelSize(
-            R.styleable.NumorphButton_numorph_insetTop, -1
+            R.styleable.SSNeumorphicEditText_ss_neumorphic_insetTop, -1
         )
         val insetBottom = a.getDimensionPixelSize(
-            R.styleable.NumorphButton_numorph_insetBottom, -1
+            R.styleable.SSNeumorphicEditText_ss_neumorphic_insetBottom, -1
         )
         val shadowElevation = a.getDimension(
-            R.styleable.NumorphButton_numorph_shadowElevation, 0f
+            R.styleable.SSNeumorphicEditText_ss_neumorphic_shadowElevation, 0f
         )
-        lightShadowColor = NumorphResources.getColor(
+        lightShadowColor = SSNeumorphicResources.getColor(
             context, a,
-            R.styleable.NumorphButton_numorph_shadowColorLight,
-            R.color.default_color_shadow_light
+            R.styleable.SSNeumorphicEditText_ss_neumorphic_shadowColorLight,
+            R.color.ss_neumorphic_default_color_shadow_light
         )
-        darkShadowColor = NumorphResources.getColor(
+        darkShadowColor = SSNeumorphicResources.getColor(
             context, a,
-            R.styleable.NumorphButton_numorph_shadowColorDark,
-            R.color.default_color_shadow_dark
+            R.styleable.SSNeumorphicEditText_ss_neumorphic_shadowColorDark,
+            R.color.ss_neumorphic_default_color_shadow_dark
         )
         val noShadow = a.getBoolean(
-            R.styleable.NumorphButton_noShadow, false
+            R.styleable.SSNeumorphicEditText_ss_neumorphic_noShadow, false
         )
         a.recycle()
 
-        shapeDrawable = NumorphShapeDrawable(context, attrs, defStyleAttr, defStyleRes).apply {
+        shapeDrawable = SSNeumorphicShapeDrawable(context, attrs, defStyleAttr, defStyleRes).apply {
             setInEditMode(isInEditMode)
             setShapeType(shapeType)
             setShadowElevation(shadowElevation)
@@ -111,8 +111,8 @@ class NumorphButton @JvmOverloads constructor(
     }
 
     override fun hideShadow() {
-        setShadowColorLight(ContextCompat.getColor(context, R.color.transparent))
-        setShadowColorDark(ContextCompat.getColor(context, R.color.transparent))
+        setShadowColorLight(ContextCompat.getColor(context, R.color.ss_neumorphic_transparent))
+        setShadowColorDark(ContextCompat.getColor(context, R.color.ss_neumorphic_transparent))
     }
 
     override fun setBackground(drawable: Drawable?) {
@@ -130,11 +130,11 @@ class NumorphButton @JvmOverloads constructor(
         super.setBackgroundDrawable(drawable)
     }
 
-    override fun setShapeAppearanceModel(shapeAppearanceModel: NumorphShapeAppearanceModel) {
+    override fun setShapeAppearanceModel(shapeAppearanceModel: SSNeumorphicShapeAppearanceModel) {
         shapeDrawable.setShapeAppearanceModel(shapeAppearanceModel)
     }
 
-    override fun getShapeAppearanceModel(): NumorphShapeAppearanceModel {
+    override fun getShapeAppearanceModel(): SSNeumorphicShapeAppearanceModel {
         return shapeDrawable.getShapeAppearanceModel()
     }
 
@@ -166,11 +166,11 @@ class NumorphButton @JvmOverloads constructor(
         return shapeDrawable.getStrokeWidth()
     }
 
-    override fun setShapeType(@ShapeType shapeType: Int) {
+    override fun setShapeType(@SSNeumorphicShapeType shapeType: Int) {
         shapeDrawable.setShapeType(shapeType)
     }
 
-    @ShapeType
+    @SSNeumorphicShapeType
     override fun getShapeType(): Int {
         return shapeDrawable.getShapeType()
     }
@@ -179,8 +179,8 @@ class NumorphButton @JvmOverloads constructor(
         internalSetInset(left, top, right, bottom)
     }
 
-    override fun setShadowElevation(shadowElevation: Float) {
-        shapeDrawable.setShadowElevation(shadowElevation)
+    override fun setShadowElevation(elevation: Float) {
+        shapeDrawable.setShadowElevation(elevation)
     }
 
     override fun getShadowElevation(): Float {
@@ -234,9 +234,5 @@ class NumorphButton @JvmOverloads constructor(
             requestLayout()
             invalidateOutline()
         }
-    }
-
-    companion object {
-        private const val LOG_TAG = "NumorphButton"
     }
 }

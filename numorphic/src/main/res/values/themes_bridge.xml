@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Numorph.Bridge" parent="Base.Theme.Numorph.Bridge" />
+    <style name="Theme.SSNeumorphic.Bridge" parent="Base.Theme.SSNeumorphic.Bridge" />
 
-    <style name="Theme.Numorph.Light.Bridge" parent="Base.Theme.Numorph.Light.Bridge" />
+    <style name="Theme.SSNeumorphic.Light.Bridge" parent="Base.Theme.SSNeumorphic.Light.Bridge" />
 
-    <style name="Theme.Numorph.NoActionBar.Bridge" parent="Theme.Numorph.Bridge">
+    <style name="Theme.SSNeumorphic.NoActionBar.Bridge" parent="Theme.SSNeumorphic.Bridge">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Numorph.Light.NoActionBar.Bridge" parent="Theme.Numorph.Light.Bridge">
+    <style name="Theme.SSNeumorphic.Light.NoActionBar.Bridge" parent="Theme.SSNeumorphic.Light.Bridge">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Numorph.Light.DarkActionBar.Bridge" parent="Base.Theme.Numorph.Light.DarkActionBar.Bridge" />
+    <style name="Theme.SSNeumorphic.Light.DarkActionBar.Bridge" parent="Base.Theme.SSNeumorphic.Light.DarkActionBar.Bridge" />
 
 </resources>

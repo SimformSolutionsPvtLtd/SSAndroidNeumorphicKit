@@ -1,149 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="colorShadowLight" format="color"/>
-    <attr name="colorShadowDark" format="color"/>
+    <attr name="ss_neumorphic_colorShadowLight" format="color"/>
+    <attr name="ss_neumorphic_colorShadowDark" format="color"/>
     <!--  If true shadow will not be applied  -->
-    <attr name="noShadow" format="boolean" />
+    <attr name="ss_neumorphic_noShadow" format="boolean" />
 
-    <attr name="numorph_backgroundColor" format="color" />
-    <attr name="numorph_strokeColor" format="color" />
-    <attr name="numorph_strokeWidth" format="dimension" />
-    <attr name="numorph_shapeType" format="enum">
+    <attr name="ss_neumorphic_backgroundColor" format="color" />
+    <attr name="ss_neumorphic_strokeColor" format="color" />
+    <attr name="ss_neumorphic_strokeWidth" format="dimension" />
+    <attr name="ss_neumorphic_shapeType" format="enum">
         <enum name="flat" value="0" />
         <enum name="pressed" value="1" />
         <enum name="basin" value="2" />
     </attr>
-    <attr name="numorph_inset" format="dimension" />
-    <attr name="numorph_insetStart" format="dimension" />
-    <attr name="numorph_insetEnd" format="dimension" />
-    <attr name="numorph_insetTop" format="dimension" />
-    <attr name="numorph_insetBottom" format="dimension" />
-    <attr name="numorph_shadowElevation" format="dimension" />
-    <attr name="numorph_shadowColorLight" format="color" />
-    <attr name="numorph_shadowColorDark" format="color" />
-    <attr name="numorph_shapeAppearance" format="reference" />
+    <attr name="ss_neumorphic_inset" format="dimension" />
+    <attr name="ss_neumorphic_insetStart" format="dimension" />
+    <attr name="ss_neumorphic_insetEnd" format="dimension" />
+    <attr name="ss_neumorphic_insetTop" format="dimension" />
+    <attr name="ss_neumorphic_insetBottom" format="dimension" />
+    <attr name="ss_neumorphic_shadowElevation" format="dimension" />
+    <attr name="ss_neumorphic_shadowColorLight" format="color" />
+    <attr name="ss_neumorphic_shadowColorDark" format="color" />
+    <attr name="ss_neumorphic_shapeAppearance" format="reference" />
 
-    <declare-styleable name="NumorphShape">
-        <attr name="numorph_shapeAppearance" />
+    <declare-styleable name="SSNeumorphicShape">
+        <attr name="ss_neumorphic_shapeAppearance" />
     </declare-styleable>
 
-    <declare-styleable name="NumorphShapeAppearance">
-        <attr name="numorph_cornerRadius" format="dimension" />
-        <attr name="numorph_cornerRadiusTopLeft" format="dimension" />
-        <attr name="numorph_cornerRadiusTopRight" format="dimension" />
-        <attr name="numorph_cornerRadiusBottomRight" format="dimension" />
-        <attr name="numorph_cornerRadiusBottomLeft" format="dimension" />
-        <attr name="numorph_cornerFamily" format="enum">
+    <declare-styleable name="SSNeumorphicShapeAppearance">
+        <attr name="ss_neumorphic_cornerRadius" format="dimension" />
+        <attr name="ss_neumorphic_cornerRadiusTopLeft" format="dimension" />
+        <attr name="ss_neumorphic_cornerRadiusTopRight" format="dimension" />
+        <attr name="ss_neumorphic_cornerRadiusBottomRight" format="dimension" />
+        <attr name="ss_neumorphic_cornerRadiusBottomLeft" format="dimension" />
+        <attr name="ss_neumorphic_cornerFamily" format="enum">
             <enum name="rounded" value="0" />
             <enum name="oval" value="1" />
         </attr>
     </declare-styleable>
 
-    <attr name="numorphButtonStyle" format="reference" />
-    <declare-styleable name="NumorphButton">
-        <attr name="numorph_backgroundColor" />
-        <attr name="numorph_strokeColor" />
-        <attr name="numorph_strokeWidth" />
-        <attr name="numorph_shapeType" />
-        <attr name="numorph_inset" />
-        <attr name="numorph_insetStart" />
-        <attr name="numorph_insetEnd" />
-        <attr name="numorph_insetTop" />
-        <attr name="numorph_insetBottom" />
-        <attr name="numorph_shadowElevation" />
-        <attr name="numorph_shadowColorLight" />
-        <attr name="numorph_shadowColorDark" />
-        <attr name="noShadow" />
-        <attr name="numorph_shapeAppearance" />
+    <attr name="ss_neumorphicButtonStyle" format="reference" />
+    <declare-styleable name="SSNeumorphicButton">
+        <attr name="ss_neumorphic_backgroundColor" />
+        <attr name="ss_neumorphic_strokeColor" />
+        <attr name="ss_neumorphic_strokeWidth" />
+        <attr name="ss_neumorphic_shapeType" />
+        <attr name="ss_neumorphic_inset" />
+        <attr name="ss_neumorphic_insetStart" />
+        <attr name="ss_neumorphic_insetEnd" />
+        <attr name="ss_neumorphic_insetTop" />
+        <attr name="ss_neumorphic_insetBottom" />
+        <attr name="ss_neumorphic_shadowElevation" />
+        <attr name="ss_neumorphic_shadowColorLight" />
+        <attr name="ss_neumorphic_shadowColorDark" />
+        <attr name="ss_neumorphic_noShadow" />
+        <attr name="ss_neumorphic_shapeAppearance" />
     </declare-styleable>
 
-    <attr name="numorphCardViewStyle" format="reference" />
-    <declare-styleable name="NumorphCardView">
-        <attr name="numorph_backgroundColor" />
-        <attr name="numorph_strokeColor" />
-        <attr name="numorph_strokeWidth" />
-        <attr name="numorph_shapeType" />
-        <attr name="numorph_inset" />
-        <attr name="numorph_insetStart" />
-        <attr name="numorph_insetEnd" />
-        <attr name="numorph_insetTop" />
-        <attr name="numorph_insetBottom" />
-        <attr name="numorph_shadowElevation" />
-        <attr name="numorph_shadowColorLight" />
-        <attr name="numorph_shadowColorDark" />
-        <attr name="noShadow" />
-        <attr name="numorph_shapeAppearance" />
+    <attr name="ss_neumorphicCardViewStyle" format="reference" />
+    <declare-styleable name="SSNeumorphicCardView">
+        <attr name="ss_neumorphic_backgroundColor" />
+        <attr name="ss_neumorphic_strokeColor" />
+        <attr name="ss_neumorphic_strokeWidth" />
+        <attr name="ss_neumorphic_shapeType" />
+        <attr name="ss_neumorphic_inset" />
+        <attr name="ss_neumorphic_insetStart" />
+        <attr name="ss_neumorphic_insetEnd" />
+        <attr name="ss_neumorphic_insetTop" />
+        <attr name="ss_neumorphic_insetBottom" />
+        <attr name="ss_neumorphic_shadowElevation" />
+        <attr name="ss_neumorphic_shadowColorLight" />
+        <attr name="ss_neumorphic_shadowColorDark" />
+        <attr name="ss_neumorphic_noShadow" />
+        <attr name="ss_neumorphic_shapeAppearance" />
     </declare-styleable>
 
-    <attr name="numorphFloatingActionButtonStyle" format="reference" />
-    <declare-styleable name="NumorphFloatingActionButton">
-        <attr name="numorph_backgroundColor" />
-        <attr name="numorph_strokeColor" />
-        <attr name="numorph_strokeWidth" />
-        <attr name="numorph_shapeType" />
-        <attr name="numorph_inset" />
-        <attr name="numorph_insetStart" />
-        <attr name="numorph_insetEnd" />
-        <attr name="numorph_insetTop" />
-        <attr name="numorph_insetBottom" />
-        <attr name="numorph_shadowElevation" />
-        <attr name="numorph_shadowColorLight" />
-        <attr name="numorph_shadowColorDark" />
-        <attr name="noShadow" />
-        <attr name="numorph_shapeAppearance" />
+    <attr name="ss_neumorphicFloatingActionButtonStyle" format="reference" />
+    <declare-styleable name="SSNeumorphicFloatingActionButton">
+        <attr name="ss_neumorphic_backgroundColor" />
+        <attr name="ss_neumorphic_strokeColor" />
+        <attr name="ss_neumorphic_strokeWidth" />
+        <attr name="ss_neumorphic_shapeType" />
+        <attr name="ss_neumorphic_inset" />
+        <attr name="ss_neumorphic_insetStart" />
+        <attr name="ss_neumorphic_insetEnd" />
+        <attr name="ss_neumorphic_insetTop" />
+        <attr name="ss_neumorphic_insetBottom" />
+        <attr name="ss_neumorphic_shadowElevation" />
+        <attr name="ss_neumorphic_shadowColorLight" />
+        <attr name="ss_neumorphic_shadowColorDark" />
+        <attr name="ss_neumorphic_noShadow" />
+        <attr name="ss_neumorphic_shapeAppearance" />
     </declare-styleable>
 
-    <attr name="numorphImageButtonStyle" format="reference" />
-    <declare-styleable name="NumorphImageButton">
-        <attr name="numorph_backgroundColor" />
-        <attr name="numorph_strokeColor" />
-        <attr name="numorph_strokeWidth" />
-        <attr name="numorph_shapeType" />
-        <attr name="numorph_inset" />
-        <attr name="numorph_insetStart" />
-        <attr name="numorph_insetEnd" />
-        <attr name="numorph_insetTop" />
-        <attr name="numorph_insetBottom" />
-        <attr name="numorph_shadowElevation" />
-        <attr name="numorph_shadowColorLight" />
-        <attr name="numorph_shadowColorDark" />
-        <attr name="noShadow" />
-        <attr name="numorph_shapeAppearance" />
+    <attr name="ss_neumorphicImageButtonStyle" format="reference" />
+    <declare-styleable name="SSNeumorphicImageButton">
+        <attr name="ss_neumorphic_backgroundColor" />
+        <attr name="ss_neumorphic_strokeColor" />
+        <attr name="ss_neumorphic_strokeWidth" />
+        <attr name="ss_neumorphic_shapeType" />
+        <attr name="ss_neumorphic_inset" />
+        <attr name="ss_neumorphic_insetStart" />
+        <attr name="ss_neumorphic_insetEnd" />
+        <attr name="ss_neumorphic_insetTop" />
+        <attr name="ss_neumorphic_insetBottom" />
+        <attr name="ss_neumorphic_shadowElevation" />
+        <attr name="ss_neumorphic_shadowColorLight" />
+        <attr name="ss_neumorphic_shadowColorDark" />
+        <attr name="ss_neumorphic_noShadow" />
+        <attr name="ss_neumorphic_shapeAppearance" />
     </declare-styleable>
 
-    <attr name="numorphImageViewStyle" format="reference" />
-    <declare-styleable name="NumorphImageView">
-        <attr name="numorph_backgroundColor" />
-        <attr name="numorph_strokeColor" />
-        <attr name="numorph_strokeWidth" />
-        <attr name="numorph_shapeType" />
-        <attr name="numorph_inset" />
-        <attr name="numorph_insetStart" />
-        <attr name="numorph_insetEnd" />
-        <attr name="numorph_insetTop" />
-        <attr name="numorph_insetBottom" />
-        <attr name="numorph_shadowElevation" />
-        <attr name="numorph_shadowColorLight" />
-        <attr name="numorph_shadowColorDark" />
-        <attr name="noShadow" />
-        <attr name="numorph_shapeAppearance" />
+    <attr name="ss_neumorphicImageViewStyle" format="reference" />
+    <declare-styleable name="SSNeumorphicImageView">
+        <attr name="ss_neumorphic_backgroundColor" />
+        <attr name="ss_neumorphic_strokeColor" />
+        <attr name="ss_neumorphic_strokeWidth" />
+        <attr name="ss_neumorphic_shapeType" />
+        <attr name="ss_neumorphic_inset" />
+        <attr name="ss_neumorphic_insetStart" />
+        <attr name="ss_neumorphic_insetEnd" />
+        <attr name="ss_neumorphic_insetTop" />
+        <attr name="ss_neumorphic_insetBottom" />
+        <attr name="ss_neumorphic_shadowElevation" />
+        <attr name="ss_neumorphic_shadowColorLight" />
+        <attr name="ss_neumorphic_shadowColorDark" />
+        <attr name="ss_neumorphic_noShadow" />
+        <attr name="ss_neumorphic_shapeAppearance" />
     </declare-styleable>
 
-    <attr name="numorphEditTextStyle" format="reference" />
-    <declare-styleable name="NumorphEditText">
-        <attr name="numorph_backgroundColor" />
-        <attr name="numorph_strokeColor" />
-        <attr name="numorph_strokeWidth" />
-        <attr name="numorph_shapeType" />
-        <attr name="numorph_inset" />
-        <attr name="numorph_insetStart" />
-        <attr name="numorph_insetEnd" />
-        <attr name="numorph_insetTop" />
-        <attr name="numorph_insetBottom" />
-        <attr name="numorph_shadowElevation" />
-        <attr name="numorph_shadowColorLight" />
-        <attr name="numorph_shadowColorDark" />
-        <attr name="noShadow" />
-        <attr name="numorph_shapeAppearance" />
+    <attr name="ss_neumorphicEditTextStyle" format="reference" />
+    <declare-styleable name="SSNeumorphicEditText">
+        <attr name="ss_neumorphic_backgroundColor" />
+        <attr name="ss_neumorphic_strokeColor" />
+        <attr name="ss_neumorphic_strokeWidth" />
+        <attr name="ss_neumorphic_shapeType" />
+        <attr name="ss_neumorphic_inset" />
+        <attr name="ss_neumorphic_insetStart" />
+        <attr name="ss_neumorphic_insetEnd" />
+        <attr name="ss_neumorphic_insetTop" />
+        <attr name="ss_neumorphic_insetBottom" />
+        <attr name="ss_neumorphic_shadowElevation" />
+        <attr name="ss_neumorphic_shadowColorLight" />
+        <attr name="ss_neumorphic_shadowColorDark" />
+        <attr name="ss_neumorphic_noShadow" />
+        <attr name="ss_neumorphic_shapeAppearance" />
     </declare-styleable>
 </resources>

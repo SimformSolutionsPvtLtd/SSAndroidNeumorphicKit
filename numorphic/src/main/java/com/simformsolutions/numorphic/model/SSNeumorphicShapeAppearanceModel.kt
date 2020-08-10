@@ -8,7 +8,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.Dimension
 import androidx.annotation.StyleRes
 import com.simformsolutions.numorphic.R
-import com.simformsolutions.numorphic.annotation.CornerFamily
+import com.simformsolutions.numorphic.annotation.SSNeumorphicCornerFamily
 
 /**
  * Holds data related to appearance of the shape.
@@ -18,8 +18,8 @@ import com.simformsolutions.numorphic.annotation.CornerFamily
  *          - Oval
  *      * Corner size
  */
-class NumorphShapeAppearanceModel {
-    @CornerFamily
+class SSNeumorphicShapeAppearanceModel {
+    @SSNeumorphicCornerFamily
     val cornerFamily: Int
 
     @Dimension
@@ -38,8 +38,8 @@ class NumorphShapeAppearanceModel {
     val cornerRadiusBottomLeft: Float
 
     /**
-     * Constructor which accepts the [NumorphShapeAppearanceModel.Builder].
-     * @param builder [NumorphShapeAppearanceModel.Builder]
+     * Constructor which accepts the [SSNeumorphicShapeAppearanceModel.Builder].
+     * @param builder [SSNeumorphicShapeAppearanceModel.Builder]
      */
     private constructor(builder: Builder) {
         cornerFamily = builder.cornerFamily
@@ -63,22 +63,22 @@ class NumorphShapeAppearanceModel {
     }
 
     companion object {
-        const val DEFAULT_CORNER_FAMILY = CornerFamily.ROUNDED
+        const val DEFAULT_CORNER_FAMILY = SSNeumorphicCornerFamily.ROUNDED
         const val DEFAULT_CORNER_RADIUS = 0f
 
         /**
-         * @return [NumorphShapeAppearanceModel.Builder].
+         * @return [SSNeumorphicShapeAppearanceModel.Builder].
          */
         fun builder(): Builder {
             return Builder()
         }
 
         /**
-         * Create [NumorphShapeAppearanceModel.Builder] from existing
-         * @param model [NumorphShapeAppearanceModel] and
+         * Create [SSNeumorphicShapeAppearanceModel.Builder] from existing
+         * @param model [SSNeumorphicShapeAppearanceModel] and
          * @return [Builder]
          */
-        fun builder(model: NumorphShapeAppearanceModel): Builder {
+        fun builder(model: SSNeumorphicShapeAppearanceModel): Builder {
             return Builder()
                 .set(
                     cornerFamily = model.cornerFamily,
@@ -97,7 +97,7 @@ class NumorphShapeAppearanceModel {
          * @param defStyleAttr Default style attribute
          * @param defStyleRes Default style resource
          *
-         * @return [NumorphShapeAppearanceModel.Builder]
+         * @return [SSNeumorphicShapeAppearanceModel.Builder]
          */
         fun builder(
             context: Context,
@@ -108,10 +108,10 @@ class NumorphShapeAppearanceModel {
         ): Builder {
             val a = context.obtainStyledAttributes(
                 attrs,
-                R.styleable.NumorphShape, defStyleAttr, defStyleRes
+                R.styleable.SSNeumorphicShape, defStyleAttr, defStyleRes
             )
             val shapeAppearanceResId = a.getResourceId(
-                R.styleable.NumorphShape_numorph_shapeAppearance, 0
+                R.styleable.SSNeumorphicShape_ss_neumorphic_shapeAppearance, 0
             )
             a.recycle()
             return builder(
@@ -124,10 +124,10 @@ class NumorphShapeAppearanceModel {
         /**
          * Create builder from
          * @param context Context
-         * @param shapeAppearanceResId Shape appearance resource ID
+         * @param shapeAppearanceResId SSNeumorphicShape appearance resource ID
          * @param defaultCornerRadius Default corner radius
          *
-         * @return [NumorphShapeAppearanceModel.Builder]
+         * @return [SSNeumorphicShapeAppearanceModel.Builder]
          */
         private fun builder(
             context: Context,
@@ -136,41 +136,41 @@ class NumorphShapeAppearanceModel {
         ): Builder {
             val a = context.obtainStyledAttributes(
                 shapeAppearanceResId,
-                R.styleable.NumorphShapeAppearance
+                R.styleable.SSNeumorphicShapeAppearance
             )
             try {
                 val cornerFamily = a.getInt(
-                    R.styleable.NumorphShapeAppearance_numorph_cornerFamily,
-                    CornerFamily.ROUNDED
+                    R.styleable.SSNeumorphicShapeAppearance_ss_neumorphic_cornerFamily,
+                    SSNeumorphicCornerFamily.ROUNDED
                 )
                 val cornerRadius =
                     getCornerSize(
                         a,
-                        R.styleable.NumorphShapeAppearance_numorph_cornerRadius,
+                        R.styleable.SSNeumorphicShapeAppearance_ss_neumorphic_cornerRadius,
                         defaultCornerRadius
                     )
                 val cornerRadiusTopLeft =
                     getCornerSize(
                         a,
-                        R.styleable.NumorphShapeAppearance_numorph_cornerRadiusTopLeft,
+                        R.styleable.SSNeumorphicShapeAppearance_ss_neumorphic_cornerRadiusTopLeft,
                         cornerRadius
                     )
                 val cornerRadiusTopRight =
                     getCornerSize(
                         a,
-                        R.styleable.NumorphShapeAppearance_numorph_cornerRadiusTopRight,
+                        R.styleable.SSNeumorphicShapeAppearance_ss_neumorphic_cornerRadiusTopRight,
                         cornerRadius
                     )
                 val cornerRadiusBottomRight =
                     getCornerSize(
                         a,
-                        R.styleable.NumorphShapeAppearance_numorph_cornerRadiusBottomRight,
+                        R.styleable.SSNeumorphicShapeAppearance_ss_neumorphic_cornerRadiusBottomRight,
                         cornerRadius
                     )
                 val cornerRadiusBottomLeft =
                     getCornerSize(
                         a,
-                        R.styleable.NumorphShapeAppearance_numorph_cornerRadiusBottomLeft,
+                        R.styleable.SSNeumorphicShapeAppearance_ss_neumorphic_cornerRadiusBottomLeft,
                         cornerRadius
                     )
 
@@ -209,11 +209,11 @@ class NumorphShapeAppearanceModel {
     }
 
     /**
-     * Builder to create [NumorphShapeAppearanceModel].
+     * Builder to create [SSNeumorphicShapeAppearanceModel].
      */
     class Builder {
 
-        @CornerFamily
+        @SSNeumorphicCornerFamily
         var cornerFamily: Int = DEFAULT_CORNER_FAMILY
 
         @Dimension
@@ -243,7 +243,7 @@ class NumorphShapeAppearanceModel {
          * @return This Builder
          */
         fun set(
-            @CornerFamily cornerFamily: Int,
+            @SSNeumorphicCornerFamily cornerFamily: Int,
             @Dimension cornerRadius: Float,
             @Dimension cornerRadiusTopLeft: Float = cornerRadius,
             @Dimension cornerRadiusTopRight: Float = cornerRadius,
@@ -263,7 +263,7 @@ class NumorphShapeAppearanceModel {
         /**
          * Set corner family.
          */
-        fun setCornerFamily(@CornerFamily cornerFamily: Int): Builder {
+        fun setCornerFamily(@SSNeumorphicCornerFamily cornerFamily: Int): Builder {
             this.cornerFamily = cornerFamily
             return this
         }
@@ -288,8 +288,8 @@ class NumorphShapeAppearanceModel {
         }
 
         /**
-         * Build and return the [NumorphShapeAppearanceModel].
+         * Build and return the [SSNeumorphicShapeAppearanceModel].
          */
-        fun build(): NumorphShapeAppearanceModel = NumorphShapeAppearanceModel(this)
+        fun build(): SSNeumorphicShapeAppearanceModel = SSNeumorphicShapeAppearanceModel(this)
     }
 }

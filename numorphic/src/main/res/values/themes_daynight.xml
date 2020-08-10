@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Numorph.DayNight" parent="Theme.Numorph.Light" />
+    <style name="Theme.SSNeumorphic.DayNight" parent="Theme.SSNeumorphic.Light" />
 
-    <style name="Theme.Numorph.DayNight.DarkActionBar" parent="Theme.Numorph.Light.DarkActionBar" />
+    <style name="Theme.SSNeumorphic.DayNight.DarkActionBar" parent="Theme.SSNeumorphic.Light.DarkActionBar" />
 
-    <style name="Theme.Numorph.DayNight.NoActionBar" parent="Theme.Numorph.Light.NoActionBar" />
+    <style name="Theme.SSNeumorphic.DayNight.NoActionBar" parent="Theme.SSNeumorphic.Light.NoActionBar" />
 
-    <style name="Theme.Numorph.DayNight.DialogWhenLarge" parent="Theme.Numorph.Light.DialogWhenLarge" />
+    <style name="Theme.SSNeumorphic.DayNight.DialogWhenLarge" parent="Theme.SSNeumorphic.Light.DialogWhenLarge" />
 
 </resources>

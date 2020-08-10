@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.Numorph.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.SSNeumorphic.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -8,40 +8,40 @@
     </style>
 
     <style name="ShapeAppearance.TabFirstButton">
-        <item name="numorph_cornerFamily">rounded</item>
-        <item name="numorph_cornerRadius">0dp</item>
-        <item name="numorph_cornerRadiusTopLeft">6dp</item>
-        <item name="numorph_cornerRadiusBottomLeft">6dp</item>
+        <item name="ss_neumorphic_cornerFamily">rounded</item>
+        <item name="ss_neumorphic_cornerRadius">0dp</item>
+        <item name="ss_neumorphic_cornerRadiusTopLeft">6dp</item>
+        <item name="ss_neumorphic_cornerRadiusBottomLeft">6dp</item>
     </style>
 
     <style name="ShapeAppearance.TabMiddleButton">
-        <item name="numorph_cornerFamily">rounded</item>
-        <item name="numorph_cornerRadius">0dp</item>
+        <item name="ss_neumorphic_cornerFamily">rounded</item>
+        <item name="ss_neumorphic_cornerRadius">0dp</item>
     </style>
 
     <style name="ShapeAppearance.TabEndButton">
-        <item name="numorph_cornerFamily">rounded</item>
-        <item name="numorph_cornerRadius">0dp</item>
-        <item name="numorph_cornerRadiusTopRight">6dp</item>
-        <item name="numorph_cornerRadiusBottomRight">6dp</item>
+        <item name="ss_neumorphic_cornerFamily">rounded</item>
+        <item name="ss_neumorphic_cornerRadius">0dp</item>
+        <item name="ss_neumorphic_cornerRadiusTopRight">6dp</item>
+        <item name="ss_neumorphic_cornerRadiusBottomRight">6dp</item>
     </style>
 
     <style name="ShapeAppearance.Circular">
-        <item name="numorph_cornerFamily">oval</item>
-        <item name="numorph_cornerRadius">0dp</item>
+        <item name="ss_neumorphic_cornerFamily">oval</item>
+        <item name="ss_neumorphic_cornerRadius">0dp</item>
     </style>
 
     <style name="ShapeAppearance.Rect">
-        <item name="numorph_cornerFamily">rounded</item>
-        <item name="numorph_cornerRadius">0dp</item>
+        <item name="ss_neumorphic_cornerFamily">rounded</item>
+        <item name="ss_neumorphic_cornerRadius">0dp</item>
     </style>
 
 
     <style name="ShapeAppearance.ImageRounded">
-        <item name="numorph_cornerFamily">rounded</item>
-        <item name="numorph_cornerRadius">0dp</item>
-        <item name="numorph_cornerRadiusTopLeft">16dp</item>
-        <item name="numorph_cornerRadiusBottomLeft">16dp</item>
+        <item name="ss_neumorphic_cornerFamily">rounded</item>
+        <item name="ss_neumorphic_cornerRadius">0dp</item>
+        <item name="ss_neumorphic_cornerRadiusTopLeft">16dp</item>
+        <item name="ss_neumorphic_cornerRadiusBottomLeft">16dp</item>
     </style>
 
 </resources>

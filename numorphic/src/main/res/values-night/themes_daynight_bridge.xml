@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Numorph.DayNight.Bridge" parent="Theme.Numorph.Bridge" />
+    <style name="Theme.SSNeumorphic.DayNight.Bridge" parent="Theme.SSNeumorphic.Bridge" />
 
-    <style name="Theme.Numorph.DayNight.DarkActionBar.Bridge" parent="Theme.Numorph.Bridge" />
+    <style name="Theme.SSNeumorphic.DayNight.DarkActionBar.Bridge" parent="Theme.SSNeumorphic.Bridge" />
 
-    <style name="Theme.Numorph.DayNight.NoActionBar.Bridge" parent="Theme.Numorph.NoActionBar.Bridge" />
+    <style name="Theme.SSNeumorphic.DayNight.NoActionBar.Bridge" parent="Theme.SSNeumorphic.NoActionBar.Bridge" />
 
 </resources>

@@ -10,14 +10,14 @@ import androidx.annotation.ColorInt
 import androidx.annotation.Px
 import androidx.annotation.StyleRes
 import androidx.core.graphics.drawable.toBitmap
-import com.simformsolutions.numorphic.annotation.CornerFamily
-import com.simformsolutions.numorphic.annotation.ShapeType
-import com.simformsolutions.numorphic.blur.BlurProvider
-import com.simformsolutions.numorphic.model.NumorphShapeAppearanceModel
-import com.simformsolutions.numorphic.shape.BasinShape
-import com.simformsolutions.numorphic.shape.FlatShape
-import com.simformsolutions.numorphic.shape.PressedShape
-import com.simformsolutions.numorphic.shape.Shape
+import com.simformsolutions.numorphic.annotation.SSNeumorphicCornerFamily
+import com.simformsolutions.numorphic.annotation.SSNeumorphicShapeType
+import com.simformsolutions.numorphic.blur.SSNeumorphicBlurProvider
+import com.simformsolutions.numorphic.model.SSNeumorphicShapeAppearanceModel
+import com.simformsolutions.numorphic.shape.SSNeumorphicBasinShape
+import com.simformsolutions.numorphic.shape.SSNeumorphicFlatShape
+import com.simformsolutions.numorphic.shape.SSNeumorphicPressedShape
+import com.simformsolutions.numorphic.shape.SSNeumorphicShape
 
 
 /**
@@ -25,10 +25,10 @@ import com.simformsolutions.numorphic.shape.Shape
  *
  * Custom drawable to be applied as background in custom component.
  */
-class NumorphShapeDrawable : Drawable {
+class SSNeumorphicShapeDrawable : Drawable {
 
     /**  Hold the drawable state  */
-    private var drawableState: NumorphShapeDrawableState
+    private var drawableState: SSNeumorphicShapeDrawableState
 
     /**  Flag to update the drawable.  */
     private var dirty = false
@@ -63,9 +63,9 @@ class NumorphShapeDrawable : Drawable {
     private val outlinePath = Path()
 
     /**
-     * Shadow of the [ShapeType] for the drawable.
+     * Shadow of the [SSNeumorphicShapeType] for the drawable.
      */
-    private var shapeShadow: Shape? = null
+    private var shapeShadow: SSNeumorphicShape? = null
 
     /**  Bitmap for Image  */
     private var imageBitmap: Bitmap? = null
@@ -74,7 +74,7 @@ class NumorphShapeDrawable : Drawable {
      * Constructor to create from
      * @param context
      */
-    constructor(context: Context) : this(NumorphShapeAppearanceModel(), BlurProvider(context))
+    constructor(context: Context) : this(SSNeumorphicShapeAppearanceModel(), SSNeumorphicBlurProvider(context))
 
     /**
      * Constructor to create from
@@ -89,20 +89,20 @@ class NumorphShapeDrawable : Drawable {
         @AttrRes defStyleAttr: Int,
         @StyleRes defStyleRes: Int
     ) : this(
-        NumorphShapeAppearanceModel.builder(context, attrs, defStyleAttr, defStyleRes).build(),
-        BlurProvider(context)
+        SSNeumorphicShapeAppearanceModel.builder(context, attrs, defStyleAttr, defStyleRes).build(),
+        SSNeumorphicBlurProvider(context)
     )
 
     /**
      * Internal constructor to create from
-     * @param shapeAppearanceModel [NumorphShapeAppearanceModel]
-     * @param blurProvider [BlurProvider]
+     * @param shapeAppearanceModel [SSNeumorphicShapeAppearanceModel]
+     * @param blurProvider [SSNeumorphicBlurProvider]
      */
     internal constructor(
-        shapeAppearanceModel: NumorphShapeAppearanceModel,
-        blurProvider: BlurProvider
+        shapeAppearanceModel: SSNeumorphicShapeAppearanceModel,
+        blurProvider: SSNeumorphicBlurProvider
     ) : this(
-        NumorphShapeDrawableState(
+        SSNeumorphicShapeDrawableState(
             shapeAppearanceModel,
             blurProvider
         )
@@ -110,9 +110,9 @@ class NumorphShapeDrawable : Drawable {
 
     /**
      * Private constructor to create from
-     * @param drawableState [NumorphShapeDrawableState]
+     * @param drawableState [SSNeumorphicShapeDrawableState]
      */
-    private constructor(drawableState: NumorphShapeDrawableState) : super() {
+    private constructor(drawableState: SSNeumorphicShapeDrawableState) : super() {
         this.drawableState = drawableState
         this.shapeShadow = shadowOf(drawableState.shapeType, drawableState)
     }
@@ -169,13 +169,13 @@ class NumorphShapeDrawable : Drawable {
     }
 
     /**
-     * Create and assign new [NumorphShapeDrawableState] to [drawableState].
+     * Create and assign new [SSNeumorphicShapeDrawableState] to [drawableState].
      * Also update the new state to the [shapeShadow].
      * @return This Drawable
      */
     override fun mutate(): Drawable {
         val newDrawableState =
-            NumorphShapeDrawableState(
+            SSNeumorphicShapeDrawableState(
                 drawableState
             )
         drawableState = newDrawableState
@@ -191,10 +191,10 @@ class NumorphShapeDrawable : Drawable {
     override fun getOutline(outline: Outline) {
         super.getOutline(outline)
         when (drawableState.shapeAppearanceModel.cornerFamily) {
-            CornerFamily.OVAL -> {
+            SSNeumorphicCornerFamily.OVAL -> {
                 outline.setOval(getBoundsInternal())
             }
-            CornerFamily.ROUNDED -> {
+            SSNeumorphicCornerFamily.ROUNDED -> {
                 val cornerSize = drawableState.shapeAppearanceModel.cornerRadius
                 outline.setRoundRect(getBoundsInternal(), cornerSize)
             }
@@ -205,7 +205,7 @@ class NumorphShapeDrawable : Drawable {
      * Indicates whether this drawable will change its appearance based on
      * state.
      *
-     * [NumorphShapeDrawableState.fillColor] is stateful.
+     * [SSNeumorphicShapeDrawableState.fillColor] is stateful.
      */
     override fun isStateful(): Boolean {
         return (super.isStateful()
@@ -213,34 +213,34 @@ class NumorphShapeDrawable : Drawable {
     }
 
     /**
-     * Provides corresponding [Shape] of [ShapeType].
-     * @param shapeType Shape type
+     * Provides corresponding [SSNeumorphicShape] of [SSNeumorphicShapeType].
+     * @param shapeType SSNeumorphicShape type
      * @param drawableState
-     * @return [Shape]
+     * @return [SSNeumorphicShape]
      */
     private fun shadowOf(
-        @ShapeType shapeType: Int,
-        drawableState: NumorphShapeDrawableState
-    ): Shape = when (shapeType) {
-        ShapeType.FLAT -> FlatShape(drawableState)
-        ShapeType.PRESSED -> PressedShape(drawableState)
-        ShapeType.BASIN -> BasinShape(drawableState)
-        else -> throw IllegalArgumentException("ShapeType($shapeType) is invalid.")
+        @SSNeumorphicShapeType shapeType: Int,
+        drawableState: SSNeumorphicShapeDrawableState
+    ): SSNeumorphicShape = when (shapeType) {
+        SSNeumorphicShapeType.FLAT -> SSNeumorphicFlatShape(drawableState)
+        SSNeumorphicShapeType.PRESSED -> SSNeumorphicPressedShape(drawableState)
+        SSNeumorphicShapeType.BASIN -> SSNeumorphicBasinShape(drawableState)
+        else -> throw IllegalArgumentException("SSNeumorphicShapeType($shapeType) is invalid.")
     }
 
-    /**  Setter for [NumorphShapeAppearanceModel].  */
-    fun setShapeAppearanceModel(shapeAppearanceModel: NumorphShapeAppearanceModel) {
+    /**  Setter for [SSNeumorphicShapeAppearanceModel].  */
+    fun setShapeAppearanceModel(shapeAppearanceModel: SSNeumorphicShapeAppearanceModel) {
         drawableState.shapeAppearanceModel = shapeAppearanceModel
         invalidateSelf()
     }
 
-    /**  Getter for [NumorphShapeAppearanceModel].  */
-    fun getShapeAppearanceModel(): NumorphShapeAppearanceModel {
+    /**  Getter for [SSNeumorphicShapeAppearanceModel].  */
+    fun getShapeAppearanceModel(): SSNeumorphicShapeAppearanceModel {
         return drawableState.shapeAppearanceModel
     }
 
     /**
-     * Setter for [NumorphShapeDrawableState.fillColor]
+     * Setter for [SSNeumorphicShapeDrawableState.fillColor]
      * @param fillColor ColorStateList?
      */
     fun setFillColor(fillColor: ColorStateList?) {
@@ -250,12 +250,12 @@ class NumorphShapeDrawable : Drawable {
         }
     }
 
-    /**  Getter for [NumorphShapeDrawableState.fillColor]  */
+    /**  Getter for [SSNeumorphicShapeDrawableState.fillColor]  */
     fun getFillColor(): ColorStateList? {
         return drawableState.fillColor
     }
 
-    /**  Setter for [NumorphShapeDrawableState.strokeColor]  */
+    /**  Setter for [SSNeumorphicShapeDrawableState.strokeColor]  */
     fun setStrokeColor(strokeColor: ColorStateList?) {
         if (drawableState.strokeColor != strokeColor) {
             drawableState.strokeColor = strokeColor
@@ -263,7 +263,7 @@ class NumorphShapeDrawable : Drawable {
         }
     }
 
-    /**  Getter for [NumorphShapeDrawableState.strokeColor]  */
+    /**  Getter for [SSNeumorphicShapeDrawableState.strokeColor]  */
     fun getStrokeColor(): ColorStateList? {
         return drawableState.strokeColor
     }
@@ -288,12 +288,12 @@ class NumorphShapeDrawable : Drawable {
         setStrokeColor(strokeColor)
     }
 
-    /**  Getter for [NumorphShapeDrawableState.strokeWidth]  */
+    /**  Getter for [SSNeumorphicShapeDrawableState.strokeWidth]  */
     fun getStrokeWidth(): Float {
         return drawableState.strokeWidth
     }
 
-    /**  Setter for [NumorphShapeDrawableState.strokeWidth]  */
+    /**  Setter for [SSNeumorphicShapeDrawableState.strokeWidth]  */
     fun setStrokeWidth(strokeWidth: Float) {
         drawableState.strokeWidth = strokeWidth
         invalidateSelf()
@@ -334,7 +334,7 @@ class NumorphShapeDrawable : Drawable {
         return PixelFormat.TRANSLUCENT
     }
 
-    /**  Setter for [NumorphShapeDrawableState.alpha]  */
+    /**  Setter for [SSNeumorphicShapeDrawableState.alpha]  */
     override fun setAlpha(alpha: Int) {
         if (drawableState.alpha != alpha) {
             drawableState.alpha = alpha
@@ -376,7 +376,7 @@ class NumorphShapeDrawable : Drawable {
     }
 
     /**
-     * Setter for [NumorphShapeDrawableState.inset]
+     * Setter for [SSNeumorphicShapeDrawableState.inset]
      */
     fun setInset(left: Int, top: Int, right: Int, bottom: Int) {
         drawableState.inset.set(left, top, right, bottom)
@@ -384,11 +384,11 @@ class NumorphShapeDrawable : Drawable {
     }
 
     /**
-     * Setter for [NumorphShapeDrawableState.shapeType].
+     * Setter for [SSNeumorphicShapeDrawableState.shapeType].
      * Update the shadow as well.
      * @param shapeType
      */
-    fun setShapeType(@ShapeType shapeType: Int) {
+    fun setShapeType(@SSNeumorphicShapeType shapeType: Int) {
         if (drawableState.shapeType != shapeType) {
             drawableState.shapeType = shapeType
             shapeShadow = shadowOf(shapeType, drawableState)
@@ -397,15 +397,15 @@ class NumorphShapeDrawable : Drawable {
     }
 
     /**
-     * Getter for [NumorphShapeDrawableState.shapeType].
+     * Getter for [SSNeumorphicShapeDrawableState.shapeType].
      */
-    @ShapeType
+    @SSNeumorphicShapeType
     fun getShapeType(): Int {
         return drawableState.shapeType
     }
 
     /**
-     * Setter for [NumorphShapeDrawableState.shadowElevation].
+     * Setter for [SSNeumorphicShapeDrawableState.shadowElevation].
      */
     fun setShadowElevation(shadowElevation: Float) {
         if (drawableState.shadowElevation != shadowElevation) {
@@ -415,14 +415,14 @@ class NumorphShapeDrawable : Drawable {
     }
 
     /**
-     * Getter for [NumorphShapeDrawableState.shadowElevation].
+     * Getter for [SSNeumorphicShapeDrawableState.shadowElevation].
      */
     fun getShadowElevation(): Float {
         return drawableState.shadowElevation
     }
 
     /**
-     * Setter for [NumorphShapeDrawableState.shadowColorLight].
+     * Setter for [SSNeumorphicShapeDrawableState.shadowColorLight].
      *
      * Set the light shadow color.
      *
@@ -436,7 +436,7 @@ class NumorphShapeDrawable : Drawable {
     }
 
     /**
-     * Getter for [NumorphShapeDrawableState.shadowColorLight]
+     * Getter for [SSNeumorphicShapeDrawableState.shadowColorLight]
      *
      * Get the light shadow color.
      *
@@ -448,7 +448,7 @@ class NumorphShapeDrawable : Drawable {
     }
 
     /**
-     * Setter for [NumorphShapeDrawableState.shadowColorDark].
+     * Setter for [SSNeumorphicShapeDrawableState.shadowColorDark].
      *
      * Set the dark shadow color.
      *
@@ -462,7 +462,7 @@ class NumorphShapeDrawable : Drawable {
     }
 
     /**
-     * Getter for [NumorphShapeDrawableState.shadowColorDark]
+     * Getter for [SSNeumorphicShapeDrawableState.shadowColorDark]
      *
      * Get the dark shadow color.
      *
@@ -474,14 +474,14 @@ class NumorphShapeDrawable : Drawable {
     }
 
     /**
-     * Getter for [NumorphShapeDrawableState.translationZ].
+     * Getter for [SSNeumorphicShapeDrawableState.translationZ].
      */
     fun getTranslationZ(): Float {
         return drawableState.translationZ
     }
 
     /**
-     * Setter for [NumorphShapeDrawableState.translationZ].
+     * Setter for [SSNeumorphicShapeDrawableState.translationZ].
      */
     fun setTranslationZ(translationZ: Float) {
         if (drawableState.translationZ != translationZ) {
@@ -525,14 +525,14 @@ class NumorphShapeDrawable : Drawable {
     }
 
     /**
-     * Getter for [NumorphShapeDrawableState.paintStyle].
+     * Getter for [SSNeumorphicShapeDrawableState.paintStyle].
      */
     fun getPaintStyle(): Paint.Style? {
         return drawableState.paintStyle
     }
 
     /**
-     * Setter for [NumorphShapeDrawableState.paintStyle].
+     * Setter for [SSNeumorphicShapeDrawableState.paintStyle].
      */
     fun setPaintStyle(paintStyle: Paint.Style) {
         drawableState.paintStyle = paintStyle
@@ -632,11 +632,11 @@ class NumorphShapeDrawable : Drawable {
 
         // Decide based on corner family.
         when (drawableState.shapeAppearanceModel.cornerFamily) {
-            CornerFamily.OVAL -> {
+            SSNeumorphicCornerFamily.OVAL -> {
                 // Add Oval path.
                 path.addOval(left, top, right, bottom, Path.Direction.CW)
             }
-            CornerFamily.ROUNDED -> {
+            SSNeumorphicCornerFamily.ROUNDED -> {
                 // Add round rectangle path.
                 path.addRoundRect(
                     left, top, right, bottom,
@@ -660,7 +660,7 @@ class NumorphShapeDrawable : Drawable {
     }
 
     /**
-     * [NumorphShapeDrawableState.fillColor] is stateful so update colors.
+     * [SSNeumorphicShapeDrawableState.fillColor] is stateful so update colors.
      * @return true if state is changed.
      */
     override fun onStateChange(state: IntArray): Boolean {
@@ -703,7 +703,7 @@ class NumorphShapeDrawable : Drawable {
     }
 
     /**
-     * Setter for [NumorphShapeDrawableState.inEditMode].
+     * Setter for [SSNeumorphicShapeDrawableState.inEditMode].
      */
     fun setInEditMode(inEditMode: Boolean) {
         drawableState.inEditMode = inEditMode
@@ -712,13 +712,13 @@ class NumorphShapeDrawable : Drawable {
     /**
      * Custom ConstantState to hold custom data.
      */
-    internal class NumorphShapeDrawableState : ConstantState {
+    internal class SSNeumorphicShapeDrawableState : ConstantState {
 
         /**  The shape appearance model.  */
-        var shapeAppearanceModel: NumorphShapeAppearanceModel
+        var shapeAppearanceModel: SSNeumorphicShapeAppearanceModel
 
         /**  The blur provider  */
-        val blurProvider: BlurProvider
+        val blurProvider: SSNeumorphicBlurProvider
 
         /**
          * Edit mode flag.
@@ -734,8 +734,8 @@ class NumorphShapeDrawable : Drawable {
 
         var alpha = 255
 
-        @ShapeType
-        var shapeType: Int = ShapeType.DEFAULT
+        @SSNeumorphicShapeType
+        var shapeType: Int = SSNeumorphicShapeType.DEFAULT
         var shadowElevation: Float = 0f
         var shadowColorLight: Int = Color.WHITE
         var shadowColorDark: Int = Color.BLACK
@@ -749,8 +749,8 @@ class NumorphShapeDrawable : Drawable {
          * @param blurProvider
          */
         constructor(
-            shapeAppearanceModel: NumorphShapeAppearanceModel,
-            blurProvider: BlurProvider
+            shapeAppearanceModel: SSNeumorphicShapeAppearanceModel,
+            blurProvider: SSNeumorphicBlurProvider
         ) {
             this.shapeAppearanceModel = shapeAppearanceModel
             this.blurProvider = blurProvider
@@ -758,9 +758,9 @@ class NumorphShapeDrawable : Drawable {
 
         /**
          * Create from old
-         * @param orig [NumorphShapeDrawableState]
+         * @param orig [SSNeumorphicShapeDrawableState]
          */
-        constructor(orig: NumorphShapeDrawableState) {
+        constructor(orig: SSNeumorphicShapeDrawableState) {
             shapeAppearanceModel = orig.shapeAppearanceModel
             blurProvider = orig.blurProvider
             inEditMode = orig.inEditMode
@@ -779,10 +779,10 @@ class NumorphShapeDrawable : Drawable {
 
         /**
          * Create new Drawable.
-         * @return The [NumorphShapeDrawable].
+         * @return The [SSNeumorphicShapeDrawable].
          */
         override fun newDrawable(): Drawable {
-            return NumorphShapeDrawable(
+            return SSNeumorphicShapeDrawable(
                 this
             ).apply {
                 // Force the calculation of the path for the new drawable.

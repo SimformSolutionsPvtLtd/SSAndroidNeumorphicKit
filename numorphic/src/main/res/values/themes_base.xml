@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Base.V21.Theme.Numorph" parent="Base.V21.Theme.Numorph.Bridge">
+    <style name="Base.V21.Theme.SSNeumorphic" parent="Base.V21.Theme.SSNeumorphic.Bridge">
         <item name="android:alertDialogTheme">@style/ThemeOverlay.AppCompat.Dialog.Alert</item>
-        <item name="numorphButtonStyle">@style/Widget.Numorph.Button</item>
-        <item name="numorphCardViewStyle">@style/Widget.Numorph.CardView</item>
-        <item name="numorphFloatingActionButtonStyle">@style/Widget.Numorph.FloatingActionButton</item>
-        <item name="numorphImageViewStyle">@style/Widget.Numorph.ImageView</item>
-        <item name="numorphImageButtonStyle">@style/Widget.Numorph.ImageButton</item>
+        <item name="ss_neumorphicButtonStyle">@style/Widget.SSNeumorphic.Button</item>
+        <item name="ss_neumorphicCardViewStyle">@style/Widget.SSNeumorphic.CardView</item>
+        <item name="ss_neumorphicFloatingActionButtonStyle">@style/Widget.SSNeumorphic.FloatingActionButton</item>
+        <item name="ss_neumorphicImageViewStyle">@style/Widget.SSNeumorphic.ImageView</item>
+        <item name="ss_neumorphicImageButtonStyle">@style/Widget.SSNeumorphic.ImageButton</item>
     </style>
 
-    <style name="Base.V21.Theme.Numorph.Light" parent="Base.V21.Theme.Numorph.Light.Bridge">
+    <style name="Base.V21.Theme.SSNeumorphic.Light" parent="Base.V21.Theme.SSNeumorphic.Light.Bridge">
         <item name="android:alertDialogTheme">@style/ThemeOverlay.AppCompat.Dialog.Alert</item>
-        <item name="numorphButtonStyle">@style/Widget.Numorph.Button</item>
-        <item name="numorphCardViewStyle">@style/Widget.Numorph.CardView</item>
-        <item name="numorphFloatingActionButtonStyle">@style/Widget.Numorph.FloatingActionButton</item>
-        <item name="numorphImageViewStyle">@style/Widget.Numorph.ImageView</item>
-        <item name="numorphImageButtonStyle">@style/Widget.Numorph.ImageButton</item>
+        <item name="ss_neumorphicButtonStyle">@style/Widget.SSNeumorphic.Button</item>
+        <item name="ss_neumorphicCardViewStyle">@style/Widget.SSNeumorphic.CardView</item>
+        <item name="ss_neumorphicFloatingActionButtonStyle">@style/Widget.SSNeumorphic.FloatingActionButton</item>
+        <item name="ss_neumorphicImageViewStyle">@style/Widget.SSNeumorphic.ImageView</item>
+        <item name="ss_neumorphicImageButtonStyle">@style/Widget.SSNeumorphic.ImageButton</item>
     </style>
 
-    <style name="Base.Theme.Numorph" parent="Base.V21.Theme.Numorph" />
+    <style name="Base.Theme.SSNeumorphic" parent="Base.V21.Theme.SSNeumorphic" />
 
-    <style name="Base.Theme.Numorph.Light" parent="Base.V21.Theme.Numorph.Light" />
+    <style name="Base.Theme.SSNeumorphic.Light" parent="Base.V21.Theme.SSNeumorphic.Light" />
 
-    <style name="Base.Theme.Numorph.Light.DarkActionBar" parent="Base.Theme.Numorph.Light" />
+    <style name="Base.Theme.SSNeumorphic.Light.DarkActionBar" parent="Base.Theme.SSNeumorphic.Light" />
 
-    <style name="Base.Theme.Numorph.CompactMenu" parent="" />
+    <style name="Base.Theme.SSNeumorphic.CompactMenu" parent="" />
 
-    <style name="Base.Theme.Numorph.DialogWhenLarge" parent="Theme.Numorph" />
+    <style name="Base.Theme.SSNeumorphic.DialogWhenLarge" parent="Theme.SSNeumorphic" />
 
-    <style name="Base.Theme.Numorph.Light.DialogWhenLarge" parent="Theme.Numorph.Light" />
+    <style name="Base.Theme.SSNeumorphic.Light.DialogWhenLarge" parent="Theme.SSNeumorphic.Light" />
 
 </resources>

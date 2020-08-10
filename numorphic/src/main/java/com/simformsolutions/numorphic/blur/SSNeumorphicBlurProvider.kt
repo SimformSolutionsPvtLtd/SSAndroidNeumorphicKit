@@ -14,7 +14,7 @@ import kotlin.math.min
 /**
  * Provides blur effect.
  */
-internal class BlurProvider(context: Context) {
+internal class SSNeumorphicBlurProvider(context: Context) {
 
     /** Hold weak reference of the [Context] to handle memory leak. */
     private val contextRef = WeakReference(context)
@@ -30,10 +30,10 @@ internal class BlurProvider(context: Context) {
      */
     fun blur(
         source: Bitmap,
-        radius: Int = BlurFactor.DEFAULT_RADIUS,
-        sampling: Int = BlurFactor.DEFAULT_SAMPLING
+        radius: Int = SSNeumorphicBlurFactor.DEFAULT_RADIUS,
+        sampling: Int = SSNeumorphicBlurFactor.DEFAULT_SAMPLING
     ): Bitmap? {
-        val factor = BlurFactor(
+        val factor = SSNeumorphicBlurFactor(
             width = source.width,
             height = source.height,
             radius = radius,
@@ -46,11 +46,11 @@ internal class BlurProvider(context: Context) {
      * Blur the [source] bitmap and returns the blurred [Bitmap] or null if failed.
      *
      * @param source The bitmap to be blurred.
-     * @param factor [BlurFactor]
+     * @param factor [SSNeumorphicBlurFactor]
      *
      * @return [Bitmap] on success or null on failure.
      */
-    private fun blur(source: Bitmap, factor: BlurFactor): Bitmap? {
+    private fun blur(source: Bitmap, factor: SSNeumorphicBlurFactor): Bitmap? {
         val width = factor.width / factor.sampling
         val height = factor.height / factor.sampling
         if (width == 0 || height == 0) {
@@ -71,7 +71,7 @@ internal class BlurProvider(context: Context) {
             stack(bitmap, factor.radius, true)
         }
         return blurBitmap?.let {
-            if (factor.sampling == BlurFactor.DEFAULT_SAMPLING) {
+            if (factor.sampling == SSNeumorphicBlurFactor.DEFAULT_SAMPLING) {
                 it
             } else {
                 val scaled = Bitmap.createScaledBitmap(it, factor.width, factor.height, true)

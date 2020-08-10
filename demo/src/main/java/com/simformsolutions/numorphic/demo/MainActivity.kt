@@ -1,11 +1,11 @@
 package com.simformsolutions.numorphic.demo
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.simformsolutions.numorphic.component.NumorphImageButton
-import com.simformsolutions.numorphic.component.NumorphImageView
+import com.simformsolutions.numorphic.component.SSNeumorphicImageButton
+import com.simformsolutions.numorphic.component.SSNeumorphicImageView
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,10 +13,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val imageButton = findViewById<NumorphImageButton>(R.id.imageButton)
+        val imageButton = findViewById<SSNeumorphicImageButton>(R.id.imageButton)
         imageButton.loadImage()
 
-        val imageView = findViewById<NumorphImageView>(R.id.imageView)
+        val imageView = findViewById<SSNeumorphicImageView>(R.id.imageView)
         imageView.loadImage()
     }
 

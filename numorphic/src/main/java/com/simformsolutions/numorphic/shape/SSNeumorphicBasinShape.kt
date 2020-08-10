@@ -3,27 +3,27 @@ package com.simformsolutions.numorphic.shape
 import android.graphics.Canvas
 import android.graphics.Path
 import android.graphics.Rect
-import com.simformsolutions.numorphic.drawable.NumorphShapeDrawable.NumorphShapeDrawableState
+import com.simformsolutions.numorphic.drawable.SSNeumorphicShapeDrawable.SSNeumorphicShapeDrawableState
 
 /**
- * Basin Shape
+ * Basin SSNeumorphicShape
  *
- * Basin shape is combination of [FlatShape] and [PressedShape].
+ * Basin shape is combination of [SSNeumorphicFlatShape] and [SSNeumorphicPressedShape].
  */
-internal class BasinShape(drawableState: NumorphShapeDrawableState) : Shape {
+internal class SSNeumorphicBasinShape(drawableState: SSNeumorphicShapeDrawableState) : SSNeumorphicShape {
 
     /**
      * List of shadows to be applied on this shape.
      */
     private val shadows = listOf(
-        FlatShape(drawableState),
-        PressedShape(drawableState)
+        SSNeumorphicFlatShape(drawableState),
+        SSNeumorphicPressedShape(drawableState)
     )
 
     /**
      * Apply [newDrawableState] to every shadow.
      */
-    override fun setDrawableState(newDrawableState: NumorphShapeDrawableState) {
+    override fun setDrawableState(newDrawableState: SSNeumorphicShapeDrawableState) {
         shadows.forEach { it.setDrawableState(newDrawableState) }
     }
 

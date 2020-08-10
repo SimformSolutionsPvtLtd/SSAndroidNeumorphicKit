@@ -6,7 +6,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.StyleableRes
 import androidx.core.content.ContextCompat
 
-internal object NumorphResources {
+internal object SSNeumorphicResources {
     fun getColor(
         context: Context,
         attributes: TypedArray,

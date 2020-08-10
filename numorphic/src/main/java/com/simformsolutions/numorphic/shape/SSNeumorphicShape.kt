@@ -3,14 +3,14 @@ package com.simformsolutions.numorphic.shape
 import android.graphics.Canvas
 import android.graphics.Path
 import android.graphics.Rect
-import com.simformsolutions.numorphic.drawable.NumorphShapeDrawable.NumorphShapeDrawableState
+import com.simformsolutions.numorphic.drawable.SSNeumorphicShapeDrawable.SSNeumorphicShapeDrawableState
 
 /**
- * Declaration of the [Shape].
+ * Declaration of the [SSNeumorphicShape].
  */
-internal interface Shape {
+internal interface SSNeumorphicShape {
     /** Set [newDrawableState] */
-    fun setDrawableState(newDrawableState: NumorphShapeDrawableState)
+    fun setDrawableState(newDrawableState: SSNeumorphicShapeDrawableState)
 
     /**
      * This method will be generally called when onDraw is called.

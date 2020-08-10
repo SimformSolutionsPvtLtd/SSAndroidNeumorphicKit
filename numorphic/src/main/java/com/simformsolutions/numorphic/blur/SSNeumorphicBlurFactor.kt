@@ -10,7 +10,7 @@ import android.graphics.Color
  * @param sampling
  * @param color
  */
-internal data class BlurFactor(
+internal data class SSNeumorphicBlurFactor(
     val width: Int,
     val height: Int,
     val radius: Int = DEFAULT_RADIUS,

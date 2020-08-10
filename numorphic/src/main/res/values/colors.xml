@@ -2,17 +2,17 @@
 <resources>
 
     <!-- Light colors. -->
-    <color name="default_background">#EFEEEE</color>
-    <color name="default_color_shadow_light">#ffffff</color>
-    <color name="default_color_shadow_dark">#d9d9d9</color>
+    <color name="ss_neumorphic_default_background">#EFEEEE</color>
+    <color name="ss_neumorphic_default_color_shadow_light">#ffffff</color>
+    <color name="ss_neumorphic_default_color_shadow_dark">#d9d9d9</color>
 
     <!-- Dark theme colors. -->
-    <color name="dark_default_background">#19191E</color>
-    <color name="dark_default_color_shadow_light">#2c2c2c</color>
-    <color name="dark_default_color_shadow_dark">#111111</color>
+    <color name="ss_neumorphic_dark_default_background">#19191E</color>
+    <color name="ss_neumorphic_dark_default_color_shadow_light">#2c2c2c</color>
+    <color name="ss_neumorphic_dark_default_color_shadow_dark">#111111</color>
 
-    <color name="background">#EFEEEE</color>
+    <color name="ss_neumorphic_background">#EFEEEE</color>
 
     <!--  Fully transparent  -->
-    <color name="transparent">#00000000</color>
+    <color name="ss_neumorphic_transparent">#00000000</color>
 </resources>

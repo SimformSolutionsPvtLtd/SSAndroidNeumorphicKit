@@ -4,15 +4,15 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import androidx.annotation.ColorInt
 import androidx.annotation.Dimension
-import com.simformsolutions.numorphic.annotation.CornerFamily
-import com.simformsolutions.numorphic.annotation.ShapeType
-import com.simformsolutions.numorphic.model.NumorphShapeAppearanceModel
+import com.simformsolutions.numorphic.annotation.SSNeumorphicCornerFamily
+import com.simformsolutions.numorphic.annotation.SSNeumorphicShapeType
+import com.simformsolutions.numorphic.model.SSNeumorphicShapeAppearanceModel
 
 /**
- * Delegate class for every NumorphView.
+ * Delegate class for every SSNeumorphicView.
  * Interface to declare methods and variables every View has to implement.
  */
-internal interface NumorphView {
+internal interface SSNeumorphicView {
     /**
      * Show shadow.
      */
@@ -38,16 +38,16 @@ internal interface NumorphView {
     fun setBackgroundDrawable(drawable: Drawable?)
 
     /**
-     * Getter for [NumorphShapeAppearanceModel]
-     * @return [NumorphShapeAppearanceModel]
+     * Getter for [SSNeumorphicShapeAppearanceModel]
+     * @return [SSNeumorphicShapeAppearanceModel]
      */
-    fun getShapeAppearanceModel(): NumorphShapeAppearanceModel
+    fun getShapeAppearanceModel(): SSNeumorphicShapeAppearanceModel
 
     /**
-     * Setter for [NumorphShapeAppearanceModel]
+     * Setter for [SSNeumorphicShapeAppearanceModel]
      * @param shapeAppearanceModel the new shape appearance model
      */
-    fun setShapeAppearanceModel(shapeAppearanceModel: NumorphShapeAppearanceModel)
+    fun setShapeAppearanceModel(shapeAppearanceModel: SSNeumorphicShapeAppearanceModel)
 
     /**
      * Sets the background color.
@@ -95,11 +95,11 @@ internal interface NumorphView {
      * Sets the shape type.
      * @param shapeType
      */
-    fun setShapeType(@ShapeType shapeType: Int)
+    fun setShapeType(@SSNeumorphicShapeType shapeType: Int)
 
     /**
      * Get the shape type.
-     * @return [ShapeType]
+     * @return [SSNeumorphicShapeType]
      */
     fun getShapeType(): Int
 
@@ -172,7 +172,7 @@ internal interface NumorphView {
         @Dimension cornerRadiusBottomLeft: Float = cornerRadius
     ) {
         // Create a new shape appearance model.
-        val newShapeAppearanceModel = NumorphShapeAppearanceModel.builder(getShapeAppearanceModel())
+        val newShapeAppearanceModel = SSNeumorphicShapeAppearanceModel.builder(getShapeAppearanceModel())
             .setCorner(
                 cornerRadius = cornerRadius,
                 cornerRadiusTopLeft = cornerRadiusTopLeft,
@@ -190,9 +190,9 @@ internal interface NumorphView {
      * Set corner family
      * @param cornerFamily Set corner family
      */
-    fun setCornerFamily(@CornerFamily cornerFamily: Int) {
+    fun setCornerFamily(@SSNeumorphicCornerFamily cornerFamily: Int) {
         // Create a new shape appearance model.
-        val newShapeAppearanceModel = NumorphShapeAppearanceModel.builder(getShapeAppearanceModel())
+        val newShapeAppearanceModel = SSNeumorphicShapeAppearanceModel.builder(getShapeAppearanceModel())
             .setCornerFamily(cornerFamily)
             .build()
 

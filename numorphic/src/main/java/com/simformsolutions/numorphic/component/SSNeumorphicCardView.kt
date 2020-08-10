@@ -2,31 +2,29 @@ package com.simformsolutions.numorphic.component
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.*
+import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.view.View
+import android.widget.FrameLayout
 import androidx.annotation.ColorInt
-import androidx.annotation.Dimension
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
 import com.simformsolutions.numorphic.R
-import com.simformsolutions.numorphic.annotation.CornerFamily
-import com.simformsolutions.numorphic.annotation.ShapeType
-import com.simformsolutions.numorphic.blueprint.NumorphView
-import com.simformsolutions.numorphic.drawable.NumorphShapeDrawable
-import com.simformsolutions.numorphic.model.NumorphShapeAppearanceModel
-import com.simformsolutions.numorphic.util.NumorphResources
+import com.simformsolutions.numorphic.annotation.SSNeumorphicShapeType
+import com.simformsolutions.numorphic.blueprint.SSNeumorphicView
+import com.simformsolutions.numorphic.drawable.SSNeumorphicShapeDrawable
+import com.simformsolutions.numorphic.model.SSNeumorphicShapeAppearanceModel
+import com.simformsolutions.numorphic.util.SSNeumorphicResources
 
-class NumorphImageView @JvmOverloads constructor(
+class SSNeumorphicCardView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.numorphImageViewStyle,
-    defStyleRes: Int = R.style.Widget_Numorph_ImageView
-) : AppCompatImageView(context, attrs, defStyleAttr), NumorphView {
+    defStyleAttr: Int = R.attr.ss_neumorphicCardViewStyle,
+    defStyleRes: Int = R.style.Widget_SSNeumorphic_CardView
+) : FrameLayout(context, attrs, defStyleAttr, defStyleRes), SSNeumorphicView {
 
     private var isInitialized: Boolean = false
-    private val shapeDrawable: NumorphShapeDrawable
+    private val shapeDrawable: SSNeumorphicShapeDrawable
 
     private var lightShadowColor: Int
     private var darkShadowColor: Int
@@ -38,46 +36,46 @@ class NumorphImageView @JvmOverloads constructor(
 
     init {
         val a = context.obtainStyledAttributes(
-            attrs, R.styleable.NumorphImageView, defStyleAttr, defStyleRes
+            attrs, R.styleable.SSNeumorphicCardView, defStyleAttr, defStyleRes
         )
-        val fillColor = a.getColorStateList(R.styleable.NumorphImageView_numorph_backgroundColor)
-        val strokeColor = a.getColorStateList(R.styleable.NumorphImageView_numorph_strokeColor)
-        val strokeWidth = a.getDimension(R.styleable.NumorphImageView_numorph_strokeWidth, 0f)
-        val shapeType = a.getInt(R.styleable.NumorphImageView_numorph_shapeType, ShapeType.DEFAULT)
+        val fillColor = a.getColorStateList(R.styleable.SSNeumorphicCardView_ss_neumorphic_backgroundColor)
+        val strokeColor = a.getColorStateList(R.styleable.SSNeumorphicCardView_ss_neumorphic_strokeColor)
+        val strokeWidth = a.getDimension(R.styleable.SSNeumorphicCardView_ss_neumorphic_strokeWidth, 0f)
+        val shapeType = a.getInt(R.styleable.SSNeumorphicCardView_ss_neumorphic_shapeType, SSNeumorphicShapeType.DEFAULT)
         val inset = a.getDimensionPixelSize(
-            R.styleable.NumorphImageView_numorph_inset, 0
+            R.styleable.SSNeumorphicCardView_ss_neumorphic_inset, 0
         )
         val insetStart = a.getDimensionPixelSize(
-            R.styleable.NumorphImageView_numorph_insetStart, -1
+            R.styleable.SSNeumorphicCardView_ss_neumorphic_insetStart, -1
         )
         val insetEnd = a.getDimensionPixelSize(
-            R.styleable.NumorphImageView_numorph_insetEnd, -1
+            R.styleable.SSNeumorphicCardView_ss_neumorphic_insetEnd, -1
         )
         val insetTop = a.getDimensionPixelSize(
-            R.styleable.NumorphImageView_numorph_insetTop, -1
+            R.styleable.SSNeumorphicCardView_ss_neumorphic_insetTop, -1
         )
         val insetBottom = a.getDimensionPixelSize(
-            R.styleable.NumorphImageView_numorph_insetBottom, -1
+            R.styleable.SSNeumorphicCardView_ss_neumorphic_insetBottom, -1
         )
         val shadowElevation = a.getDimension(
-            R.styleable.NumorphImageView_numorph_shadowElevation, 0f
+            R.styleable.SSNeumorphicCardView_ss_neumorphic_shadowElevation, 0f
         )
-        lightShadowColor = NumorphResources.getColor(
+        lightShadowColor = SSNeumorphicResources.getColor(
             context, a,
-            R.styleable.NumorphImageView_numorph_shadowColorLight,
-            R.color.default_color_shadow_light
+            R.styleable.SSNeumorphicCardView_ss_neumorphic_shadowColorLight,
+            R.color.ss_neumorphic_default_color_shadow_light
         )
-        darkShadowColor = NumorphResources.getColor(
+        darkShadowColor = SSNeumorphicResources.getColor(
             context, a,
-            R.styleable.NumorphImageView_numorph_shadowColorDark,
-            R.color.default_color_shadow_dark
+            R.styleable.SSNeumorphicCardView_ss_neumorphic_shadowColorDark,
+            R.color.ss_neumorphic_default_color_shadow_dark
         )
         val noShadow = a.getBoolean(
-            R.styleable.NumorphImageView_noShadow, false
+            R.styleable.SSNeumorphicCardView_ss_neumorphic_noShadow, false
         )
         a.recycle()
 
-        shapeDrawable = NumorphShapeDrawable(context, attrs, defStyleAttr, defStyleRes).apply {
+        shapeDrawable = SSNeumorphicShapeDrawable(context, attrs, defStyleAttr, defStyleRes).apply {
             setInEditMode(isInEditMode)
             setShapeType(shapeType)
             setShadowElevation(shadowElevation)
@@ -98,37 +96,25 @@ class NumorphImageView @JvmOverloads constructor(
         isInitialized = true
     }
 
-    /**
-     * Show shadow.
-     */
+    override fun drawChild(canvas: Canvas, child: View, drawingTime: Long): Boolean {
+        //TODO: clip using Outline smoothly
+        val checkpoint = canvas.save()
+        canvas.clipPath(shapeDrawable.getOutlinePath())
+        try {
+            return super.drawChild(canvas, child, drawingTime)
+        } finally {
+            canvas.restoreToCount(checkpoint)
+        }
+    }
+
     override fun showShadow() {
         setShadowColorLight(lightShadowColor)
         setShadowColorDark(darkShadowColor)
     }
 
-    /**
-     * Hide shadow.
-     */
     override fun hideShadow() {
-        setShadowColorLight(ContextCompat.getColor(context, R.color.transparent))
-        setShadowColorDark(ContextCompat.getColor(context, R.color.transparent))
-    }
-
-    /**
-     * Intercept this method. Native implementation will draw over shadow.
-     * @param drawable Drawable to draw
-     */
-    override fun setImageDrawable(drawable: Drawable?) {
-        /**  Call as bitmap  */
-        shapeDrawable.setImageBitmap(drawable?.toBitmap())
-    }
-
-    /**
-     * Intercept this method. Native implementation will draw over shadow.
-     * @param bm Bitmap to draw
-     */
-    override fun setImageBitmap(bm: Bitmap?) {
-        shapeDrawable.setImageBitmap(bm)
+        setShadowColorLight(ContextCompat.getColor(context, R.color.ss_neumorphic_transparent))
+        setShadowColorDark(ContextCompat.getColor(context, R.color.ss_neumorphic_transparent))
     }
 
     override fun setBackground(drawable: Drawable?) {
@@ -146,11 +132,11 @@ class NumorphImageView @JvmOverloads constructor(
         super.setBackgroundDrawable(drawable)
     }
 
-    override fun setShapeAppearanceModel(shapeAppearanceModel: NumorphShapeAppearanceModel) {
+    override fun setShapeAppearanceModel(shapeAppearanceModel: SSNeumorphicShapeAppearanceModel) {
         shapeDrawable.setShapeAppearanceModel(shapeAppearanceModel)
     }
 
-    override fun getShapeAppearanceModel(): NumorphShapeAppearanceModel {
+    override fun getShapeAppearanceModel(): SSNeumorphicShapeAppearanceModel {
         return shapeDrawable.getShapeAppearanceModel()
     }
 
@@ -182,11 +168,11 @@ class NumorphImageView @JvmOverloads constructor(
         return shapeDrawable.getStrokeWidth()
     }
 
-    override fun setShapeType(@ShapeType shapeType: Int) {
+    override fun setShapeType(@SSNeumorphicShapeType shapeType: Int) {
         shapeDrawable.setShapeType(shapeType)
     }
 
-    @ShapeType
+    @SSNeumorphicShapeType
     override fun getShapeType(): Int {
         return shapeDrawable.getShapeType()
     }
@@ -195,8 +181,8 @@ class NumorphImageView @JvmOverloads constructor(
         internalSetInset(left, top, right, bottom)
     }
 
-    override fun setShadowElevation(shadowElevation: Float) {
-        shapeDrawable.setShadowElevation(shadowElevation)
+    override fun setShadowElevation(elevation: Float) {
+        shapeDrawable.setShadowElevation(elevation)
     }
 
     override fun getShadowElevation(): Float {
@@ -250,9 +236,5 @@ class NumorphImageView @JvmOverloads constructor(
             requestLayout()
             invalidateOutline()
         }
-    }
-
-    companion object {
-        private const val LOG_TAG = "NumorphImageView"
     }
 }
