@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget" />
+
+    <style name="Widget.SSNeumorphic" />
+
+    <style name="Widget.SSNeumorphic.Button" parent="android:Widget.Button">
+        <item name="android:background">@null</item>
+        <item name="android:paddingStart">@dimen/ss_neumorphic_default_button_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/ss_neumorphic_default_button_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/ss_neumorphic_default_button_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/ss_neumorphic_default_button_padding_vertical</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceButton</item>
+        <item name="android:stateListAnimator">@animator/button_state_list_anim_ss_neumorphic</item>
+        <item name="ss_neumorphic_backgroundColor">@color/ss_neumorphic_background</item>
+        <item name="ss_neumorphic_inset">@dimen/ss_neumorphic_default_inset</item>
+        <item name="ss_neumorphic_shadowElevation">@dimen/ss_neumorphic_default_shadow_elevation</item>
+        <item name="ss_neumorphic_shadowColorLight">?attr/ss_neumorphic_colorShadowLight</item>
+        <item name="ss_neumorphic_shadowColorDark">?attr/ss_neumorphic_colorShadowDark</item>
+        <item name="ss_neumorphic_shapeType">flat</item>
+        <item name="ss_neumorphic_shapeAppearance">@style/ShapeAppearance.SSNeumorphic.Button</item>
+    </style>
+
+    <style name="Widget.SSNeumorphic.CardView" parent="android:Widget">
+        <item name="android:padding">@dimen/ss_neumorphic_default_padding</item>
+        <item name="ss_neumorphic_inset">@dimen/ss_neumorphic_default_inset</item>
+        <item name="ss_neumorphic_backgroundColor">@color/ss_neumorphic_background</item>
+        <item name="ss_neumorphic_shadowElevation">@dimen/ss_neumorphic_default_shadow_elevation</item>
+        <item name="ss_neumorphic_shadowColorLight">?attr/ss_neumorphic_colorShadowLight</item>
+        <item name="ss_neumorphic_shadowColorDark">?attr/ss_neumorphic_colorShadowDark</item>
+        <item name="ss_neumorphic_shapeType">flat</item>
+        <item name="ss_neumorphic_shapeAppearance">@style/ShapeAppearance.SSNeumorphic.CardView</item>
+    </style>
+
+    <style name="Widget.SSNeumorphic.FloatingActionButton" parent="android:Widget">
+        <item name="android:padding">@dimen/ss_neumorphic_default_padding</item>
+        <item name="android:stateListAnimator">@animator/button_state_list_anim_ss_neumorphic</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="ss_neumorphic_inset">@dimen/ss_neumorphic_default_inset</item>
+        <item name="ss_neumorphic_backgroundColor">@color/ss_neumorphic_background</item>
+        <item name="ss_neumorphic_shadowElevation">@dimen/ss_neumorphic_default_shadow_elevation</item>
+        <item name="ss_neumorphic_shadowColorLight">?attr/ss_neumorphic_colorShadowLight</item>
+        <item name="ss_neumorphic_shadowColorDark">?attr/ss_neumorphic_colorShadowDark</item>
+        <item name="ss_neumorphic_shapeType">flat</item>
+        <item name="ss_neumorphic_shapeAppearance">@style/ShapeAppearance.SSNeumorphic.FloatingActionButton</item>
+    </style>
+    
+    <style name="Widget.SSNeumorphic.ImageButton" parent="android:Widget.ImageButton">
+        <item name="android:background">@null</item>
+        <item name="android:padding">@dimen/ss_neumorphic_default_padding</item>
+        <item name="android:stateListAnimator">@animator/button_state_list_anim_ss_neumorphic</item>
+        <item name="ss_neumorphic_inset">@dimen/ss_neumorphic_default_inset</item>
+        <item name="ss_neumorphic_shadowElevation">6dp</item>
+        <item name="ss_neumorphic_shadowColorLight">?attr/ss_neumorphic_colorShadowLight</item>
+        <item name="ss_neumorphic_shadowColorDark">?attr/ss_neumorphic_colorShadowDark</item>
+        <item name="ss_neumorphic_shapeType">flat</item>
+        <item name="ss_neumorphic_shapeAppearance">@style/ShapeAppearance.SSNeumorphic.ImageButton</item>
+    </style>
+
+    <style name="Widget.SSNeumorphic.ImageView" parent="android:Widget">
+        <item name="android:padding">@dimen/ss_neumorphic_default_padding</item>
+        <item name="ss_neumorphic_inset">@dimen/ss_neumorphic_default_inset</item>
+        <item name="ss_neumorphic_shadowElevation">@dimen/ss_neumorphic_default_shadow_elevation</item>
+        <item name="ss_neumorphic_shadowColorLight">?attr/ss_neumorphic_colorShadowLight</item>
+        <item name="ss_neumorphic_shadowColorDark">?attr/ss_neumorphic_colorShadowDark</item>
+        <item name="ss_neumorphic_shapeType">flat</item>
+        <item name="ss_neumorphic_shapeAppearance">@style/ShapeAppearance.SSNeumorphic.ImageView</item>
+    </style>
+
+    <style name="Widget.SSNeumorphic.EditText" parent="android:Widget.EditText">
+        <item name="android:background">@null</item>
+        <item name="android:paddingTop">@dimen/ss_neumorphic_default_edit_text_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/ss_neumorphic_default_edit_text_padding_vertical</item>
+        <item name="android:paddingStart">@dimen/ss_neumorphic_default_edit_text_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/ss_neumorphic_default_edit_text_padding_horizontal</item>
+        <item name="ss_neumorphic_inset">@dimen/ss_neumorphic_default_inset</item>
+        <item name="ss_neumorphic_backgroundColor">@color/ss_neumorphic_background</item>
+        <item name="ss_neumorphic_shadowElevation">@dimen/ss_neumorphic_default_shadow_elevation</item>
+        <item name="ss_neumorphic_shadowColorLight">?attr/ss_neumorphic_colorShadowLight</item>
+        <item name="ss_neumorphic_shadowColorDark">?attr/ss_neumorphic_colorShadowDark</item>
+        <item name="ss_neumorphic_shapeType">flat</item>
+        <item name="ss_neumorphic_shapeAppearance">@style/ShapeAppearance.SSNeumorphic.EditText</item>
+    </style>
+    
+    <style name="ShapeAppearance" />
+
+    <style name="ShapeAppearance.SSNeumorphic" />
+
+    <style name="ShapeAppearance.SSNeumorphic.Button" parent="">
+        <item name="ss_neumorphic_cornerFamily">rounded</item>
+        <item name="ss_neumorphic_cornerRadius">@dimen/ss_neumorphic_default_corner_radius</item>
+    </style>
+
+    <style name="ShapeAppearance.SSNeumorphic.CardView" parent="">
+        <item name="ss_neumorphic_cornerFamily">rounded</item>
+        <item name="ss_neumorphic_cornerRadius">@dimen/ss_neumorphic_default_corner_radius</item>
+    </style>
+
+    <style name="ShapeAppearance.SSNeumorphic.FloatingActionButton" parent="">
+        <item name="ss_neumorphic_cornerFamily">oval</item>
+        <item name="ss_neumorphic_cornerRadius">@dimen/ss_neumorphic_default_floating_action_corner_radius</item>
+    </style>
+
+    <style name="ShapeAppearance.SSNeumorphic.ImageButton" parent="">
+        <item name="ss_neumorphic_cornerFamily">rounded</item>
+        <item name="ss_neumorphic_cornerRadius">@dimen/ss_neumorphic_default_corner_radius</item>
+    </style>
+
+    <style name="ShapeAppearance.SSNeumorphic.ImageView" parent="">
+        <item name="ss_neumorphic_cornerFamily">rounded</item>
+        <item name="ss_neumorphic_cornerRadius">@dimen/ss_neumorphic_default_corner_radius</item>
+    </style>
+
+    <style name="ShapeAppearance.SSNeumorphic.EditText" parent="">
+        <item name="ss_neumorphic_cornerFamily">rounded</item>
+        <item name="ss_neumorphic_cornerRadius">@dimen/ss_neumorphic_default_corner_radius</item>
+    </style>
+</resources>

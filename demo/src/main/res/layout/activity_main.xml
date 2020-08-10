@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.simformsolutions.numorphic.component.SSNeumorphicButton
+    <com.simformsolutions.ssneumorphic.component.SSNeumorphicButton
         android:id="@+id/numorphButton"
         style="@style/Widget.SSNeumorphic.Button"
         android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
         app:ss_neumorphic_shapeAppearance="@style/ShapeAppearance.TabFirstButton"
         app:ss_neumorphic_shapeType="flat" />
 
-    <com.simformsolutions.numorphic.component.SSNeumorphicButton
+    <com.simformsolutions.ssneumorphic.component.SSNeumorphicButton
         android:id="@+id/numorphButton2"
         style="@style/Widget.SSNeumorphic.Button"
         android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
         app:ss_neumorphic_shapeAppearance="@style/ShapeAppearance.TabMiddleButton"
         app:ss_neumorphic_shapeType="pressed" />
 
-    <com.simformsolutions.numorphic.component.SSNeumorphicButton
+    <com.simformsolutions.ssneumorphic.component.SSNeumorphicButton
         android:id="@+id/numorphButton3"
         style="@style/Widget.SSNeumorphic.Button"
         android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
         app:ss_neumorphic_shapeAppearance="@style/ShapeAppearance.TabEndButton"
         app:ss_neumorphic_shapeType="flat" />
 
-    <com.simformsolutions.numorphic.component.SSNeumorphicCardView
+    <com.simformsolutions.ssneumorphic.component.SSNeumorphicCardView
         android:id="@+id/numorphCardView"
         style="@style/Widget.SSNeumorphic.CardView"
         android:layout_width="0dp"
@@ -57,7 +57,7 @@
         android:layout_margin="16dp"
         android:clickable="true"
         android:focusable="true"
-        android:stateListAnimator="@animator/button_state_list_anim_numorph"
+        android:stateListAnimator="@animator/button_state_list_anim_ss_neumorphic"
         android:background="@drawable/background_drawable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,9 +69,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Hello Card View" />
-    </com.simformsolutions.numorphic.component.SSNeumorphicCardView>
+    </com.simformsolutions.ssneumorphic.component.SSNeumorphicCardView>
 
-    <com.simformsolutions.numorphic.component.SSNeumorphicImageView
+    <com.simformsolutions.ssneumorphic.component.SSNeumorphicImageView
         android:id="@+id/imageView"
         style="@style/Widget.SSNeumorphic.ImageView"
         android:layout_width="150dp"
@@ -84,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@id/numorphCardView"
         app:ss_neumorphic_shapeAppearance="@style/ShapeAppearance.Circular" />
 
-    <com.simformsolutions.numorphic.component.SSNeumorphicImageButton
+    <com.simformsolutions.ssneumorphic.component.SSNeumorphicImageButton
         android:id="@+id/imageButton"
         style="@style/Widget.SSNeumorphic.ImageButton"
         android:layout_width="150dp"
@@ -96,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@id/numorphCardView"
         app:ss_neumorphic_shapeAppearance="@style/ShapeAppearance.ImageRounded" />
 
-    <com.simformsolutions.numorphic.component.SSNeumorphicEditText
+    <com.simformsolutions.ssneumorphic.component.SSNeumorphicEditText
         android:id="@+id/editText"
         style="@style/Widget.SSNeumorphic.EditText"
         android:layout_width="match_parent"
@@ -107,7 +107,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <com.simformsolutions.numorphic.component.SSNeumorphicFloatingActionButton
+    <com.simformsolutions.ssneumorphic.component.SSNeumorphicFloatingActionButton
         style="@style/Widget.SSNeumorphic.FloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
