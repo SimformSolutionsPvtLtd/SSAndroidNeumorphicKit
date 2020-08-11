@@ -1,29 +1,15 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.SSNeumorphic.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
 
-    <style name="ShapeAppearance.TabFirstButton">
-        <item name="ss_neumorphic_cornerFamily">rounded</item>
-        <item name="ss_neumorphic_cornerRadius">0dp</item>
-        <item name="ss_neumorphic_cornerRadiusTopLeft">6dp</item>
-        <item name="ss_neumorphic_cornerRadiusBottomLeft">6dp</item>
-    </style>
-
-    <style name="ShapeAppearance.TabMiddleButton">
-        <item name="ss_neumorphic_cornerFamily">rounded</item>
-        <item name="ss_neumorphic_cornerRadius">0dp</item>
-    </style>
-
-    <style name="ShapeAppearance.TabEndButton">
-        <item name="ss_neumorphic_cornerFamily">rounded</item>
-        <item name="ss_neumorphic_cornerRadius">0dp</item>
-        <item name="ss_neumorphic_cornerRadiusTopRight">6dp</item>
-        <item name="ss_neumorphic_cornerRadiusBottomRight">6dp</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">@bool/use_light_status</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/ss_neumorphic_background</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">@bool/use_light_nav_bar</item>
     </style>
 
     <style name="ShapeAppearance.Circular">
@@ -31,9 +17,9 @@
         <item name="ss_neumorphic_cornerRadius">0dp</item>
     </style>
 
-    <style name="ShapeAppearance.Rect">
+    <style name="ShapeAppearance.RoundRect">
         <item name="ss_neumorphic_cornerFamily">rounded</item>
-        <item name="ss_neumorphic_cornerRadius">0dp</item>
+        <item name="ss_neumorphic_cornerRadius">22dp</item>
     </style>
 
 
