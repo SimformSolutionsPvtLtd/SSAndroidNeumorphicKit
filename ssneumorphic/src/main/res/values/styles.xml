@@ -33,6 +33,12 @@
         <item name="ss_neumorphic_shapeAppearance">@style/ShapeAppearance.SSNeumorphic.CardView</item>
     </style>
 
+    <style name="Widget.SSNeumorphic.CardView.Clickable" parent="Widget.SSNeumorphic.CardView">
+        <item name="android:stateListAnimator">@animator/button_state_list_anim_ss_neumorphic</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
     <style name="Widget.SSNeumorphic.FloatingActionButton" parent="android:Widget">
         <item name="android:padding">@dimen/ss_neumorphic_default_padding</item>
         <item name="android:stateListAnimator">@animator/button_state_list_anim_ss_neumorphic</item>
