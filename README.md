@@ -2,7 +2,7 @@
 
 SSNeumorphicKit is to build Neumorphism design UI in Android.
 
-[![Kotlin Version](https://img.shields.io/badge/Kotlin-v1.3.72-blue.svg)](https://kotlinlang.org)  [![Platform](https://img.shields.io/badge/Platform-Android-green.svg?style=flat)](https://www.android.com/) [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
+[![Kotlin Version](https://img.shields.io/badge/Kotlin-v1.4-blue.svg)](https://kotlinlang.org)  [![Platform](https://img.shields.io/badge/Platform-Android-green.svg?style=flat)](https://www.android.com/) [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 
 ## Demo
 ------------------------
