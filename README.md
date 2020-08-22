@@ -6,22 +6,33 @@ SSNeumorphicKit is to build Neumorphism design UI in Android.
 
 ## Demo
 ------------------------
-
+* ### Light Mode
 <div style="padding: 10px">
-    <img src="images/ssneumorphic_flatview.png" width="280" height="520">
-    <img src="images/ssneumorphic_pressedview.png" width="280" height="520">
-    <img src="images/ssneumorphic_basinview.png" width="280" height="520">
+    <img src="images/ssneumorphic_flatview.png" width="280" height="600">
+    <img src="images/ssneumorphic_pressedview.png" width="280" height="600">
+    <img src="images/ssneumorphic_basinview.png" width="280" height="600">
+</div>
+
+* ### Dark Mode
+<div style="padding: 10px">
+    <img src="images/ssneumorphic_flatview_dark.png" width="280" height="600">
+    <img src="images/ssneumorphic_pressedview_dark.png" width="280" height="600">
+    <img src="images/ssneumorphic_basinview_dark.png" width="280" height="600">
 </div>
 
 ## Features
 ------------------------
 
-* NeumorphicCardView
-* NeumorphicButton
-* NeumorphicImageView
-* NeumorphicImageButton
-* NeumorphicFloatingActionButton
-* NeumorphicEditText
+* Components
+    * NeumorphicCardView
+    * NeumorphicButton
+    * NeumorphicImageView
+    * NeumorphicImageButton
+    * NeumorphicFloatingActionButton
+    * NeumorphicEditText
+
+* Dark and Light mode support. 
+    * Extend theme with ```Theme.SSNeumorphic.DayNight```
 
 ## Gradle Dependency
 ------------------------
