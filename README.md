@@ -5,6 +5,8 @@ SSNeumorphicKit is to build Neumorphism design UI in Android.
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-v1.3.72-blue.svg)](https://kotlinlang.org)  [![Platform](https://img.shields.io/badge/Platform-Android-green.svg?style=flat)](https://www.android.com/) [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 
 ## Demo
+------------------------
+
 <div style="padding: 10px">
     <img src="images/ssneumorphic_flatview.png" width="280" height="520">
     <img src="images/ssneumorphic_pressedview.png" width="280" height="520">
@@ -22,6 +24,7 @@ SSNeumorphicKit is to build Neumorphism design UI in Android.
 * NeumorphicEditText
 
 ## Gradle Dependency
+------------------------
 
 * Add it in your <b>root</b> level build.gradle at the end of repositories:
 
@@ -66,27 +69,35 @@ dependencies {
 ------------------------
 
 ```xml
-<com.simformsolutions.ssneumorphic.component.SSNeumorphicButton
-        style="@style/Widget.SSNeumorphic.Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Neumorphic Button"
-        app:ss_neumorphic_shapeAppearance="@style/ShapeAppearance.RoundRect" />
+<!--  Apply Widget.SSNeumorphic.CardView.Clickable style for click effect.  -->
+<com.simformsolutions.ssneumorphic.component.SSNeumorphicCardView
+        android:id="@+id/neumorphicCardView"
+        style="@style/Widget.SSNeumorphic.CardView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:ss_neumorphic_shapeAppearance="@style/ShapeAppearance.MyShape" />
 
-<style name="ShapeAppearance.RoundRect">
-        <item name="ss_neumorphic_cornerFamily">rounded</item>
-        <item name="ss_neumorphic_cornerRadius">22dp</item>
+<!--  styles.xml  -->
+<style name="ShapeAppearance.MyShape">
+    <item name="ss_neumorphic_cornerFamily">rounded</item>
+    <item name="ss_neumorphic_cornerRadius">8dp</item>
+    <item name="ss_neumorphic_cornerRadiusTopLeft">22dp</item>
+    <item name="ss_neumorphic_cornerRadiusBottomRight">22dp</item>
 </style>
 ```
 
 ## Find this library useful? :heart:
+------------------------
+
 Support it by joining __[stargazers](https://github.com/SimformSolutionsPvtLtd/SSAndroidNeumorphicKit/stargazers)__ for this repository. :star:
 
 ## iOS Library
+------------------------
 
 Check our iOS version on [Github](https://github.com/SimformSolutionsPvtLtd/SSNeumorphicKit)
 
 ## License
+------------------------
 
 ```
 Copyright 2020 Simform Solutions
