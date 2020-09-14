@@ -107,6 +107,11 @@ Support it by joining __[stargazers](https://github.com/SimformSolutionsPvtLtd/S
 
 Check our iOS version on [Github](https://github.com/SimformSolutionsPvtLtd/SSNeumorphicKit)
 
+## Credit
+------------------------
+
+This library was inspired by [fornewid/neumorphism](https://github.com/fornewid/neumorphism)
+
 ## License
 ------------------------
 
