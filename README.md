@@ -52,7 +52,7 @@ allprojects {
 
 ```
 dependencies {
-	implementation 'com.github.simformsolutions:SSAndroidNeumorphicKit:1.0.0'
+	implementation 'com.github.SimformSolutionsPvtLtd:SSAndroidNeumorphicKit:1.0.0'
 }
 ```
 
