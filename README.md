@@ -5,37 +5,37 @@ SSNeumorphicKit is to build Neumorphism design UI in Android.
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-v1.4-blue.svg)](https://kotlinlang.org)  [![Platform](https://img.shields.io/badge/Platform-Android-green.svg?style=flat)](https://www.android.com/) [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 
 ## Demo
-------------------------
-* ### Light Mode
-<div style="padding: 10px">
-    <img src="images/ssneumorphic_flatview.png" width="280" height="600">
-    <img src="images/ssneumorphic_pressedview.png" width="280" height="600">
-    <img src="images/ssneumorphic_basinview.png" width="280" height="600">
-</div>
 
-* ### Dark Mode
-<div style="padding: 10px">
-    <img src="images/ssneumorphic_flatview_dark.png" width="280" height="600">
-    <img src="images/ssneumorphic_pressedview_dark.png" width="280" height="600">
-    <img src="images/ssneumorphic_basinview_dark.png" width="280" height="600">
-</div>
+* ### Shape Type
+
+| Flat | Basin | Pressed |
+| :--: | :-----: | :---: |
+| <img src="images/ssneumorphic_flatview.png" width="200" height="400"> | <img src="images/ssneumorphic_basinview.png" width="200" height="400"> | <img src="images/ssneumorphic_pressedview.png" width="200" height="400"> |
+
+* ### Light and Dark Mode
+
+| Light | Dark |
+| :--: | :-----: |
+| <img src="images/ssneumorphic_flatview.png" width="280" height="600"> | <img src="images/ssneumorphic_flatview_dark.png" width="280" height="600"> |
+
+* ### FloatingActionButton
+
+<img src="images/floatingActionButtonClickAnim.gif" width="280" height="600">
 
 ## Features
-------------------------
 
 * Components
-    * NeumorphicCardView
-    * NeumorphicButton
-    * NeumorphicImageView
-    * NeumorphicImageButton
-    * NeumorphicFloatingActionButton
-    * NeumorphicEditText
+    * SSNeumorphicCardView
+    * SSNeumorphicButton
+    * SSNeumorphicImageView
+    * SSNeumorphicImageButton
+    * SSNeumorphicFloatingActionButton
+    * SSNeumorphicEditText
 
-* Dark and Light mode support. 
+* Light and Dark mode 
     * Extend theme with ```Theme.SSNeumorphic.DayNight```
 
 ## Gradle Dependency
-------------------------
 
 * Add it in your <b>root</b> level build.gradle at the end of repositories:
 
@@ -57,7 +57,6 @@ dependencies {
 ```
 
 ## Attributes
-------------------------
 
 | Attribute | Description | Default
 | --- | --- | --- |
@@ -77,7 +76,6 @@ dependencies {
 | `ss_neumorphic_shapeAppearance` | Set shape appearance of the component | `ShapeAppearance.SSNeumorphic.ComponentName` |
 
 ## Usage
-------------------------
 
 ```xml
 <!--  Apply Widget.SSNeumorphic.CardView.Clickable style for click effect.  -->
@@ -98,22 +96,18 @@ dependencies {
 ```
 
 ## Find this library useful? :heart:
-------------------------
 
 Support it by joining __[stargazers](https://github.com/SimformSolutionsPvtLtd/SSAndroidNeumorphicKit/stargazers)__ for this repository. :star:
 
 ## iOS Library
-------------------------
 
 Check our iOS version on [Github](https://github.com/SimformSolutionsPvtLtd/SSNeumorphicKit)
 
 ## Credit
-------------------------
 
 This library was inspired by [fornewid/neumorphism](https://github.com/fornewid/neumorphism)
 
 ## License
-------------------------
 
 ```
 Copyright 2020 Simform Solutions
