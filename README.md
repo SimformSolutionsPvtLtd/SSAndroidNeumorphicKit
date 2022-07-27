@@ -96,12 +96,13 @@ dependencies {
 ```
 
 ## Find this library useful? :heart:
-
-Support it by joining __[stargazers](https://github.com/SimformSolutionsPvtLtd/SSAndroidNeumorphicKit/stargazers)__ for this repository. :star:
+- Support it by joining __[stargazers](https://github.com/SimformSolutionsPvtLtd/SSAndroidNeumorphicKit/stargazers)__ for this repository. :star:
 
 ## iOS Library
+- Check our iOS version on [Github](https://github.com/SimformSolutionsPvtLtd/SSNeumorphicKit)
 
-Check our iOS version on [Github](https://github.com/SimformSolutionsPvtLtd/SSNeumorphicKit)
+## Awesome Mobile Libraries
+- Check out our other available [awesome mobile libraries](https://github.com/SimformSolutionsPvtLtd/Awesome-Mobile-Libraries)
 
 ## Credit
 
@@ -110,7 +111,7 @@ This library was inspired by [fornewid/neumorphism](https://github.com/fornewid/
 ## License
 
 ```
-Copyright 2020 Simform Solutions
+Copyright 2022 Simform Solutions
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
